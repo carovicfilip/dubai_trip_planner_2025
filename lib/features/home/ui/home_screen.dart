@@ -1,10 +1,10 @@
 import 'package:dubai_trip_planner_2025/core/widgets/category_section.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/header_widget.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/most_popular_section.dart';
+import 'package:dubai_trip_planner_2025/core/widgets/near_you_section.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/search_bar_widget.dart';
 import 'package:flutter/material.dart';
-
 
 class HomeScreen extends StatelessWidget {
   final String userName = "Filip";
@@ -25,6 +25,8 @@ class HomeScreen extends StatelessWidget {
           const CategorySection(),
           const SizedBox(height: 24),
           const MostPopularSection(),
+          const SizedBox(height: 24),
+          const NearYouSection(),
         ],
       ),
     );

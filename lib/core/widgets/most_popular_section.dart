@@ -1,3 +1,4 @@
+import 'package:dubai_trip_planner_2025/features/home/ui/widgets/popular_place_card.dart';
 import 'package:flutter/material.dart';
 
 class MostPopularSection extends StatelessWidget {
@@ -15,31 +16,23 @@ class MostPopularSection extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
-            itemBuilder: (context, index) => Container(
-              width: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.grey.shade300,
-              ),
-              child: Stack(
-                children: const [
-                  Positioned(
-                    top: 8,
-                    left: 8,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.all(Radius.circular(12))),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        child: Text("20% OFF", style: TextStyle(color: Colors.white, fontSize: 12)),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: index == 0 ? 16.0 : 0.0,
+                ),
+                child: PopularPlaceCard(
+                  placeId: '1',
+                  imageUrl: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
+                  title: 'Burj Al Arab',
+                  index: index,
+                ),
+              );
+            },
             separatorBuilder: (_, __) => const SizedBox(width: 12),
           ),
         ),
+
       ],
     );
   }
