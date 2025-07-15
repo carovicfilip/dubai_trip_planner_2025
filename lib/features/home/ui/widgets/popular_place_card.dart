@@ -23,7 +23,7 @@ class PopularPlaceCard extends StatelessWidget {
           width: 200,
           margin: const EdgeInsets.only(right: 16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             image: const DecorationImage(
               image: NetworkImage(
                 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
@@ -61,9 +61,14 @@ class PopularPlaceCard extends StatelessWidget {
                   fontSize: 120,
                   fontWeight: FontWeight.bold,
                   foreground: Paint()
+                    ..shader = const LinearGradient(
+                      colors: [
+                        Color(0xFF032063),
+                        Color(0xFFFFFFFF),
+                      ],
+                    ).createShader(const Rect.fromLTWH(0, 0, 200, 120))
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2
-                    ..color =  Colors.red, // UAE crvena
+                    ..strokeWidth = 2,
                 ),
               ),
             ],

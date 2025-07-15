@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Dubai Trip Planner 2025',
         theme: AppTheme.lightTheme,
+        debugShowCheckedModeBanner: false,
         home: MainScaffold(),
       ),
     );
