@@ -8,21 +8,28 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.all(16),
-      itemCount: favorites.length,
-      itemBuilder: (context, index) {
-        final item = favorites[index];
-        return Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          child: ListTile(
-            leading: Container(width: 60, height: 60, color: Colors.grey),
-            title: Text(item['title']!),
-            subtitle: Text(item['desc']!),
-            trailing: Icon(Icons.arrow_forward_ios),
-          ),
-        );
-      },
+    return SafeArea(
+      top: true,
+      bottom: true,
+      child: ListView.builder(
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16), // bez top padding-a
+        itemCount: favorites.length,
+        itemBuilder: (context, index) {
+          final item = favorites[index];
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: ListTile(
+                leading: Container(width: 60, height: 60, color: Colors.grey),
+                title: Text(item['title']!),
+                subtitle: Text(item['desc']!),
+                trailing: Icon(Icons.arrow_forward_ios),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

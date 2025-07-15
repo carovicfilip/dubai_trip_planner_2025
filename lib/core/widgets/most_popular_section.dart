@@ -18,12 +18,11 @@ class MostPopularSection extends StatelessWidget {
             itemCount: 5,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.only(
-                  left: index == 0 ? 16.0 : 0.0,
-                ),
+                padding: EdgeInsets.only(left: 20.0),
                 child: PopularPlaceCard(
                   placeId: '1',
-                  imageUrl: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
+                  imageUrl:
+                      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
                   title: 'Burj Al Arab',
                   index: index,
                 ),
@@ -32,7 +31,6 @@ class MostPopularSection extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(width: 12),
           ),
         ),
-
       ],
     );
   }
