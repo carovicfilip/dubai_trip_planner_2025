@@ -8,7 +8,7 @@ class AppAssets {
   static const userVerified = 'assets/images/user_verified.png';
 
   // Icons
-  static const LOGO_IC = 'assets/icons/logo-ic.png';
+  // static const LOGO_IC = 'assets/icons/logo-ic.png';
   static const APPLE_IC = 'assets/icons/apple.svg';
   static const takeImage = 'assets/icons/takeImage.svg';
   static const checkSVG = 'assets/icons/checkSVG.svg';
