@@ -10,8 +10,9 @@ class ProfileScreen extends StatelessWidget {
       top: true,
       bottom: true,
       child: ListView(
-        padding: EdgeInsets.all(16),
+        padding: EdgeInsets.all(12),
         children: [
+          SizedBox(height: 20),
           Center(child: CircleAvatar(radius: 50, backgroundColor: Colors.grey)),
           SizedBox(height: 16),
           Center(child: Text(name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))),
