@@ -1,19 +1,19 @@
 import 'package:dubai_trip_planner_2025/features/home/ui/widgets/nearby_place_card.dart';
 import 'package:flutter/material.dart';
 
-class NearYouSection extends StatelessWidget {
-  const NearYouSection({super.key});
+class NearbyPlacesSection extends StatelessWidget {
+  const NearbyPlacesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Near You", style: Theme.of(context).textTheme.titleMedium),
+        Text("Nearby Places", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
           height: 180,
-          child: ListView.separated(
+          child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
             itemBuilder: (context, index) {
@@ -24,7 +24,6 @@ class NearYouSection extends StatelessWidget {
                 index: index,
               );
             },
-            separatorBuilder: (_, __) => const SizedBox(width: 12),
           ),
         ),
 

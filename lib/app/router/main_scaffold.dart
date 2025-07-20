@@ -27,9 +27,9 @@ class _MainScaffoldState extends State<MainScaffold> {
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorites"),
-          BottomNavigationBarItem(icon: Icon(Icons.travel_explore), label: "My Trip"),
+          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: "Explore"),
+          BottomNavigationBarItem(icon: Icon(Icons.travel_explore_outlined), label: "My Trip"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         onTap: (index) => setState(() => _currentIndex = index),
