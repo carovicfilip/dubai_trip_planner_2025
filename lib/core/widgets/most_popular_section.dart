@@ -1,4 +1,4 @@
-import 'package:dubai_trip_planner_2025/features/home/ui/widgets/popular_place_card.dart';
+import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/popular_place_card.dart';
 import 'package:flutter/material.dart';
 
 class MostPopularSection extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
-import 'package:dubai_trip_planner_2025/features/home/ui/widgets/nearby_place_card.dart';
+import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/nearby_place_card.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {

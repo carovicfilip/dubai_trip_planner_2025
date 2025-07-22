@@ -7,14 +7,14 @@ import '../../../core/widgets/most_popular_section.dart';
 import '../../../core/widgets/nearby_places_section.dart';
 import '../../../core/widgets/promo_banner.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ExploreScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<ExploreScreen> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _color1;
   late Animation<Color?> _color2;
@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             PromoBanner(),
             SizedBox(height: 24),
             CategorySection(),
-            SizedBox(height: 24),
+            SizedBox(height: 36),
             MostPopularSection(),
             SizedBox(height: 24),
             NearbyPlacesSection(),
