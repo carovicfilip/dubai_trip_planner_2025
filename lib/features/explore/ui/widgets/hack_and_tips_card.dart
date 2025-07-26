@@ -15,45 +15,34 @@ class HackAndTipsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 260,
-      margin: const EdgeInsets.only(right: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      width: 250,
+      margin: const EdgeInsets.only(right: 12),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFFED9A9A),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(emoji, style: const TextStyle(fontSize: 16)),
-              const SizedBox(width: 6),
+              Text(emoji, style: const TextStyle(fontSize: 26)),
+              const SizedBox(width: 10),
               Expanded(
-                child: Text(
-                  title,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
+                child: Text(title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14)),
               ),
             ],
           ),
-          const SizedBox(height: 6),
-          // Description bez Expanded
-          Text(
-            description,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-            style: const TextStyle(
-              fontSize: 12.5,
-              height: 1.3,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          const SizedBox(height: 20),
+          Text(description,
+              style: const TextStyle(fontSize: 13),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3),
         ],
       ),
     );

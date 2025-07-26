@@ -49,7 +49,9 @@ class _WeatherForecastSectionState extends State<WeatherForecastSection> {
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     padding: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                      color: Colors.blue.shade50,
+                       color:  Color(0xFFEEF8FF),
+
+                       // Colors.blue.shade50,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Column(

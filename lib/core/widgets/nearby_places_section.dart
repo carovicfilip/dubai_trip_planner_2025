@@ -4,13 +4,20 @@ import 'package:dubai_trip_planner_2025/features/place_details/screens/more_deta
 import 'package:flutter/material.dart';
 
 class NearbyPlacesSection extends StatelessWidget {
-  const NearbyPlacesSection({super.key});
+  final bool isCategoryScreen;
+
+  const NearbyPlacesSection({
+    super.key,
+    this.isCategoryScreen = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
+        if (!isCategoryScreen)
         Text("Nearby Places", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(

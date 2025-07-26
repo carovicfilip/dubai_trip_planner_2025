@@ -21,9 +21,9 @@ class NearbyPlaceCardCard extends StatelessWidget {
       children: [
         Container(
           width: 180,
-          margin: const EdgeInsets.only(right: 16),
+          margin: const EdgeInsets.only(right: 20),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(12),
             image: const DecorationImage(
               image: NetworkImage(
                 'https://media.cntravellerme.com/photos/6532393cb5ada0792cba9dae/16:9/w_2240,c_limit/Palm%20West%20Beach.jpg',

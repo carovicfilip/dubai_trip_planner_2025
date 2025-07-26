@@ -54,7 +54,7 @@ class CategoryScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const NearbyPlacesSection(),
+                const NearbyPlacesSection(isCategoryScreen: true),
               ],
             ),
           );
