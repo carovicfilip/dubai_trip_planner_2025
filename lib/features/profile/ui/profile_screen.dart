@@ -14,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
         top: true,
         bottom: true,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               PromoBanner(),
@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ListTile(leading: Icon(Icons.privacy_tip), title: Text("Privacy Policy"), onTap: () {}),
               ListTile(leading: Icon(Icons.description), title: Text("Terms of use"), onTap: () {}),
               ListTile(leading: Icon(Icons.support_agent), title: Text("Support"), onTap: () {}),

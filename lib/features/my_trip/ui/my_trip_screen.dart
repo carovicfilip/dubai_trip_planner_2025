@@ -46,7 +46,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Plan Your Trip"),
-        centerTitle: true,
+        elevation: 0,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

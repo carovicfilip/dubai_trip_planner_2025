@@ -14,7 +14,7 @@ class NearbyPlacesSection extends StatelessWidget {
         Text("Nearby Places", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
-          height: 180,
+          height: 210,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,

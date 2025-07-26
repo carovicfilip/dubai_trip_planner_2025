@@ -63,10 +63,10 @@ class PopularPlaceCard extends StatelessWidget {
                   foreground: Paint()
                     ..shader = const LinearGradient(
                       colors: [
-                        Color(0xFF032063),
-                        Color(0xFFFFFFFF),
+                        Color(0xFFFF397B),
+                        Color(0xFFFFA726),
                       ],
-                    ).createShader(const Rect.fromLTWH(0, 0, 200, 120))
+                    ).createShader(const Rect.fromLTWH(0, 0, 120, 120))
                     ..style = PaintingStyle.stroke
                     ..strokeWidth = 2,
                 ),
@@ -78,3 +78,5 @@ class PopularPlaceCard extends StatelessWidget {
     );
   }
 }
+
+

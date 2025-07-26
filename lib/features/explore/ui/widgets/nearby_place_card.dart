@@ -20,7 +20,7 @@ class NearbyPlaceCardCard extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          width: 200,
+          width: 180,
           margin: const EdgeInsets.only(right: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
@@ -35,7 +35,7 @@ class NearbyPlaceCardCard extends StatelessWidget {
         Positioned(
           bottom: 0,
           child: Container(
-            width: 200,
+            width: 180,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.white70,

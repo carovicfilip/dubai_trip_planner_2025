@@ -18,12 +18,12 @@ class HeaderWidget extends StatelessWidget {
             Text("Dubai, UAE", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red)),
           ],
         ),
-        Column(
-          children: [
-            Text("Total Savings", style: TextStyle(fontSize: 12, color: Colors.black)),
-            Text(savings, style: TextStyle(fontSize: 16, color: Colors.black26, fontWeight: FontWeight.bold)),
-          ],
-        )
+        // Column(
+        //   children: [
+        //     Text("Total Savings", style: TextStyle(fontSize: 12, color: Colors.black)),
+        //     Text(savings, style: TextStyle(fontSize: 16, color: Colors.black26, fontWeight: FontWeight.bold)),
+        //   ],
+        //)
       ],
     );
   }
