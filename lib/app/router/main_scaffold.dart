@@ -30,7 +30,14 @@ class _MainScaffoldState extends State<MainScaffold> {
         items: [
           const BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: "Explore"),
           const BottomNavigationBarItem(icon: Icon(Icons.category), label: "Categories"),
-           BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/my_trip.svg', height: 36,), label: "My Trip"),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/my_trip.svg',
+              height: 36,
+              color: _currentIndex == 2 ? Colors.black87 : Colors.black38,
+            ),
+            label: "My Trip",
+          ),
           const BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
         onTap: (index) => setState(() => _currentIndex = index),

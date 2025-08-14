@@ -2,7 +2,7 @@ import 'package:dubai_trip_planner_2025/core/widgets/nearby_places_section.dart'
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+   CategoryScreen({super.key});
 
   final List<String> categories = const [
     'Must-See',
@@ -15,18 +15,36 @@ class CategoryScreen extends StatelessWidget {
     'Family Fun',
   ];
 
-  final List<Color> categoryColors = const [
-    Color(0xFFFFD6D6), // Must-See → svetlo crvena/roze (uzbuđenje, atrakcije)
-    Color(0xFFFFF2B2), // Eat & Drink → svetlo žuta (hrana, uživanje)
-    Color(0xFFB6D4FF), // Nightlife → plavkasta (noć, svetla grada)
-    Color(0xFFB2FFF2), // Beaches & Pools → tirkizna (voda, opuštanje)
-    Color(0xFFFFE0B2), // Desert & Adventure → peščano narandžasta (pustinja, sunce)
-    Color(0xFFE2C2FF), // Shopping & Souks → ljubičasta (luksuz, šarenilo)
-    Color(0xFFFFD7A9), // Culture & Museums → narandžasto-bež (topla, klasična)
-    Color(0xFFC8F7C5), // Family Fun → svetlo zelena (igra, priroda, svežina)
-  ];
+   final List<List<Color>> categoryGradients = [
+     // Must-See → vibrantna crveno-roze sa toplim prelazom
+     [const Color(0xFFFF5F6D), const Color(0xFFFFC371)],
 
-  @override
+// Eat & Drink → topla mango-žuta sa zlatnim prelazom
+     [const Color(0xFFFFB75E), const Color(0xFFED8F03)],
+
+
+// Nightlife → tamnija indigo-plava sa ljubičastim prelazom
+     [const Color(0xFF1A2980), const Color(0xFF26D0CE)],
+
+     // Beaches & Pools → tirkizno-plava sa akva prelazom
+     [const Color(0xFF00C9FF), const Color(0xFF92FE9D)],
+
+     // Desert & Adventure → peščano-narandžasta
+     [const Color(0xFFF7971E), const Color(0xFFFFD200)],
+
+     // Shopping & Souks → luksuzna ljubičasta sa roze prelazom
+     [const Color(0xFF8E2DE2), const Color(0xFFDA8BD8)],
+
+     // Culture & Museums → bronzano-zlatna
+     [const Color(0xFFD1913C), const Color(0xFFFFD194)],
+
+     // Family Fun → sveža zelena sa sunčanim žutim tonom
+     [const Color(0xFF56ab2f), const Color(0xFFA8E063)],
+   ];
+
+
+
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -36,27 +54,32 @@ class CategoryScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         itemCount: categories.length,
         itemBuilder: (context, index) {
-          return Container(
-            margin: const EdgeInsets.only(bottom: 24),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: categoryColors[index % categoryColors.length],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: categoryGradients[index],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
                   categories[index],
                   style: const TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // dodaj kontrast
                   ),
                 ),
-                const SizedBox(height: 8),
-                const NearbyPlacesSection(isCategoryScreen: true),
-              ],
-            ),
+              ),
+
+              const NearbyPlacesSection(isCategoryScreen: true),
+              const SizedBox(height: 30),
+            ],
           );
         },
       ),
