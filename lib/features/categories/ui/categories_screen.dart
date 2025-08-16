@@ -1,4 +1,4 @@
-import 'package:dubai_trip_planner_2025/core/widgets/nearby_places_section.dart';
+import 'package:dubai_trip_planner_2025/core/widgets/must_see_section.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -77,7 +77,7 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ),
 
-              const NearbyPlacesSection(isCategoryScreen: true),
+              const MustSeeSection(isCategoryScreen: true),
               const SizedBox(height: 30),
             ],
           );

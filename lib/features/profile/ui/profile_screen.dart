@@ -1,5 +1,5 @@
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
-import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/nearby_place_card.dart';
+import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return NearbyPlaceCardCard(
+                    return PlacesCard(
                       placeId: '1',
                       imageUrl:
                           'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',

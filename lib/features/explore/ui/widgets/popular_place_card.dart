@@ -38,13 +38,13 @@ class PopularPlaceCard extends StatelessWidget {
             width: 200,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white70,
+              color: Colors.black26,
               borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12)),
             ),
             child: Text(
               title,
               style: const TextStyle(
-                color: Colors.black,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

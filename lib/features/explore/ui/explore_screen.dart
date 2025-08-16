@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/widgets/category_section.dart';
 import '../../../core/widgets/header_widget.dart';
 import '../../../core/widgets/most_popular_section.dart';
-import '../../../core/widgets/nearby_places_section.dart';
+import '../../../core/widgets/must_see_section.dart';
 import '../../../core/widgets/promo_banner.dart';
 
 class ExploreScreen extends StatefulWidget {
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<ExploreScreen> with SingleTickerProviderSta
             SizedBox(height: 36),
             MostPopularSection(),
             SizedBox(height: 30),
-            NearbyPlacesSection(),
+            MustSeeSection(),
             SizedBox(height: 30),
             WeatherForecastSection(),
             SizedBox(height: 30),
