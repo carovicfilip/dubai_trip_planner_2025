@@ -14,13 +14,13 @@ class MostPopularSection extends StatelessWidget {
         Text("Most Popular Places", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
-          height: 180,
+          height: 300,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 30.0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(

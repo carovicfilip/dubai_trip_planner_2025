@@ -21,10 +21,14 @@ class PlacesCard extends StatelessWidget {
       children: [
         // Background image
         Container(
-          width: 180,
+          width: 220,
           margin: const EdgeInsets.only(right: 20),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all( // 👈 beli border
+              color: Colors.white,
+              width: 4,
+            ),
             image: DecorationImage(
               image: NetworkImage(imageUrl),
               fit: BoxFit.cover,
@@ -33,16 +37,19 @@ class PlacesCard extends StatelessWidget {
         ),
 
         // Favorite button - top right
-        // Favorite button - top right
         Positioned(
-          top: 6,
-          right: 25,
+          top: 10,
+          right: 28,
           child: CircleAvatar(
             radius: 20, // smaller circle
-            backgroundColor: Colors.black26,
+            backgroundColor: Colors.white70,
             child: IconButton(
-              padding: EdgeInsets.zero, // remove extra padding
-              icon: const Icon(Icons.favorite_border, color: Colors.white, size: 20),
+              padding: EdgeInsets.zero,
+              icon: const Icon(
+                Icons.favorite_border,
+                color: Colors.black12,
+                size: 24,
+              ),
               onPressed: () {
                 // TODO: handle favorite toggle
               },
@@ -50,22 +57,22 @@ class PlacesCard extends StatelessWidget {
           ),
         ),
 
-
         // Title at bottom
         Positioned(
           bottom: 0,
           child: Container(
-            width: 180,
+            width: 220,
             padding: const EdgeInsets.all(12),
-            decoration: const BoxDecoration(
-              color: Colors.black26,
-              borderRadius: BorderRadius.vertical(bottom: Radius.circular(12)),
-            ),
+            // decoration: const BoxDecoration(
+            //   color: Colors.black26,
+            //   borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+            // ),
             child: Text(
               title,
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontSize: 16
               ),
               overflow: TextOverflow.ellipsis,
             ),

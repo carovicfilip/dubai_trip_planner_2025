@@ -14,33 +14,63 @@ class _MainScaffoldState extends State<MainScaffold> {
   int _currentIndex = 0;
   final _screens = [
     ExploreScreen(),
-    CategoryScreen(),
     MyTripScreen(),
+    CategoryScreen(),
     ProfileScreen(),
   ];
+
+  Widget _buildNavItem({required Widget icon, required int index}) {
+    final bool isSelected = _currentIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() => _currentIndex = index),
+      child: Container(
+        padding: const EdgeInsets.all(10), // veći padding = veći krug
+        decoration: isSelected
+            ? BoxDecoration(
+          color: const Color(0xFF101A26),
+          shape: BoxShape.circle,
+        )
+            : null,
+        child: IconTheme(
+          data: IconThemeData(
+            color: isSelected ? Colors.white : Colors.black38,
+            size: 30,
+          ),
+          child: icon,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        selectedItemColor: Colors.black87,
-        unselectedItemColor: Colors.black38,
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.explore_outlined), label: "Explore"),
-          const BottomNavigationBarItem(icon: Icon(Icons.category), label: "Categories"),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/my_trip.svg',
-              height: 36,
-              color: _currentIndex == 2 ? Colors.black87 : Colors.black38,
+      bottomNavigationBar: Container(
+        height: 80, // povećana visina bara
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+          boxShadow: [
+            BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, -3))
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _buildNavItem(icon: const Icon(Icons.home_filled), index: 0),
+            _buildNavItem(
+              icon: SvgPicture.asset(
+                'assets/icons/my_trip.svg',
+                height: 38,
+                color: _currentIndex == 1 ? Colors.white : Colors.black38,
+              ),
+              index: 1,
             ),
-            label: "My Trip",
-          ),
-          const BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
-        onTap: (index) => setState(() => _currentIndex = index),
+            _buildNavItem(icon: const Icon(Icons.explore_outlined), index: 2),
+            _buildNavItem(icon: const Icon(Icons.person), index: 3),
+          ],
+        ),
       ),
     );
   }

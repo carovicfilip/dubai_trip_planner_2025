@@ -16,7 +16,7 @@ class HackAndTipsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 250,
-      margin: const EdgeInsets.only(right: 12),
+      margin: const EdgeInsets.only(right: 18),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,

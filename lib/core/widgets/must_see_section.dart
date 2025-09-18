@@ -21,7 +21,7 @@ class MustSeeSection extends StatelessWidget {
         Text("Must-See", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
-          height: 210,
+          height: 250,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,

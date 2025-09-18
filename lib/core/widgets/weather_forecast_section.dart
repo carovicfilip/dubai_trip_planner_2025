@@ -49,16 +49,16 @@ class _WeatherForecastSectionState extends State<WeatherForecastSection> {
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     padding: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
-                       color:  Color(0xFFEEF8FF),
+                       color:   Colors.white,
 
                        // Colors.blue.shade50,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(17),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const SizedBox(height: 12),
-                        Text(formattedDate, style: const TextStyle(fontWeight: FontWeight.bold)),
+                        Text(formattedDate, style: const TextStyle(fontWeight: FontWeight.bold, color:  Color(0xFF101A26))),
                         const SizedBox(height: 8),
                         Text(
                           "${day.emoji}",
@@ -67,9 +67,9 @@ class _WeatherForecastSectionState extends State<WeatherForecastSection> {
                         SizedBox(
                           height: 12,
                         ),
-                        Text("${day.minTemp.toInt()}°C / ${day.maxTemp.toInt()}°C"),
+                        Text("${day.minTemp.toInt()}°C / ${day.maxTemp.toInt()}°C", style: const TextStyle(color: Color(0xFF101A26)),),
                         if (day.rainProbability > 0)
-                          Text("${day.rainProbability.toInt()}%", style: const TextStyle(color: Colors.blue)),
+                          Text("${day.rainProbability.toInt()}%", style: const TextStyle(color:  Color(0xFF101A26))),
                       ],
                     ),
                   );

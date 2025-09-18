@@ -1,56 +1,66 @@
 import 'package:dubai_trip_planner_2025/core/widgets/must_see_section.dart';
 import 'package:flutter/material.dart';
 
-class CategoryScreen extends StatelessWidget {
-   CategoryScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  final int? initialIndex; // 👈 index koji stiže iz CategorySection
+
+  const CategoryScreen({super.key, this.initialIndex});
+
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  final ScrollController _scrollController = ScrollController();
 
   final List<String> categories = const [
     'Must-See',
-    'Eat & Drink',
+    'Restaurants',
     'Nightlife',
     'Beaches & Pools',
-    'Desert & Adventure',
-    'Shopping & Souks',
+    'Desert Adventure',
+    'Shopping',
     'Culture & Museums',
     'Family Fun',
   ];
 
-   final List<List<Color>> categoryGradients = [
-     // Must-See → vibrantna crveno-roze sa toplim prelazom
-     [const Color(0xFFFF5F6D), const Color(0xFFFFC371)],
+  final List<String> categoryIcons = const [
+    'assets/icons/icon1.png',
+    'assets/icons/icon2.png',
+    'assets/icons/icon3.png',
+    'assets/icons/icon4.png',
+    'assets/icons/icon5.png',
+    'assets/icons/icon6.png',
+    'assets/icons/icon7.png',
+    'assets/icons/icon8.png',
+  ];
 
-// Eat & Drink → topla mango-žuta sa zlatnim prelazom
-     [const Color(0xFFFFB75E), const Color(0xFFED8F03)],
+  @override
+  void initState() {
+    super.initState();
 
+    // ⬇️ kad se ekran otvori, skroluj na prosleđeni index
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.initialIndex != null) {
+        final itemHeight = 120.0; // približna visina jedne kartice + spacing
+        _scrollController.jumpTo(widget.initialIndex! * itemHeight);
+      }
+    });
+  }
 
-// Nightlife → tamnija indigo-plava sa ljubičastim prelazom
-     [const Color(0xFF1A2980), const Color(0xFF26D0CE)],
-
-     // Beaches & Pools → tirkizno-plava sa akva prelazom
-     [const Color(0xFF00C9FF), const Color(0xFF92FE9D)],
-
-     // Desert & Adventure → peščano-narandžasta
-     [const Color(0xFFF7971E), const Color(0xFFFFD200)],
-
-     // Shopping & Souks → luksuzna ljubičasta sa roze prelazom
-     [const Color(0xFF8E2DE2), const Color(0xFFDA8BD8)],
-
-     // Culture & Museums → bronzano-zlatna
-     [const Color(0xFFD1913C), const Color(0xFFFFD194)],
-
-     // Family Fun → sveža zelena sa sunčanim žutim tonom
-     [const Color(0xFF56ab2f), const Color(0xFFA8E063)],
-   ];
-
-
-
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Explore Categories'),
+        title: const Text(
+          'Explore Categories',
+          style: TextStyle(fontSize: 22, color: Colors.white),
+        ),
+        backgroundColor: const Color(0xFF101A26),
+        shadowColor: Colors.black26,
       ),
       body: ListView.builder(
+        controller: _scrollController, // 👈 kontrola skrolovanja
         padding: const EdgeInsets.all(10),
         itemCount: categories.length,
         itemBuilder: (context, index) {
@@ -61,22 +71,26 @@ class CategoryScreen extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: categoryGradients[index],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Text(
-                  categories[index],
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.white, // dodaj kontrast
-                  ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      categoryIcons[index],
+                      height: 40,
+                      width: 40,
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      categories[index],
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFF101A26),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-
               const MustSeeSection(isCategoryScreen: true),
               const SizedBox(height: 30),
             ],

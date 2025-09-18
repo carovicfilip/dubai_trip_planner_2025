@@ -1,5 +1,6 @@
-class FavoritesState {
-  final List<String> favorites;
+part of 'favorites_cubit.dart';
 
-  FavoritesState({required this.favorites});
-}
+@immutable
+sealed class FavoritesState {}
+
+final class FavoritesInitial extends FavoritesState {}
