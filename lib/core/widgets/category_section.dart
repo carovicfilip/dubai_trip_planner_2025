@@ -1,22 +1,14 @@
+import 'package:dubai_trip_planner_2025/core/models/category.dart';
 import 'package:dubai_trip_planner_2025/features/categories/ui/categories_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategorySection extends StatelessWidget {
   const CategorySection({super.key});
 
-  final List<String> labels = const [
-    "Must-See",
-    "Restaurants",
-    "Nightlife",
-    "Beaches & Pools",
-    "Culture & Museums",
-    "Shopping",
-    "Desert Adventure",
-    "Family Fun",
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryRepository.allCategories;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,16 +17,14 @@ class CategorySection extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: List.generate(labels.length, (index) {
-              final label = labels[index];
-              final iconPath = "assets/icons/icon${index + 1}.png";
-
+            children: categories.map((category) {
               return GestureDetector(
                 onTap: () {
+                  print('🖱️ Kliknuta kategorija: ${category.name} (id: ${category.id})');
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => CategoryScreen(initialIndex: index), // 👈 prosleđuje index
+                      builder: (_) => CategoryScreen(selectedCategory: category),
                     ),
                   );
                 },
@@ -46,19 +36,19 @@ class CategorySection extends StatelessWidget {
                         backgroundColor: Colors.white,
                         radius: 38,
                         child: Image.asset(
-                          iconPath,
+                          category.iconPath,
                           width: 60,
                           height: 60,
                           fit: BoxFit.contain,
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(label, style: const TextStyle(fontSize: 13)),
+                      Text(category.name, style: const TextStyle(fontSize: 13)),
                     ],
                   ),
                 ),
               );
-            }),
+            }).toList(),
           ),
         ),
       ],

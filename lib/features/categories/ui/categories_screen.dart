@@ -1,51 +1,48 @@
+import 'package:dubai_trip_planner_2025/core/models/category.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/must_see_section.dart';
 import 'package:flutter/material.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class CategoryScreen extends StatefulWidget {
-  final int? initialIndex; // 👈 index koji stiže iz CategorySection
+  final Category? selectedCategory;
 
-  const CategoryScreen({super.key, this.initialIndex});
+  const CategoryScreen({super.key, this.selectedCategory});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  final ScrollController _scrollController = ScrollController();
+  final ItemScrollController _itemScrollController = ItemScrollController();
+  final ItemPositionsListener _itemPositionsListener = ItemPositionsListener.create();
 
-  final List<String> categories = const [
-    'Must-See',
-    'Restaurants',
-    'Nightlife',
-    'Beaches & Pools',
-    'Desert Adventure',
-    'Shopping',
-    'Culture & Museums',
-    'Family Fun',
-  ];
-
-  final List<String> categoryIcons = const [
-    'assets/icons/icon1.png',
-    'assets/icons/icon2.png',
-    'assets/icons/icon3.png',
-    'assets/icons/icon4.png',
-    'assets/icons/icon5.png',
-    'assets/icons/icon6.png',
-    'assets/icons/icon7.png',
-    'assets/icons/icon8.png',
-  ];
+  late final List<Category> categories;
 
   @override
   void initState() {
     super.initState();
+    categories = CategoryRepository.allCategories;
 
-    // ⬇️ kad se ekran otvori, skroluj na prosleđeni index
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.initialIndex != null) {
-        final itemHeight = 120.0; // približna visina jedne kartice + spacing
-        _scrollController.jumpTo(widget.initialIndex! * itemHeight);
-      }
+      final sel = widget.selectedCategory;
+      if (sel == null) return;
+
+      final selectedIndex = CategoryRepository.getCategoryIndex(sel);
+      if (selectedIndex == -1) return;
+      if (!_itemScrollController.isAttached) return;
+
+      // 👉 Za prve dve kategorije (index 0 i 1) – ne skroluj / ne centriraj
+      if (selectedIndex < 2) return;
+
+      // 👉 Za ostale – centriraj
+      _itemScrollController.scrollTo(
+        index: selectedIndex,
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOut,
+        alignment: 0.5, // centar ekrana
+      );
     });
+
   }
 
   @override
@@ -59,14 +56,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
         backgroundColor: const Color(0xFF101A26),
         shadowColor: Colors.black26,
       ),
-      body: ListView.builder(
-        controller: _scrollController, // 👈 kontrola skrolovanja
+      body: ScrollablePositionedList.builder(
+        itemScrollController: _itemScrollController,
+        itemPositionsListener: _itemPositionsListener,
         padding: const EdgeInsets.all(10),
         itemCount: categories.length,
         itemBuilder: (context, index) {
+          final category = categories[index];
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Header reda sa ikonom i imenom kategorije
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
@@ -76,13 +76,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 child: Row(
                   children: [
                     Image.asset(
-                      categoryIcons[index],
+                      category.iconPath,
                       height: 40,
                       width: 40,
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      categories[index],
+                      category.name,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Color(0xFF101A26),
