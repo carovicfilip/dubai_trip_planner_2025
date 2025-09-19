@@ -30,7 +30,7 @@ class PopularPlaceCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             image: const DecorationImage(
               image: NetworkImage(
-                'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
+                'https://www.bebeachdxb.com/sites/default/files/styles/full/public/2024-02/be-beach-restaurant-bar-dubai-beach-pool-experience.jpg.webp?itok=36nejfjx',
               ),
               fit: BoxFit.cover,
             ),

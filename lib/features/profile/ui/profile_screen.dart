@@ -7,15 +7,19 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
-        elevation: 0,
+        title: const Text(
+          'Profile',
+          style: TextStyle(fontSize: 22, color: Color(0xFF101A26)),
+        ),
+        backgroundColor: Colors.white,
+        shadowColor: Colors.black,
       ),
       body: SafeArea(
         top: true,
         bottom: true,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
+          child: ListView(
             children: [
               PromoBanner(),
               SizedBox(height: 20),
@@ -23,9 +27,9 @@ class ProfileScreen extends StatelessWidget {
                 "Favorites",
                 style: TextStyle(fontSize: 15),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               SizedBox(
-                height: 180,
+                height: 300,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
@@ -35,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                       imageUrl:
                           'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
                       title: 'Burj Al Arab',
-                      index: index,
+                      index: index, description: 'ddfsfsdf', distance: '555', rate: '4.4 fjdlfjdl',
                     );
                   },
                 ),

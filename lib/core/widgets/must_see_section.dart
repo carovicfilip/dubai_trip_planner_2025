@@ -21,7 +21,7 @@ class MustSeeSection extends StatelessWidget {
         Text("Must-See", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
-          height: 250,
+          height: 300,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
@@ -50,9 +50,9 @@ class MustSeeSection extends StatelessWidget {
                 child: PlacesCard(
                   placeId: '1',
                   imageUrl:
-                      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
+                      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/507541990.jpg?k=4010e5d634e2336118fadba167b66feb9bf99ad830c7a06764eb471da19a7248&o=&hp=1',
                   title: 'Burj Al Arab',
-                  index: index,
+                  index: index, description: 'dfsfdsfsf', distance: '3333', rate: '5.5 dfdjfskjl',
                 ),
               );
             },
