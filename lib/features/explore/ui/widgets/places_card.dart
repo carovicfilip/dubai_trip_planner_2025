@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dubai_trip_planner_2025/core/widgets/favorite_button.dart';
 
 class PlacesCard extends StatelessWidget {
   final String placeId;
@@ -49,20 +50,10 @@ class PlacesCard extends StatelessWidget {
               Positioned(
                 top: 10,
                 right: 10,
-                child: CircleAvatar(
-                  radius: 20, // smaller circle
-                  backgroundColor: Colors.white70,
-                  child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: const Icon(
-                      Icons.favorite_border,
-                      color: Colors.black45,
-                      size: 22,
-                    ),
-                    onPressed: () {
-                      // TODO: handle favorite toggle
-                    },
-                  ),
+                child: FavoriteButton(
+                  onPressed: () {
+                    // TODO: handle favorite toggle
+                  },
                 ),
               ),
             ],

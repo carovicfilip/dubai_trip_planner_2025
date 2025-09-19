@@ -1,5 +1,6 @@
+import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
+import 'package:dubai_trip_planner_2025/core/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/place_model.dart';
 
 class MoreDetailsScreen extends StatelessWidget {
@@ -14,25 +15,31 @@ class MoreDetailsScreen extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(
-                place.imageUrl,
-                width: double.infinity,
-                height: 250,
-                fit: BoxFit.cover,
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+                child: Image.network(
+                  place.imageUrl,
+                  width: double.infinity,
+                  height: 350,
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
-                top: 40,
-                left: 16,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ),
+                top: 10,
+                left: 10,
+                child: CustomBackButton(),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: FavoriteButton(),
               ),
             ],
           ),
+
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -42,15 +49,15 @@ class MoreDetailsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Wrap(
-              spacing: 8,
-              children: place.categories
-                  .map((cat) => Chip(label: Text(cat)))
-                  .toList(),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          //   child: Wrap(
+          //     spacing: 8,
+          //     children: place.categories
+          //         .map((cat) => Chip(label: Text(cat)))
+          //         .toList(),
+          //   ),
+          // ),
           const SizedBox(height: 16),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),

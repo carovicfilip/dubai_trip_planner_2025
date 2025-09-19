@@ -1,5 +1,6 @@
 import 'package:dubai_trip_planner_2025/core/models/category.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/must_see_section.dart';
+import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -42,13 +43,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
         alignment: 0.5, // centar ekrana
       );
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // 👇 Ako postoji selectedCategory, prikaži custom back btn
+        leading: widget.selectedCategory != null
+            ? const CustomBackButton()
+            : null, // 👈 ako je root ekran, nema back dugmeta
         title: const Text(
           'Explore Categories',
           style: TextStyle(fontSize: 22, color: Colors.white),
@@ -71,7 +75,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   children: [
