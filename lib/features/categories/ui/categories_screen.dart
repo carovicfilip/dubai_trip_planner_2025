@@ -57,7 +57,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           'Explore Categories',
           style: TextStyle(fontSize: 22, color: Colors.white),
         ),
-        backgroundColor: const Color(0xFF101A26),
+        backgroundColor:   Color(0xFF101A26),
         shadowColor: Colors.black26,
       ),
       body: ScrollablePositionedList.builder(

@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -62,7 +63,9 @@ class _MyTripScreenState extends State<MyTripScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final dateText = selectedDate != null ? DateFormat.yMMMMd().format(selectedDate!) : 'Select your trip date';
+    final dateText = selectedDate != null
+        ? DateFormat.yMMMMd().format(selectedDate!)
+        : 'Select your trip date';
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -71,129 +74,175 @@ class _MyTripScreenState extends State<MyTripScreen> {
       appBar: AppBar(
         title: const Text(
           'Plan Your Trip',
-          style: TextStyle(fontSize: 22, color: Color(0xFF101A26)),
+          style: TextStyle(fontSize: 22, color: Colors.black),
         ),
-        backgroundColor: Colors.white,
-        shadowColor: Colors.black,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
 
-      /// ✅ Fiksirano dugme dole
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SizedBox(
-            width: double.infinity,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: (selectedDate != null && selectedCategories.isNotEmpty)
-                  ? () {
-                      debugPrint("Date: $selectedDate");
-                      debugPrint("Accommodation: ${_accommodationCtrl.text}");
-                      debugPrint("Categories: $selectedCategories");
-                    }
-                  : null,
-              child: const Text("Show Results"),
-            ),
-          ),
-        ),
-      ),
-
-      /// ✅ Scrollable sadržaj + statična pozadinska slika
-      body: Container(
-        decoration:  BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/plan_trip.jpg"),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          /// Slika u pozadini
+          Image.asset(
+            "assets/images/trip4.JPG",
             fit: BoxFit.cover,
           ),
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// 📅 Date Picker
-                const Text(
-                  "Choose Date",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 8),
-                GestureDetector(
-                  onTap: _pickDate,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.85),
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(dateText, style: const TextStyle(fontSize: 16)),
-                        const Icon(Icons.calendar_today_outlined),
-                      ],
-                    ),
-                  ),
-                ),
 
-                const SizedBox(height: 20),
-
-                /// 📍 Accommodation location
-                const Text(
-                  "Select your accommodation location",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 8),
-                TextField(
-                  controller: _accommodationCtrl,
-                  decoration: InputDecoration(
-                    hintText: "e.g. Dubai Marina, Downtown, JBR…",
-                    filled: true,
-                    fillColor: Colors.white.withOpacity(0.85),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    prefixIcon: const Icon(Icons.location_on_outlined),
-                  ),
-                ),
-
-                const SizedBox(height: 24),
-
-                /// 🏷️ Category Selection
-                const Text(
-                  "Choose Categories",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-                  children: categories.map((cat) {
-                    final isSelected = selectedCategories.contains(cat);
-                    return ChoiceChip(
-                      label: Text(cat),
-                      selected: isSelected,
-                      selectedColor: Colors.purple.shade100,
-                      backgroundColor: Colors.white.withOpacity(0.85),
-                      onSelected: (_) {
-                        setState(() {
-                          if (isSelected) {
-                            selectedCategories.remove(cat);
-                          } else {
-                            selectedCategories.add(cat);
-                          }
-                        });
-                      },
-                    );
-                  }).toList(),
-                ),
-
-                const SizedBox(height: 100), // buffer da sadržaj ne ide ispod buttona
-              ],
+          /// Blur filter
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+            child: Container(
+              color: Colors.black.withOpacity(0.7),
             ),
           ),
-        ),
+
+          /// Glavni sadržaj
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 140),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// 📅 Date Picker
+                  const Text(
+                    "Choose Date",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(height: 8),
+                  GestureDetector(
+                    onTap: _pickDate,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 14),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.85),
+                        border: Border.all(color: Colors.grey.shade300),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(dateText, style: const TextStyle(fontSize: 16)),
+                          const Icon(Icons.calendar_today_outlined),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  /// 📍 Accommodation location
+                  const Text(
+                    "Select your accommodation location",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller: _accommodationCtrl,
+                    decoration: InputDecoration(
+                      hintText: "e.g. Dubai Marina, Downtown, JBR…",
+                      filled: true,
+                      fillColor: Colors.white.withOpacity(0.85),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      prefixIcon: const Icon(Icons.location_on_outlined),
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  /// 🏷️ Category Selection
+                  const Text(
+                    "Choose Categories",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                  const SizedBox(height: 12),
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: categories.map((cat) {
+                      final isSelected = selectedCategories.contains(cat);
+                      return ChoiceChip(
+                        label: Text(cat),
+                        selected: isSelected,
+                        selectedColor: Colors.purple.shade100,
+                        backgroundColor: Colors.white.withOpacity(0.85),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20), // 👈 radius 20
+                        ),
+                        onSelected: (_) {
+                          setState(() {
+                            if (isSelected) {
+                              selectedCategories.remove(cat);
+                            } else {
+                              selectedCategories.add(cat);
+                            }
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          /// ✅ Fiksirano dugme dole
+          Positioned(
+            left: 16,
+            right: 16,
+            bottom: 16,
+            child: SafeArea(
+              top: false,
+              child: SizedBox(
+                height: 50,
+                child: TextButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                    WidgetStateProperty.all(const Color(0xFF101A26)),
+                    foregroundColor:
+                    WidgetStateProperty.all<Color>(Colors.white),
+                    overlayColor: WidgetStateProperty.all(
+                        Colors.white.withOpacity(0.08)),
+                    shape: WidgetStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(color: Colors.white.withOpacity(0.9)),
+                      ),
+                    ),
+                  ),
+                  onPressed: (selectedDate != null &&
+                      selectedCategories.isNotEmpty)
+                      ? () {
+                    debugPrint("Date: $selectedDate");
+                    debugPrint(
+                        "Accommodation: ${_accommodationCtrl.text}");
+                    debugPrint("Categories: $selectedCategories");
+                  }
+                      : null,
+                  child: const Text(
+                    "Show Results",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -35,10 +35,12 @@ class PlacesCard extends StatelessWidget {
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
                   border: Border.all(
                     color: Colors.white,
-                    width: 4,
+                    width: 1,
                   ),
                   image: DecorationImage(
                     image: NetworkImage(imageUrl),
@@ -67,7 +69,6 @@ class PlacesCard extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(20),
-                top: Radius.circular(20),
               ),
               boxShadow: [
                 BoxShadow(

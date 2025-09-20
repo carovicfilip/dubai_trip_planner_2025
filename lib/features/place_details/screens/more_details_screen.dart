@@ -14,6 +14,7 @@ class MoreDetailsScreen extends StatelessWidget {
       body: ListView(
         children: [
           Stack(
+            clipBehavior: Clip.none, // 👈 bitno da omogući prelaženje van Stack-a
             children: [
               ClipRRect(
                 borderRadius: const BorderRadius.only(
@@ -23,7 +24,7 @@ class MoreDetailsScreen extends StatelessWidget {
                 child: Image.network(
                   place.imageUrl,
                   width: double.infinity,
-                  height: 350,
+                  height: 300,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -37,8 +38,30 @@ class MoreDetailsScreen extends StatelessWidget {
                 right: 10,
                 child: FavoriteButton(),
               ),
+              // 👇 Tvoj container u donjem desnom uglu, koji prelazi ispod sadržaja
+              Positioned(
+                bottom: -60,
+                right: 28,
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Colors.white, // 👈 beli border
+                      width: 2,
+                    ),
+                    image: DecorationImage(
+                      image: NetworkImage(place.imageUrl),
+                      fit: BoxFit.cover, // 👈 da lepo popuni krug
+                    ),
+                  ),
+                ),
+              ),
+
             ],
           ),
+
 
           const SizedBox(height: 16),
           Padding(
