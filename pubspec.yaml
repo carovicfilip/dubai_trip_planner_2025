@@ -41,6 +41,11 @@ dependencies:
   google_maps_flutter: ^2.10.1
   flutter_svg: ^2.1.0
   scrollable_positioned_list: ^0.3.8
+  flutter_launcher_icons: ^0.14.4
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app_icon.png"
 
 dev_dependencies:
   flutter_test:

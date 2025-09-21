@@ -93,7 +93,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
           BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
             child: Container(
-              color: Colors.black.withOpacity(0.7),
+              color: Colors.black.withOpacity(0.2),
             ),
           ),
 
@@ -105,93 +105,170 @@ class _MyTripScreenState extends State<MyTripScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// 📅 Date Picker
-                  const Text(
-                    "Choose Date",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(height: 8),
-                  GestureDetector(
-                    onTap: _pickDate,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 14),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.85),
-                        border: Border.all(color: Colors.grey.shade300),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(dateText, style: const TextStyle(fontSize: 16)),
-                          const Icon(Icons.calendar_today_outlined),
-                        ],
-                      ),
+                  Container(   padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.26), // blur pozadina
+                      border: Border.all(color: Color(0xFF101A26), width: 1.5), // plavi border
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                              "Step 1 - ",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                            ),
+
+                            const Text(
+                              "Choose Date",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        GestureDetector(
+                          onTap: _pickDate,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 14),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.85),
+                              border: Border.all(color: Colors.grey.shade300),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(dateText, style: const TextStyle(fontSize: 16)),
+                                const Icon(Icons.calendar_today_outlined),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
 
                   const SizedBox(height: 20),
 
                   /// 📍 Accommodation location
-                  const Text(
-                    "Select your accommodation location",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: _accommodationCtrl,
-                    decoration: InputDecoration(
-                      hintText: "e.g. Dubai Marina, Downtown, JBR…",
-                      filled: true,
-                      fillColor: Colors.white.withOpacity(0.85),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      prefixIcon: const Icon(Icons.location_on_outlined),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.26), // blur pozadina
+                      border: Border.all(color:  Color(0xFF101A26), width: 1.5), // plavi border
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Step 2 - ",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                            ),
+                            Expanded(
+                              child: const Text(
+                                "Select your accommodation location",
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        TextField(
+                          controller: _accommodationCtrl,
+                          decoration: InputDecoration(
+                            hintText: "e.g. Dubai Marina, Downtown, JBR…",
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.85),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+
+                            ),
+                            prefixIcon: const Icon(Icons.location_on_outlined),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
 
                   const SizedBox(height: 24),
 
                   /// 🏷️ Category Selection
-                  const Text(
-                    "Choose Categories",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white),
-                  ),
-                  const SizedBox(height: 12),
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    children: categories.map((cat) {
-                      final isSelected = selectedCategories.contains(cat);
-                      return ChoiceChip(
-                        label: Text(cat),
-                        selected: isSelected,
-                        selectedColor: Colors.purple.shade100,
-                        backgroundColor: Colors.white.withOpacity(0.85),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20), // 👈 radius 20
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.26), // blur pozadina
+                      border: Border.all(color:  Color(0xFF101A26), width: 1.5), // plavi border
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                              "Step 3 - ",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white),
+                            ),
+                            const Text(
+                              "Choose Categories",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white),
+                            ),
+                          ],
                         ),
-                        onSelected: (_) {
-                          setState(() {
-                            if (isSelected) {
-                              selectedCategories.remove(cat);
-                            } else {
-                              selectedCategories.add(cat);
-                            }
-                          });
-                        },
-                      );
-                    }).toList(),
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 12,
+                          runSpacing: 12,
+                          children: categories.map((cat) {
+                            final isSelected = selectedCategories.contains(cat);
+                            return ChoiceChip(
+                              label: Text(cat),
+                              selected: isSelected,
+                              selectedColor: Colors.purple.shade100,
+                              backgroundColor: Colors.white.withOpacity(0.85),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20), // 👈 radius 20
+                              ),
+                              onSelected: (_) {
+                                setState(() {
+                                  if (isSelected) {
+                                    selectedCategories.remove(cat);
+                                  } else {
+                                    selectedCategories.add(cat);
+                                  }
+                                });
+                              },
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -218,7 +295,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                     shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(color: Colors.white.withOpacity(0.9)),
+                        // side: BorderSide(color: Colors.white.withOpacity(0.9)),
                       ),
                     ),
                   ),
