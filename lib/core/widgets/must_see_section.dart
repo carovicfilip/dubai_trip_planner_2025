@@ -18,7 +18,7 @@ class MustSeeSection extends StatelessWidget {
       children: [
 
         if (!isCategoryScreen)
-        Text("Must-See", style: Theme.of(context).textTheme.titleMedium),
+        Text("Recommended", style: Theme.of(context).textTheme.titleMedium),
         const SizedBox(height: 12),
         SizedBox(
           height: 300,
