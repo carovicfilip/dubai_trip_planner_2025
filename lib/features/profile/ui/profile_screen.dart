@@ -1,3 +1,4 @@
+import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
 import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Profile',
-          style: TextStyle(fontSize: 22, color: Color(0xFF101A26)),
-        ),
-        backgroundColor: Colors.white,
-        shadowColor: Colors.black,
+      appBar: const CustomAppBar(
+        title: 'Profile',
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
         top: true,
@@ -25,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 20),
               Text(
                 "Favorites",
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 16),
               ),
               SizedBox(height: 10),
               SizedBox(

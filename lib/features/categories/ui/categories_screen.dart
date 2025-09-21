@@ -55,7 +55,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             : null, // 👈 ako je root ekran, nema back dugmeta
         title: const Text(
           'Explore Categories',
-          style: TextStyle(fontSize: 22, color: Colors.white),
+          style: TextStyle(fontSize: 18, color: Colors.white),
         ),
         backgroundColor:   Color(0xFF101A26),
         shadowColor: Colors.black26,
@@ -89,7 +89,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     Text(
                       category.name,
                       style: const TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Color(0xFF101A26),
                       ),
                     ),
