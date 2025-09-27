@@ -304,8 +304,10 @@ class _MyTripScreenState extends State<MyTripScreen> {
                           return ChoiceChip(
                             label: Text(cat),
                             selected: isSelected,
-                            selectedColor: Colors.purple.shade100,
-                            backgroundColor: Colors.grey.shade100,
+                            selectedColor: Color(0xFFE8D2B8),
+                            backgroundColor: Colors.white,
+
+                            // backgroundColor: Colors.grey.shade100,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
