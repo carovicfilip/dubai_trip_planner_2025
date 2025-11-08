@@ -1,18 +1,25 @@
 import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'app/theme/app_theme.dart';
 import 'features/splash/ui/splash_screen.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  runApp(MyApp(prefs: prefs));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key, required this.prefs});
+
+  final SharedPreferences prefs;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => FavoritesCubit(),
+      create: (_) => FavoritesCubit(prefs),
       child: MaterialApp(
         title: 'Dubai Trip Planner 2025',
         theme: AppTheme.lightTheme,

@@ -6,12 +6,14 @@ class PlacesCard extends StatelessWidget {
   final Place place;
   final int index;
   final VoidCallback? onFavoriteToggle;
+  final bool isFavorite;
 
   const PlacesCard({
     super.key,
     required this.place,
     required this.index,
     this.onFavoriteToggle,
+    required this.isFavorite,
   });
 
   @override
@@ -46,6 +48,7 @@ class PlacesCard extends StatelessWidget {
                 top: 10,
                 right: 10,
                 child: FavoriteButton(
+                  isFavorite: isFavorite,
                   onPressed: onFavoriteToggle,
                 ),
               ),

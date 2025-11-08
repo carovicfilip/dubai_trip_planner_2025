@@ -1,8 +1,60 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
+import 'package:dubai_trip_planner_2025/core/models/place.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'favorites_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
-  FavoritesCubit() : super(FavoritesInitial());
+  FavoritesCubit(this._prefs) : super(const FavoritesState()) {
+    _loadFavorites();
+  }
+
+  final SharedPreferences _prefs;
+  static const _favoritesKey = 'favorites_places';
+
+  Future<void> toggleFavorite(Place place) async {
+    final updated = Map<String, Place>.from(state.favorites);
+    if (updated.containsKey(place.id)) {
+      updated.remove(place.id);
+    } else {
+      updated[place.id] = place;
+    }
+    await _persistFavorites(updated);
+    emit(state.copyWith(favorites: updated));
+  }
+
+  Future<void> clear() async {
+    await _prefs.remove(_favoritesKey);
+    emit(state.copyWith(favorites: const {}));
+  }
+
+  Future<void> _loadFavorites() async {
+    final stored = _prefs.getStringList(_favoritesKey);
+    if (stored == null || stored.isEmpty) return;
+
+    final map = <String, Place>{};
+    for (final item in stored) {
+      try {
+        final decoded = jsonDecode(item) as Map<String, dynamic>;
+        final place = Place.fromJson(decoded);
+        map[place.id] = place;
+      } catch (_) {
+        // ignore corrupt entries
+      }
+    }
+
+    if (map.isNotEmpty) {
+      emit(state.copyWith(favorites: map));
+    }
+  }
+
+  Future<void> _persistFavorites(Map<String, Place> favorites) async {
+    final serialized = favorites.values
+        .map((place) => jsonEncode(place.toJson()))
+        .toList(growable: false);
+    await _prefs.setStringList(_favoritesKey, serialized);
+  }
 }

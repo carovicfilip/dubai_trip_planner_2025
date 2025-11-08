@@ -3,8 +3,10 @@ import 'package:dubai_trip_planner_2025/core/models/place.dart';
 import 'package:dubai_trip_planner_2025/core/repositories/place_repository.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
 import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
+import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
 import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -71,6 +73,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         itemBuilder: (context, index) {
           final category = categories[index];
           final List<Place> places = PlaceRepository.getPlacesByCategory(category.id);
+          final favoritesState = context.watch<FavoritesCubit>().state;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -124,6 +127,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               child: PlacesCard(
                                 place: place,
                                 index: placeIndex,
+                                isFavorite: favoritesState.isFavorite(place.id),
+                                onFavoriteToggle: () =>
+                                    context.read<FavoritesCubit>().toggleFavorite(place),
                               ),
                             ),
                           );

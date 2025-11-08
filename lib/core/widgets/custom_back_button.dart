@@ -8,7 +8,7 @@ class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
     super.key,
     this.onPressed,
-    this.iconSize = 22,
+    this.iconSize = 24,
     this.padding = const EdgeInsets.all(6),
   });
 
@@ -17,7 +17,7 @@ class CustomBackButton extends StatelessWidget {
     return IconButton(
       icon: Container(
         decoration: BoxDecoration(
-          color: Colors.white24, // pozadina
+          color: Colors.black45, // pozadina
           borderRadius: BorderRadius.circular(20), // zaobljeno
         ),
         padding: padding,

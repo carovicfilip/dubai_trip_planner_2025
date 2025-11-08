@@ -1,7 +1,9 @@
 import 'package:dubai_trip_planner_2025/core/models/place.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/favorite_button.dart';
+import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoreDetailsScreen extends StatelessWidget {
   final Place place;
@@ -10,6 +12,9 @@ class MoreDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoritesCubit = context.watch<FavoritesCubit>();
+    final isFavorite = favoritesCubit.state.isFavorite(place.id);
+
     return Scaffold(
       body: ListView(
         children: [
@@ -36,7 +41,10 @@ class MoreDetailsScreen extends StatelessWidget {
               Positioned(
                 top: 10,
                 right: 10,
-                child: FavoriteButton(),
+                child: FavoriteButton(
+                  isFavorite: isFavorite,
+                  onPressed: () => context.read<FavoritesCubit>().toggleFavorite(place),
+                ),
               ),
               // 👇 Tvoj container u donjem desnom uglu, koji prelazi ispod sadržaja
               // Positioned(

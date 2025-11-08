@@ -24,5 +24,37 @@ class Place {
     this.rating,
     this.reviewSummary,
   });
+
+  factory Place.fromJson(Map<String, dynamic> json) {
+    return Place(
+      id: json['id'] as String,
+      categoryId: json['categoryId'] as String,
+      title: json['title'] as String,
+      imageUrl: json['imageUrl'] as String,
+      openingHours: json['openingHours'] as String,
+      description: json['description'] as String,
+      locationName: json['locationName'] as String?,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      rating: (json['rating'] as num?)?.toDouble(),
+      reviewSummary: json['reviewSummary'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'categoryId': categoryId,
+      'title': title,
+      'imageUrl': imageUrl,
+      'openingHours': openingHours,
+      'description': description,
+      'locationName': locationName,
+      'latitude': latitude,
+      'longitude': longitude,
+      'rating': rating,
+      'reviewSummary': reviewSummary,
+    };
+  }
 }
 

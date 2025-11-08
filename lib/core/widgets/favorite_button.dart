@@ -18,7 +18,7 @@ class FavoriteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: radius,
-      backgroundColor: Colors.white30,
+      backgroundColor: Colors.black45,
       child: IconButton(
         padding: EdgeInsets.zero,
         icon: Icon(
