@@ -1,24 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:dubai_trip_planner_2025/core/models/place.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/favorite_button.dart';
+import 'package:flutter/material.dart';
 
 class PlacesCard extends StatelessWidget {
-  final String placeId;
-  final String imageUrl;
-  final String title;
-  final String description;
-  final String distance;
-  final String rate;
+  final Place place;
   final int index;
+  final VoidCallback? onFavoriteToggle;
 
   const PlacesCard({
     super.key,
-    required this.placeId,
-    required this.imageUrl,
-    required this.title,
-    required this.description,
-    required this.distance,
-    required this.rate,
+    required this.place,
     required this.index,
+    this.onFavoriteToggle,
   });
 
   @override
@@ -43,7 +36,7 @@ class PlacesCard extends StatelessWidget {
                     width: 1,
                   ),
                   image: DecorationImage(
-                    image: NetworkImage(imageUrl),
+                    image: NetworkImage(place.imageUrl),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -53,9 +46,7 @@ class PlacesCard extends StatelessWidget {
                 top: 10,
                 right: 10,
                 child: FavoriteButton(
-                  onPressed: () {
-                    // TODO: handle favorite toggle
-                  },
+                  onPressed: onFavoriteToggle,
                 ),
               ),
             ],
@@ -81,23 +72,19 @@ class PlacesCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Title + Distance u istom redu
-
-                  Text(
-                        title,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-
-
+                Text(
+                  place.title,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
                 const SizedBox(height: 4),
                 // Kratak opis
                 Text(
-                  description,
+                  place.description,
                   style: const TextStyle(
                     color: Colors.black54,
                     fontSize: 13,
@@ -105,24 +92,20 @@ class PlacesCard extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
+                const SizedBox(height: 16),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: Text(
-                        rate,
+                        place.reviewSummary ?? 'No reviews yet',
                         style: const TextStyle(
                           color: Colors.grey,
-                          fontSize: 14,
+                          fontSize: 13,
                         ),
-                      ),
-                    ),
-                    Text(
-                      distance,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],

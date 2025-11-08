@@ -1,5 +1,6 @@
+import 'package:dubai_trip_planner_2025/core/models/place.dart';
+import 'package:dubai_trip_planner_2025/core/repositories/place_repository.dart';
 import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/popular_place_card.dart';
-import 'package:dubai_trip_planner_2025/features/place_details/models/place_model.dart';
 import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,8 @@ class MostPopularSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Place> popularPlaces = PlaceRepository.getFeaturedPlaces();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,8 +20,9 @@ class MostPopularSection extends StatelessWidget {
           height: 300,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            itemCount: 5,
+            itemCount: popularPlaces.length,
             itemBuilder: (context, index) {
+              final place = popularPlaces[index];
               return Padding(
                 padding: const EdgeInsets.only(left: 30.0),
                 child: GestureDetector(
@@ -27,25 +31,13 @@ class MostPopularSection extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => MoreDetailsScreen(
-                          place: Place(
-                            title: 'Burj Al Arab',
-                            imageUrl:
-                            'https://cf.bstatic.com/xdata/images/hotel/max1024x768/675859513.jpg?k=cbb19bcc2fd1ab8b431d538e96cd0372c4738a46c69d9204d60649dcac98d843&o=',
-                            categories: ['Luxury', 'Iconic', 'Beachfront'],
-                            openingHours: 'Monday - Sunday: 12PM - 11PM',
-                            locationName: 'Jumeirah Street, Dubai',
-                            latitude: 25.1412,
-                            longitude: 55.1853,
-                          ),
+                          place: place,
                         ),
                       ),
                     );
                   },
                   child: PopularPlaceCard(
-                    placeId: '1',
-                    imageUrl:
-                    '',
-                    title: 'Burj Al Arab',
+                    place: place,
                     index: index,
                   ),
                 ),

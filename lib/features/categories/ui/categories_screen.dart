@@ -1,6 +1,9 @@
 import 'package:dubai_trip_planner_2025/core/models/category.dart';
-import 'package:dubai_trip_planner_2025/core/widgets/must_see_section.dart';
+import 'package:dubai_trip_planner_2025/core/models/place.dart';
+import 'package:dubai_trip_planner_2025/core/repositories/place_repository.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
+import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
+import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -67,6 +70,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];
+          final List<Place> places = PlaceRepository.getPlacesByCategory(category.id);
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -96,7 +100,36 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ],
                 ),
               ),
-              const MustSeeSection(isCategoryScreen: true),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 320,
+                child: places.isEmpty
+                    ? const Center(child: Text('No places found for this category yet.'))
+                    : ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: places.length,
+                        itemBuilder: (context, placeIndex) {
+                          final place = places[placeIndex];
+                          return Padding(
+                            padding: EdgeInsets.only(right: placeIndex == places.length - 1 ? 0 : 20),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => MoreDetailsScreen(place: place),
+                                  ),
+                                );
+                              },
+                              child: PlacesCard(
+                                place: place,
+                                index: placeIndex,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+              ),
               const SizedBox(height: 30),
             ],
           );

@@ -1,16 +1,13 @@
+import 'package:dubai_trip_planner_2025/core/models/place.dart';
 import 'package:flutter/material.dart';
 
 class PopularPlaceCard extends StatelessWidget {
-  final String placeId;
-  final String imageUrl;
-  final String title;
+  final Place place;
   final int index;
 
   const PopularPlaceCard({
     super.key,
-    required this.placeId,
-    required this.imageUrl,
-    required this.title,
+    required this.place,
     required this.index,
   });
 
@@ -28,10 +25,8 @@ class PopularPlaceCard extends StatelessWidget {
               width: 4,
             ),
             borderRadius: BorderRadius.circular(20),
-            image: const DecorationImage(
-              image: NetworkImage(
-                'https://www.bebeachdxb.com/sites/default/files/styles/full/public/2024-02/be-beach-restaurant-bar-dubai-beach-pool-experience.jpg.webp?itok=36nejfjx',
-              ),
+            image: DecorationImage(
+              image: NetworkImage(place.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -46,7 +41,7 @@ class PopularPlaceCard extends StatelessWidget {
             //   borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12)),
             // ),
             child: Text(
-              title,
+              place.title,
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
