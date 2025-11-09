@@ -1,0 +1,241 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+class DailyPlan {
+  final DateTime date;
+  final String title;
+  final List<String> highlights;
+
+  const DailyPlan({
+    required this.date,
+    required this.title,
+    required this.highlights,
+  });
+}
+
+class ItineraryScreen extends StatelessWidget {
+  const ItineraryScreen({
+    super.key,
+    required this.location,
+    required this.startDate,
+    required this.categories,
+    required this.plans,
+  });
+
+  final String location;
+  final DateTime startDate;
+  final List<String> categories;
+  final List<DailyPlan> plans;
+
+  @override
+  Widget build(BuildContext context) {
+    final formatter = DateFormat.yMMMMd();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Your Trip Plan'),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView(
+            children: [
+              _TripOverview(
+                location: location,
+                startDate: startDate,
+                categories: categories,
+                totalDays: plans.length,
+              ),
+              const SizedBox(height: 16),
+              ...plans.asMap().entries.map((entry) {
+                final index = entry.key;
+                final plan = entry.value;
+                return _DailyPlanCard(
+                  dayIndex: index,
+                  plan: plan,
+                  formatter: formatter,
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TripOverview extends StatelessWidget {
+  const _TripOverview({
+    required this.location,
+    required this.startDate,
+    required this.categories,
+    required this.totalDays,
+  });
+
+  final String location;
+  final DateTime startDate;
+  final List<String> categories;
+  final int totalDays;
+
+  @override
+  Widget build(BuildContext context) {
+    final formatter = DateFormat.yMMMMd();
+    final endDate = formatter.format(startDate.add(Duration(days: totalDays - 1)));
+    final categoryPreview = categories.take(3).join(', ');
+    final hasMore = categories.length > 3;
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: const Color(0xFF101A26),
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 12,
+            offset: Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '$totalDays-day stay in $location',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              const Icon(Icons.calendar_month, color: Colors.white70, size: 18),
+              const SizedBox(width: 8),
+              Text(
+                '${formatter.format(startDate)} – $endDate',
+                style: const TextStyle(color: Colors.white70),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Icon(Icons.category, color: Colors.white70, size: 18),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  hasMore ? '$categoryPreview…' : categoryPreview,
+                  style: const TextStyle(color: Colors.white70),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DailyPlanCard extends StatelessWidget {
+  const _DailyPlanCard({
+    required this.dayIndex,
+    required this.plan,
+    required this.formatter,
+  });
+
+  final int dayIndex;
+  final DailyPlan plan;
+  final DateFormat formatter;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final dateLabel = formatter.format(plan.date);
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: theme.colorScheme.primary.withOpacity(0.12),
+                ),
+                child: Center(
+                  child: Text(
+                    '${dayIndex + 1}',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      plan.title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      dateLabel,
+                      style: theme.textTheme.bodyMedium?.copyWith(color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          ...plan.highlights.map(
+            (item) => Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.check_circle_outline, size: 18, color: Color(0xFFE8D2B8)),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      item,
+                      style: theme.textTheme.bodyMedium?.copyWith(height: 1.4),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+

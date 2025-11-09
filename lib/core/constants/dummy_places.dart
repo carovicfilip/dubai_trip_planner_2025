@@ -14,16 +14,23 @@ class DummyPlace {
   });
 }
 
-/// Dummy data grouped by category id defined in [CategoryRepository].
-/// Each category contains 5 representative Dubai locations with
-/// basic information that can be used before wiring a real API.
+
 const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
   'must_see': [
     DummyPlace(
       name: 'Burj Khalifa',
       imageUrl:
       'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 08:30 AM - 12:00 AM (Last entry: 11:00 PM)',
+      openingHours: '8:30 AM–12:00 AM\nLast entry: 11:00 PM',
+      description:
+      'World\'s tallest building with panoramic observation decks overlooking Downtown Dubai.',
+      reviewSummary: '4.8 ★ (120k reviews)',
+    ),
+    DummyPlace(
+      name: 'Burj Khalifa',
+      imageUrl:
+      'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80',
+      openingHours: '8:30 AM–12:00 AM\nLast entry: 11:00 PM',
       description:
       'World\'s tallest building with panoramic observation decks overlooking Downtown Dubai.',
       reviewSummary: '4.8 ★ (120k reviews)',
@@ -270,7 +277,7 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       openingHours: 'Daily: 10:00 AM - 12:00 AM',
       description:
       'Luxury shopping mall featuring Ski Dubai indoor ski slope and extensive dining.',
-      reviewSummary: '4.6 ★ (95k reviews)',
+      reviewSummary: '4.7 ★ (141k reviews)',
     ),
     DummyPlace(
       name: 'City Walk',

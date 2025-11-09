@@ -75,7 +75,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 20),
               ListTile(leading: Icon(Icons.privacy_tip), title: Text("Privacy Policy"), onTap: () {}),
               ListTile(leading: Icon(Icons.description), title: Text("Terms of use"), onTap: () {}),
-              ListTile(leading: Icon(Icons.support_agent), title: Text("Support"), onTap: () {}),
+              // ListTile(leading: Icon(Icons.support_agent), title: Text("Support"), onTap: () {}),
               // ListTile(leading: Icon(Icons.star_rate), title: Text("Rate the app"), onTap: () {}),
             ],
           ),

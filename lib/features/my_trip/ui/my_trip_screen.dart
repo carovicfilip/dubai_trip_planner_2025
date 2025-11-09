@@ -1,4 +1,5 @@
 import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
+import 'package:dubai_trip_planner_2025/features/my_trip/ui/itinerary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -41,6 +42,16 @@ class _MyTripScreenState extends State<MyTripScreen> {
   ];
 
   final Set<String> selectedCategories = {};
+  List<DailyPlan>? _latestPlan;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedDate = DateTime.now().add(const Duration(days: 14));
+    _accommodationCtrl.text = 'Downtown Dubai';
+    selectedCategories.addAll({'Restaurants', 'Attractions', 'Nightlife'});
+    _latestPlan = _buildDummyPlan();
+  }
 
   Future<void> _pickDate() async {
     final now = DateTime.now();
@@ -53,6 +64,48 @@ class _MyTripScreenState extends State<MyTripScreen> {
     if (picked != null) {
       setState(() => selectedDate = picked);
     }
+  }
+
+  List<DailyPlan> _buildDummyPlan() {
+    final start = selectedDate ?? DateTime.now();
+    return List.generate(4, (index) {
+      final dayDate = start.add(Duration(days: index));
+      return DailyPlan(
+        date: dayDate,
+        title: 'Day ${index + 1}',
+        highlights: [
+          'Morning: Explore Burj Khalifa SKY lounge',
+          'Afternoon: Guided tour at Dubai Mall Aquarium',
+          'Evening: Dinner cruise at Dubai Marina',
+        ],
+      );
+    });
+  }
+
+  bool get _canGenerate =>
+      selectedDate != null && selectedCategories.isNotEmpty && _accommodationCtrl.text.trim().isNotEmpty;
+
+  void _handleShowResults() {
+    final plan = _latestPlan ?? _buildDummyPlan();
+    setState(() {
+      _latestPlan = plan;
+    });
+    _openItinerary(plan);
+  }
+
+  void _openItinerary(List<DailyPlan> plan) {
+    FocusScope.of(context).unfocus();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ItineraryScreen(
+          location: _accommodationCtrl.text.trim(),
+          startDate: selectedDate!,
+          categories: selectedCategories.toList(),
+          plans: plan,
+        ),
+      ),
+    );
   }
 
   @override
@@ -83,6 +136,53 @@ class _MyTripScreenState extends State<MyTripScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (_latestPlan != null)
+                  GestureDetector(
+                    onTap: () => _openItinerary(_latestPlan!),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.only(bottom: 20),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF101A26),
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 12,
+                            offset: Offset(0, 6),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Your Tailored Itinerary',
+                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '${DateFormat.yMMMMd().format(selectedDate!)} · ${_latestPlan!.length} days · ${_accommodationCtrl.text}',
+                            style: const TextStyle(color: Colors.white70, fontSize: 14),
+                          ),
+                          const SizedBox(height: 12),
+                          const Row(
+                            children: [
+                              Icon(Icons.auto_awesome, color: Colors.amber, size: 20),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  'Tap to review the AI-crafted day-by-day plan.',
+                                  style: TextStyle(color: Colors.white, fontSize: 14),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 /// 📅 Date Picker
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -350,13 +450,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                 ),
               ),
             ),
-            onPressed: (selectedDate != null && selectedCategories.isNotEmpty)
-                ? () {
-                    debugPrint("Date: $selectedDate");
-                    debugPrint("Accommodation: ${_accommodationCtrl.text}");
-                    debugPrint("Categories: $selectedCategories");
-                  }
-                : null,
+            onPressed: _canGenerate ? _handleShowResults : null,
             child: const Text(
               "Show Results",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
