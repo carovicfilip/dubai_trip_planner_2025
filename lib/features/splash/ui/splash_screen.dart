@@ -8,16 +8,24 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Timer? _redirectTimer;
+
   @override
   void initState() {
     super.initState();
-    // Posle 3 sekunde idi na MainScaffold
-    Timer(const Duration(seconds: 3), () {
+    _redirectTimer = Timer(const Duration(seconds: 2), () {
+      if (!mounted) return;
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => MainScaffold()),
       );
     });
+  }
+
+  @override
+  void dispose() {
+    _redirectTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -31,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         child: Image.asset(
           'assets/images/splash_screen.png',
-          fit: BoxFit.cover, // popuni ceo ekran
+          fit: BoxFit.cover,
         ),
       ),
     );
