@@ -1,4 +1,7 @@
 import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
+import 'package:dubai_trip_planner_2025/features/my_trip/models/trip_plan.dart';
+import 'package:dubai_trip_planner_2025/features/my_trip/services/trip_plan_storage.dart';
+import 'package:dubai_trip_planner_2025/features/my_trip/services/trip_planner_service.dart';
 import 'package:dubai_trip_planner_2025/features/my_trip/ui/itinerary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -42,15 +45,19 @@ class _MyTripScreenState extends State<MyTripScreen> {
   ];
 
   final Set<String> selectedCategories = {};
-  List<DailyPlan>? _latestPlan;
+  TripPlan? _latestPlan;
+  bool _isLoading = false;
+  int _stayLength = 4;
+
+  final TripPlannerService _plannerService = TripPlannerService();
+  final List<int> _stayLengthOptions = const [2, 3, 4, 5, 6, 7];
 
   @override
   void initState() {
     super.initState();
     selectedDate = DateTime.now().add(const Duration(days: 14));
-    _accommodationCtrl.text = 'Downtown Dubai';
-    selectedCategories.addAll({'Restaurants', 'Attractions', 'Nightlife'});
-    _latestPlan = _buildDummyPlan();
+    _accommodationCtrl.text = '';
+    _restoreLatestPlan();
   }
 
   Future<void> _pickDate() async {
@@ -66,44 +73,68 @@ class _MyTripScreenState extends State<MyTripScreen> {
     }
   }
 
-  List<DailyPlan> _buildDummyPlan() {
-    final start = selectedDate ?? DateTime.now();
-    return List.generate(4, (index) {
-      final dayDate = start.add(Duration(days: index));
-      return DailyPlan(
-        date: dayDate,
-        title: 'Day ${index + 1}',
-        highlights: [
-          'Morning: Explore Burj Khalifa SKY lounge',
-          'Afternoon: Guided tour at Dubai Mall Aquarium',
-          'Evening: Dinner cruise at Dubai Marina',
-        ],
-      );
+  Future<void> _restoreLatestPlan() async {
+    final storedPlan = await TripPlanStorage.loadPlan();
+    if (storedPlan == null) return;
+    setState(() {
+      _latestPlan = storedPlan;
+      selectedDate = storedPlan.startDate;
+      _stayLength = storedPlan.lengthInDays;
+      _accommodationCtrl.text = storedPlan.location;
+      selectedCategories
+        ..clear()
+        ..addAll(storedPlan.categories);
     });
   }
 
   bool get _canGenerate =>
       selectedDate != null && selectedCategories.isNotEmpty && _accommodationCtrl.text.trim().isNotEmpty;
 
-  void _handleShowResults() {
-    final plan = _latestPlan ?? _buildDummyPlan();
+  Future<void> _handleShowResults() async {
+    if (!_canGenerate || selectedDate == null) return;
+
     setState(() {
-      _latestPlan = plan;
+      _isLoading = true;
     });
-    _openItinerary(plan);
+
+    try {
+      final plan = await _plannerService.generatePlan(
+        startDate: selectedDate!,
+        lengthInDays: _stayLength,
+        location: _accommodationCtrl.text.trim(),
+        categories: (selectedCategories.toList()..sort()),
+      );
+
+      await TripPlanStorage.savePlan(plan);
+
+      if (!mounted) return;
+      setState(() {
+        _latestPlan = plan;
+        _isLoading = false;
+      });
+
+      _openItinerary(plan);
+    } catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Plan generation failed: $error',
+          ),
+        ),
+      );
+    }
   }
 
-  void _openItinerary(List<DailyPlan> plan) {
+  void _openItinerary(TripPlan plan) {
     FocusScope.of(context).unfocus();
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => ItineraryScreen(
-          location: _accommodationCtrl.text.trim(),
-          startDate: selectedDate!,
-          categories: selectedCategories.toList(),
-          plans: plan,
-        ),
+        builder: (_) => ItineraryScreen(plan: plan),
       ),
     );
   }
@@ -163,7 +194,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            '${DateFormat.yMMMMd().format(selectedDate!)} · ${_latestPlan!.length} days · ${_accommodationCtrl.text}',
+                            '${DateFormat.yMMMMd().format(_latestPlan!.startDate)} · ${_latestPlan!.lengthInDays} days · ${_latestPlan!.location}',
                             style: const TextStyle(color: Colors.white70, fontSize: 14),
                           ),
                           const SizedBox(height: 12),
@@ -256,6 +287,38 @@ class _MyTripScreenState extends State<MyTripScreen> {
                             ],
                           ),
                         ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "Trip Duration",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF2C3F57)),
+                      ),
+                      const SizedBox(height: 8),
+                      DropdownButtonFormField<int>(
+                        value: _stayLength,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.grey.shade100,
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide.none,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        ),
+                        items: _stayLengthOptions
+                            .map(
+                              (value) => DropdownMenuItem<int>(
+                                value: value,
+                                child: Text('$value day${value > 1 ? 's' : ''}'),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (value) {
+                          if (value == null) return;
+                          setState(() {
+                            _stayLength = value;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -450,11 +513,20 @@ class _MyTripScreenState extends State<MyTripScreen> {
                 ),
               ),
             ),
-            onPressed: _canGenerate ? _handleShowResults : null,
-            child: const Text(
-              "Show Results",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-            ),
+            onPressed: _canGenerate && !_isLoading ? _handleShowResults : null,
+            child: _isLoading
+                ? const SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.6,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  )
+                : const Text(
+                    "Show Results",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
+                  ),
           ),
         ),
       ),

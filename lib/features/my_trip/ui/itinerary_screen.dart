@@ -1,31 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class DailyPlan {
-  final DateTime date;
-  final String title;
-  final List<String> highlights;
-
-  const DailyPlan({
-    required this.date,
-    required this.title,
-    required this.highlights,
-  });
-}
+import '../models/trip_plan.dart';
 
 class ItineraryScreen extends StatelessWidget {
   const ItineraryScreen({
     super.key,
-    required this.location,
-    required this.startDate,
-    required this.categories,
-    required this.plans,
+    required this.plan,
   });
 
-  final String location;
-  final DateTime startDate;
-  final List<String> categories;
-  final List<DailyPlan> plans;
+  final TripPlan plan;
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +25,19 @@ class ItineraryScreen extends StatelessWidget {
           child: ListView(
             children: [
               _TripOverview(
-                location: location,
-                startDate: startDate,
-                categories: categories,
-                totalDays: plans.length,
+                location: plan.location,
+                startDate: plan.startDate,
+                categories: plan.categories,
+                totalDays: plan.days.length,
               ),
               const SizedBox(height: 16),
-              ...plans.asMap().entries.map((entry) {
+              ...plan.days.asMap().entries.map((entry) {
                 final index = entry.key;
                 final plan = entry.value;
                 return _DailyPlanCard(
                   dayIndex: index,
                   plan: plan,
+                  startDate: this.plan.startDate,
                   formatter: formatter,
                 );
               }),
@@ -143,17 +128,21 @@ class _DailyPlanCard extends StatelessWidget {
   const _DailyPlanCard({
     required this.dayIndex,
     required this.plan,
+    required this.startDate,
     required this.formatter,
   });
 
   final int dayIndex;
   final DailyPlan plan;
+  final DateTime startDate;
   final DateFormat formatter;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final dateLabel = formatter.format(plan.date);
+    final dateLabel = formatter.format(
+      startDate.add(Duration(days: dayIndex)),
+    );
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
