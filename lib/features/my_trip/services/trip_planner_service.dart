@@ -31,8 +31,10 @@ class TripPlannerService {
         {
           'role': 'system',
           'content':
-              'You are an expert Dubai travel planner. Return strictly valid JSON. '
-                  'Do not include prose or explanations outside JSON.',
+              'You are an expert Dubai travel planner with deep knowledge of attractions, restaurants, '
+                  'cultural sites, shopping areas, and experiences in Dubai. You create detailed, '
+                  'practical, and personalized trip itineraries. Always return strictly valid JSON only. '
+                  'Do not include any prose, explanations, or markdown formatting outside the JSON object.',
         },
         {
           'role': 'user',
@@ -66,10 +68,25 @@ class TripPlannerService {
     }
 
     final message = choices.first['message'] as Map<String, dynamic>;
-    final content = message['content'];
+    final content = message['content'] as String?;
 
+    if (content == null || content.isEmpty) {
+      throw Exception('OpenAI returned empty content.');
+    }
+
+    // Extract JSON from content (handle markdown code blocks if present)
     final rawJson = _extractJsonContent(content);
-    final parsed = jsonDecode(rawJson) as Map<String, dynamic>;
+    if (rawJson.isEmpty) {
+      throw Exception('Failed to extract JSON from OpenAI response.');
+    }
+
+    Map<String, dynamic> parsed;
+    try {
+      parsed = jsonDecode(rawJson) as Map<String, dynamic>;
+    } catch (e) {
+      throw Exception('Invalid JSON from OpenAI: $e. Raw content: ${rawJson.substring(0, rawJson.length > 200 ? 200 : rawJson.length)}');
+    }
+
     final daysJson = parsed['days'] as List<dynamic>? ?? const [];
 
     final days = <DailyPlan>[];
@@ -135,41 +152,70 @@ class TripPlannerService {
     final categoriesList = categories.isEmpty ? 'General must-see spots' : categories.join(', ');
 
     return '''
-Create a ${lengthInDays}-day Dubai trip plan.
+You are creating a detailed ${lengthInDays}-day Dubai trip itinerary.
+
+Trip Details:
 - Starting date: $dateString
 - Traveler base location: $location
-- Interests: $categoriesList
+- Interests/Categories: $categoriesList
+- Number of days: $lengthInDays
 
-Return JSON:
+Requirements:
+1. Create exactly ${lengthInDays} days of activities
+2. Each day should have a unique theme or focus area
+3. Consider proximity to the base location ($location) when planning
+4. Include specific Dubai attractions, restaurants, and experiences
+5. Balance activities throughout each day (Morning, Afternoon, Evening)
+6. Make activities specific and actionable (include actual place names when possible)
+7. Consider the traveler's interests: $categoriesList
+
+IMPORTANT: Return ONLY valid JSON. No explanations, no markdown, no code blocks. Just the raw JSON object.
+
+Return the response in this exact JSON format:
 {
   "days": [
     {
-      "title": "Day X: Short theme",
+      "title": "Day 1: [Theme or Area Name]",
       "activities": [
-        "Morning: ...",
-        "Afternoon: ...",
-        "Evening: ..."
+        "Morning: [Specific activity with location/name]",
+        "Afternoon: [Specific activity with location/name]",
+        "Evening: [Specific activity with location/name]"
       ]
     }
   ]
 }
+
+Make sure to create exactly ${lengthInDays} day entries in the "days" array.
 ''';
   }
 
-  String _extractJsonContent(dynamic content) {
-    if (content is String) return content;
-    if (content is List) {
-      final buffer = StringBuffer();
-      for (final item in content) {
-        if (item is Map<String, dynamic> && item['type'] == 'output_text') {
-          buffer.write(item['text']);
-        } else if (item is String) {
-          buffer.write(item);
-        }
+  String _extractJsonContent(String content) {
+    // Remove markdown code blocks if present
+    String cleaned = content.trim();
+    
+    // Remove ```json or ``` markers
+    if (cleaned.startsWith('```')) {
+      final lines = cleaned.split('\n');
+      // Remove first line if it's ```json or ```
+      if (lines.first.trim().startsWith('```')) {
+        lines.removeAt(0);
       }
-      return buffer.toString();
+      // Remove last line if it's ```
+      if (lines.isNotEmpty && lines.last.trim() == '```') {
+        lines.removeLast();
+      }
+      cleaned = lines.join('\n').trim();
     }
-    throw Exception('Unexpected content format from OpenAI: $content');
+    
+    // Try to find JSON object boundaries
+    final jsonStart = cleaned.indexOf('{');
+    final jsonEnd = cleaned.lastIndexOf('}');
+    
+    if (jsonStart != -1 && jsonEnd != -1 && jsonEnd > jsonStart) {
+      cleaned = cleaned.substring(jsonStart, jsonEnd + 1);
+    }
+    
+    return cleaned;
   }
 }
 
