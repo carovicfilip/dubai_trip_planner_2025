@@ -16,6 +16,7 @@ class MyTripScreen extends StatefulWidget {
 class _MyTripScreenState extends State<MyTripScreen> {
   DateTime? selectedDate;
   final TextEditingController _accommodationCtrl = TextEditingController();
+  final TextEditingController _stayLengthCtrl = TextEditingController();
 
   final List<String> categories = [
     'Restaurants',
@@ -47,16 +48,15 @@ class _MyTripScreenState extends State<MyTripScreen> {
   final Set<String> selectedCategories = {};
   TripPlan? _latestPlan;
   bool _isLoading = false;
-  int _stayLength = 4;
 
   final TripPlannerService _plannerService = TripPlannerService();
-  final List<int> _stayLengthOptions = const [2, 3, 4, 5, 6, 7];
 
   @override
   void initState() {
     super.initState();
-    selectedDate = DateTime.now().add(const Duration(days: 14));
+    selectedDate = null;
     _accommodationCtrl.text = '';
+    _stayLengthCtrl.text = '';
     _restoreLatestPlan();
   }
 
@@ -79,7 +79,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
     setState(() {
       _latestPlan = storedPlan;
       selectedDate = storedPlan.startDate;
-      _stayLength = storedPlan.lengthInDays;
+      _stayLengthCtrl.text = storedPlan.lengthInDays.toString();
       _accommodationCtrl.text = storedPlan.location;
       selectedCategories
         ..clear()
@@ -87,11 +87,64 @@ class _MyTripScreenState extends State<MyTripScreen> {
     });
   }
 
+  int? get _stayLength {
+    final text = _stayLengthCtrl.text.trim();
+    if (text.isEmpty) return null;
+    final value = int.tryParse(text);
+    return value != null && value > 0 ? value : null;
+  }
+
   bool get _canGenerate =>
-      selectedDate != null && selectedCategories.isNotEmpty && _accommodationCtrl.text.trim().isNotEmpty;
+      selectedDate != null &&
+      _accommodationCtrl.text.trim().isNotEmpty &&
+      _stayLength != null &&
+      selectedCategories.isNotEmpty;
 
   Future<void> _handleShowResults() async {
-    if (!_canGenerate || selectedDate == null) return;
+    // Validate Step 1: Date and Trip Duration
+    if (selectedDate == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please select your trip date (Step 1)'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    if (_stayLength == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter trip duration (Step 1)'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Validate Step 2: Accommodation location
+    if (_accommodationCtrl.text.trim().isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter your accommodation location (Step 2)'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // Validate Step 3: Categories
+    if (selectedCategories.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please select at least one category (Step 3)'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    if (!_canGenerate) return;
 
     setState(() {
       _isLoading = true;
@@ -100,7 +153,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
     try {
       final plan = await _plannerService.generatePlan(
         startDate: selectedDate!,
-        lengthInDays: _stayLength,
+        lengthInDays: _stayLength!,
         location: _accommodationCtrl.text.trim(),
         categories: (selectedCategories.toList()..sort()),
       );
@@ -139,15 +192,58 @@ class _MyTripScreenState extends State<MyTripScreen> {
     );
   }
 
+  Future<void> _confirmDeleteTrip() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
+        title: const Text('Delete Trip?'),
+        content: const Text('Are you sure you want to delete this trip? This action cannot be undone.'),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.red,
+            ),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      await TripPlanStorage.clear();
+      if (!mounted) return;
+      setState(() {
+        _latestPlan = null;
+        // Reset Step 1: Date and Trip Duration
+        selectedDate = null;
+        _stayLengthCtrl.text = '';
+        // Reset Step 2: Accommodation location
+        _accommodationCtrl.text = '';
+        // Reset Step 3: Categories
+        selectedCategories.clear();
+      });
+    }
+  }
+
   @override
   void dispose() {
     _accommodationCtrl.dispose();
+    _stayLengthCtrl.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final dateText = selectedDate != null ? DateFormat.yMMMMd().format(selectedDate!) : 'Select your trip date';
+    final dateText = selectedDate != null ? DateFormat.yMMMMd().format(selectedDate!) : 'Select date';
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -169,49 +265,71 @@ class _MyTripScreenState extends State<MyTripScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (_latestPlan != null)
-                  GestureDetector(
-                    onTap: () => _openItinerary(_latestPlan!),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(20),
+                  Dismissible(
+                    key: Key('${_latestPlan!.location}_${_latestPlan!.startDate.toIso8601String()}_${_latestPlan!.lengthInDays}'),
+                    direction: DismissDirection.endToStart,
+                    background: Container(
                       margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF101A26),
+                        color: Colors.red,
                         borderRadius: BorderRadius.circular(24),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 12,
-                            offset: Offset(0, 6),
-                          ),
-                        ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Your Tailored Itinerary',
-                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            '${DateFormat.yMMMMd().format(_latestPlan!.startDate)} · ${_latestPlan!.lengthInDays} days · ${_latestPlan!.location}',
-                            style: const TextStyle(color: Colors.white70, fontSize: 14),
-                          ),
-                          const SizedBox(height: 12),
-                          const Row(
-                            children: [
-                              Icon(Icons.auto_awesome, color: Colors.amber, size: 20),
-                              SizedBox(width: 8),
-                              Expanded(
-                                child: Text(
-                                  'Tap to review the AI-crafted day-by-day plan.',
-                                  style: TextStyle(color: Colors.white, fontSize: 14),
+                      alignment: Alignment.centerRight,
+                      padding: const EdgeInsets.only(right: 20),
+                      child: const Icon(
+                        Icons.delete_outline,
+                        color: Colors.white,
+                        size: 32,
+                      ),
+                    ),
+                    confirmDismiss: (direction) async {
+                      await _confirmDeleteTrip();
+                      return false; // We handle deletion in the dialog, so return false
+                    },
+                    child: GestureDetector(
+                      onTap: () => _openItinerary(_latestPlan!),
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(20),
+                        margin: const EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF101A26),
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 12,
+                              offset: Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Your Tailored Itinerary',
+                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              '${DateFormat.yMMMMd().format(_latestPlan!.startDate)} · ${_latestPlan!.lengthInDays} days · ${_latestPlan!.location}',
+                              style: const TextStyle(color: Colors.white70, fontSize: 14),
+                            ),
+                            const SizedBox(height: 12),
+                            const Row(
+                              children: [
+                                Icon(Icons.auto_awesome, color: Colors.amber, size: 20),
+                                SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    'Tap to review the AI-crafted day-by-day plan.',
+                                    style: TextStyle(color: Colors.white, fontSize: 14),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -277,7 +395,6 @@ class _MyTripScreenState extends State<MyTripScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
-                            border: Border.all(color: Colors.grey.shade300),
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -295,31 +412,20 @@ class _MyTripScreenState extends State<MyTripScreen> {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF2C3F57)),
                       ),
                       const SizedBox(height: 8),
-                      DropdownButtonFormField<int>(
-                        value: _stayLength,
+                      TextField(
+                        controller: _stayLengthCtrl,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
+                          hintText: "How many days you stay",
                           filled: true,
                           fillColor: Colors.grey.shade100,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                             borderSide: BorderSide.none,
                           ),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                          prefixIcon: const Icon(Icons.calendar_view_week_outlined),
                         ),
-                        items: _stayLengthOptions
-                            .map(
-                              (value) => DropdownMenuItem<int>(
-                                value: value,
-                                child: Text('$value day${value > 1 ? 's' : ''}'),
-                              ),
-                            )
-                            .toList(),
-                        onChanged: (value) {
-                          if (value == null) return;
-                          setState(() {
-                            _stayLength = value;
-                          });
-                        },
                       ),
                     ],
                   ),
@@ -505,7 +611,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
           height: 50,
           child: TextButton(
             style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(const Color(0xFFE8D2B8)),
+              backgroundColor: WidgetStateProperty.all<Color>(const Color(0xFFE8D2B8)),
               foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
               overlayColor: WidgetStateProperty.all(Colors.white.withOpacity(0.08)),
               shape: WidgetStateProperty.all(
@@ -514,7 +620,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                 ),
               ),
             ),
-            onPressed: _canGenerate && !_isLoading ? _handleShowResults : null,
+            onPressed: _isLoading ? null : _handleShowResults,
             child: _isLoading
                 ? const SizedBox(
                     width: 22,
