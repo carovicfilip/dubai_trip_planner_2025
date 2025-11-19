@@ -86,16 +86,16 @@ class PlacesCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 // Kratak opis
-                Text(
-                  place.description,
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 13,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 16),
+                // Text(
+                //   place.description,
+                //   style: const TextStyle(
+                //     color: Colors.black54,
+                //     fontSize: 13,
+                //   ),
+                //   maxLines: 1,
+                //   overflow: TextOverflow.ellipsis,
+                // ),
+                // const SizedBox(height: 16),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

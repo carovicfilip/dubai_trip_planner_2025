@@ -1,404 +1,406 @@
 class DummyPlace {
-  final String name;
-  final String imageUrl;
-  final String openingHours;
-  final String description;
-  final String reviewSummary;
+  final String? name;
+  final String? imageUrl;
+  final String? openingHours;
+  final String? description;
+  final String? reviewSummary;
+  final String? link;
 
   const DummyPlace({
-    required this.name,
-    required this.imageUrl,
-    required this.openingHours,
-    required this.description,
-    required this.reviewSummary,
+    this.name,
+    this.imageUrl,
+    this.openingHours,
+    this.description,
+    this.reviewSummary,
+    this.link,
   });
 }
-
 
 const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
   'must_see': [
     DummyPlace(
       name: 'Burj Khalifa',
-      imageUrl:
-      'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80',
-      openingHours: '8:30 AM–12:00 AM\nLast entry: 11:00 PM',
+      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      openingHours: '09:00 AM–11:00 PM Last entry: 10:15 PM',
       description:
-      'World\'s tallest building with panoramic observation decks overlooking Downtown Dubai.',
-      reviewSummary: '4.8 ★ (120k reviews)',
+          'The Burj Khalifa is the tallest building in the world at 828 meters, dominating the Dubai skyline. Its observation decks offer breathtaking panoramic views of the city, desert, and coastline. The tower is a global icon of engineering, innovation, and modern architecture.',
+      reviewSummary: '4.7 (169k reviews)',
+    ),
+    DummyPlace(
+      name: 'Palm Jumeirah',
+      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      openingHours: 'Open 24 hours',
+      description:
+          'Palm Jumeirah is an iconic man-made island shaped like a palm tree and known for luxury hotels and beachfront residences. It features world-class resorts like Atlantis The Palm and scenic waterfront promenades. The island is one of Dubai\'s most ambitious and recognizable engineering achievements. Scenic walkway along the outer crescent of Palm Jumeirah with food trucks and sea views.',
     ),
     DummyPlace(
       name: 'Burj Khalifa',
-      imageUrl:
-      'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80',
-      openingHours: '8:30 AM–12:00 AM\nLast entry: 11:00 PM',
+      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      openingHours: '09:00 AM–11:00 PM\nLast entry: 10:15 PM',
       description:
-      'World\'s tallest building with panoramic observation decks overlooking Downtown Dubai.',
-      reviewSummary: '4.8 ★ (120k reviews)',
+          'The Burj Khalifa is the tallest building in the world at 828 meters, dominating the Dubai skyline. Its observation decks offer breathtaking panoramic views of the city, desert, and coastline. The tower is a global icon of engineering, innovation, and modern architecture.',
+      reviewSummary: '4.7 (169k reviews)',
+    ),
+    DummyPlace(
+      name: 'Dubai Marina Walk',
+      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      openingHours: 'Open 24 hours',
+      description:
+          'Dubai Marina Walk is a lively 7-km waterfront promenade lined with restaurants, cafés, and retail outlets. It offers views of luxury yachts and striking high-rise towers. At night, the entire marina transforms with vibrant lights and outdoor dining.',
+      reviewSummary: '4.7 (27k reviews)',
     ),
     DummyPlace(
       name: 'Dubai Fountain',
-      imageUrl:
-      'https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Afternoon: 01:00 PM & 01:30 PM (Fri: 02:00 PM & 02:30 PM), Evening: 06:00 PM - 11:00 PM (every 30 min)',
+      imageUrl: '',
+      openingHours: 'Afternoon: 1:00 PM & 1:30 PM (Fri: 2:00 PM & 2:30 PM), Evening: 6:00 PM - 11:00 PM (every 30 min)',
       description:
-      'Choreographed fountain show on the Burj Lake featuring lights, music, and soaring water jets.',
-      reviewSummary: '4.7 ★ (85k reviews)',
+          'The Dubai Fountain is the world’s largest choreographed fountain system, located on the Burj Lake beside Dubai Mall. Its water jets shoot up to 150 meters high, synchronized with music and lights. The nightly shows attract thousands of visitors and create one of Dubai’s most memorable experiences.',
+      reviewSummary: '4.8 (137k reviews)',
     ),
     DummyPlace(
       name: 'Museum of the Future',
-      imageUrl:
-      'https://images.unsplash.com/photo-1645116431720-da9f527bee9a?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 06:00 PM (Last entry: 05:00 PM)',
+      imageUrl: '',
+      openingHours: 'Daily: 09:00 AM - 9:00 PM',
       description:
-      'Futuristic landmark exploring science and innovation through immersive exhibits.',
-      reviewSummary: '4.6 ★ (42k reviews)',
+          'The Museum of the Future is an architectural masterpiece known for its torus shape and illuminated Arabic calligraphy. Inside, immersive exhibitions explore the future of science, technology, and human innovation. It is considered one of the most advanced experiential museums in the world.',
+      reviewSummary: '4.4 (48k reviews)',
     ),
     DummyPlace(
       name: 'Dubai Frame',
-      imageUrl:
-      'https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 09:00 AM - 09:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 09:00 AM - 9:00 PM',
       description:
-      'Iconic picture frame structure offering contrasting views of old and new Dubai.',
-      reviewSummary: '4.5 ★ (33k reviews)',
+          'Dubai Frame is a 150-meter tall landmark designed as a giant picture frame representing "old" and "new" Dubai. Visitors can walk across a glass sky bridge with panoramic city views. The lower level hosts a museum showcasing the city\'s transformation over time.',
+      reviewSummary: '4.6 (70k reviews)',
     ),
     DummyPlace(
-      name: 'Palm Jumeirah Boardwalk',
-      imageUrl:
-      'https://images.unsplash.com/photo-1610232695158-18772d7746f9?auto=format&fit=crop&w=1200&q=80',
+      name: 'Dubai Creek',
+      imageUrl: '',
       openingHours: 'Open 24 hours',
       description:
-      'Scenic walkway along the outer crescent of Palm Jumeirah with food trucks and sea views.',
-      reviewSummary: '4.4 ★ (18k reviews)',
+          'Dubai Creek is a historic saltwater inlet that played a crucial role in the city\'s early trade and pearl-diving economy. Traditional wooden abras still ferry passengers across the water. The area blends old souks, cultural districts, and waterfront scenery.',
+    ),
+    DummyPlace(
+      name: 'Dubai Mall',
+      imageUrl: '',
+      openingHours: 'Mon-Thu 10:00 AM - 11:00 PM, Fri-Sun 10:00 AM - 12:00 AM',
+      description:
+          'Dubai Mall is one of the world’s largest shopping and entertainment destinations, home to more than 1,200 stores. It also houses major attractions like Dubai Aquarium, VR Park, and an Olympic-sized ice rink. Located next to Burj Khalifa, it attracts millions of visitors each year.',
+      reviewSummary: '4.7 (283.7k reviews)',
+    ),
+    DummyPlace(
+      name: 'Al Fahidi Historical Neighbourhood',
+      imageUrl: '',
+      openingHours: 'Daily: 07:00 AM - 8:00 PM',
+      description:
+          'Al Fahidi is Dubai’s preserved heritage district featuring traditional wind-tower houses and narrow lanes. It offers museums, art galleries, and cultural centers that showcase life in Dubai before modernization. The area sits along Dubai Creek and remains one of the city’s key cultural attractions.',
+    ),
+    DummyPlace(
+      name: 'La Perle',
+      imageUrl: '',
+      openingHours: 'Tuesday - Saturday 6:30 PM - 8:00 PM and 9:00 PM - 10:30 PM',
+      description:
+          'La Perle is a world-class live show combining acrobatics, aerial stunts, and high-tech visual effects. Its aqua-theater features a stage that floods and drains within seconds. Inspired by Dubai\'s culture and future, the performance delivers a breathtaking immersive experience.',
+      reviewSummary: '4.6 (5.1k reviews)',
     ),
   ],
   'restaurants': [
     DummyPlace(
-      name: 'Nobu Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Dinner: Sun-Wed 06:00 PM - 11:00 PM, Thu-Sat 06:00 PM - 11:30 PM; Lunch: Sat-Sun 12:30 PM - 03:00 PM',
+      name: 'Trèsind',
+      imageUrl: '',
+      openingHours: 'Daily: 12:00 PM - 11:45 PM',
       description:
-      'Globally acclaimed Japanese-Peruvian fine dining at Atlantis, The Palm.',
-      reviewSummary: '4.7 ★ (9.8k reviews)',
+          'Trèsind is a pioneer of modern Indian cuisine in Dubai, offering innovative dishes with refined presentation. The restaurant blends traditional flavors with contemporary techniques. It is known for its sophisticated tasting menus and chic, upscale atmosphere.',
+      reviewSummary: '4.5 (2.7k reviews)',
+    ),
+    DummyPlace(
+      name: 'FZN by Björn Frantzén',
+      imageUrl: '',
+      openingHours: 'Tuesday-Saturday 7:00 PM - 01:00 AM',
+      description:
+          'FZN as one of only two restaurants in the UAE awarded three Michelin stars, FZN offers an extraordinary multi-    course tasting menu that fuses refined European flavours with Japanese precision. Each dish is a masterpiece of European cuisine, served in a luxurious, Scandinavian-inspired setting. Ideal for special occasions, romantic dinners, and gourmet experiences, FZN stands as a pinnacle of modern gastronomy and fine dining in the region.',
+      reviewSummary: '',
     ),
     DummyPlace(
       name: 'Zuma Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1541542684-4abf2abade83?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 12:00 PM - 03:30 PM, 07:00 PM - 12:00 AM',
+      imageUrl: '',
+      openingHours: 'Sun-Wed 12:00 PM - 02:00 AM, Thu-Sat 12:00 PM - 03:00 AM',
       description:
-      'Stylish izakaya-style restaurant known for contemporary Japanese cuisine.',
-      reviewSummary: '4.6 ★ (14k reviews)',
+          'Zuma is an award-winning contemporary Japanese restaurant known for its izakaya-style sharing plates. It offers sushi, robata-grilled dishes, and a stylish urban atmosphere. The venue is also popular for its high-energy lounge and nightlife.',
+      reviewSummary: '4.8 (4.1k reviews)',
+    ),
+    DummyPlace(
+      name: 'Il Ristorante – Niko Romito',
+      imageUrl: '',
+      openingHours: 'Daily: 7:00 PM - 11:00 PM',
+      description:
+          'Il Ristorante showcases refined Italian fine dining curated by Michelin-starred chef Niko Romito. The menu focuses on purity of ingredients, balanced flavors, and elegant simplicity. Located in the Bulgari Resort, it provides a luxurious seaside dining experience.',
+      reviewSummary: '',
     ),
     DummyPlace(
       name: 'Pierchic',
-      imageUrl:
-      'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 01:00 PM - 02:30 AM',
+      imageUrl: '',
+      openingHours: 'Lunch: 1:00 PM - 2:30 PM; Dinner: Sun-Thu 6:30 PM - 10:00 PM, Fri-Sat 6:30 PM - 10:30 PM',
       description:
-      'Romantic overwater dining offering fresh seafood and Arabian Gulf views.',
-      reviewSummary: '4.5 ★ (6.1k reviews)',
+          'Pierchic is an over-water restaurant offering romantic dining with panoramic Gulf views. It specializes in premium seafood served in an elegant, serene setting. Its location at the end of a wooden pier makes it one of Dubai\'s most picturesque dining spots.',
+      reviewSummary: '4.2 (2.4k reviews)',
+    ),
+    DummyPlace(
+      name: 'Ossiano',
+      imageUrl: '',
+      openingHours: 'Daily: 6:00 PM - 12:00 AM',
+      description:
+          'Ossiano is an underwater-themed fine-dining restaurant with floor-to-ceiling views of marine life in the Ambassador Lagoon. It features innovative seafood tasting menus crafted by world-renowned chefs. The immersive ambiance delivers a unique, luxury dining experience.',
+      reviewSummary: '4.2 (2.4k reviews)',
     ),
     DummyPlace(
       name: 'Al Hadheerah',
-      imageUrl:
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 07:00 PM - 11:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 7:00 PM - 12:00 AM',
       description:
-      'Desert restaurant at Bab Al Shams with live entertainment and traditional Arabic buffet.',
-      reviewSummary: '4.4 ★ (5.4k reviews)',
+          'Al Hadheerah is an Arabic desert-themed restaurant at Bab Al Shams, offering traditional cuisine in an open-air setting. Guests enjoy live performances, including music, dance, and heritage shows. It recreates an authentic Bedouin atmosphere enhanced by desert scenery.',
+      reviewSummary: '4.5 (2k reviews)',
     ),
     DummyPlace(
       name: 'COYA Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 12:30 PM - 03:30 PM, 07:00 PM - 12:00 AM',
+      imageUrl: '',
+      openingHours:
+          'Saturday: 12:30 PM - 4:00 PM, 7:00 PM - 12:30 AM ; Sun-Fri 12:30 PM - 3:30 PM, 6:30 PM - 12:30 AM  ',
       description:
-      'Vibrant Peruvian dining spot featuring ceviche, grills, and lively ambiance.',
-      reviewSummary: '4.6 ★ (7.9k reviews)',
+          'COYA is a vibrant Peruvian restaurant known for its ceviche bar, grills, and Latin-inspired cocktails. It mixes traditional flavors with contemporary culinary craftsmanship. The lively atmosphere and music make it a top social dining destination.',
+      reviewSummary: '4.6 (4k reviews)',
     ),
   ],
   'nightlife': [
     DummyPlace(
       name: 'WHITE Beach Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 01:00 AM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 6:30 PM',
       description:
-      'Beach club and nightlife venue at Atlantis with DJ sets and skyline views.',
-      reviewSummary: '4.5 ★ (12k reviews)',
+          'WHITE Beach is a stylish beachfront club at Atlantis The Palm offering poolside lounging and DJ performances. It features Mediterranean-inspired design and iconic skyline views. At night, the venue transforms into a lively party destination.',
+      reviewSummary: '4.5 (3k reviews)',
     ),
     DummyPlace(
-      name: 'Soho Garden',
-      imageUrl:
-      'https://images.unsplash.com/photo-1495745966610-2a67d66d82b9?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 08:00 PM - 03:00 AM',
+      name: 'Soho Garden DXB',
+      imageUrl: '',
+      openingHours: 'Wednesday - Sunday 10:00 PM - 04:00 AM',
       description:
-      'Hybrid nightlife spot combining bars, lounges, and live performances.',
-      reviewSummary: '4.4 ★ (9.2k reviews)',
+          'Soho Garden combines restaurants, lounges, clubs, and outdoor spaces into one nightlife complex. It hosts international DJs and themed parties throughout the week. The venue blends European garden aesthetics with Dubai nightlife energy.',
+      reviewSummary: '4.2 (3.5k reviews)',
     ),
     DummyPlace(
       name: 'Billionaire Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 09:00 PM - 03:00 AM',
+      imageUrl: '',
+      openingHours: 'Tuesday - Sunday 9:00 PM - 03:00 AM',
       description:
-      'Dinner show and nightclub blending Italian cuisine with high-energy acts.',
-      reviewSummary: '4.6 ★ (7.5k reviews)',
+          'Billionaire is a dinner-show concept that merges fine dining with high-energy performances. The venue transitions into a nightclub later in the evening. It is known for its luxurious atmosphere and theatrical entertainment.',
+      reviewSummary: '4.4 (1.7k reviews)',
     ),
     DummyPlace(
-      name: 'Blu Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 08:00 PM - 03:00 AM',
+      name: 'BLU Dubai',
+      imageUrl: '',
+      openingHours: 'Tuesday - Sunday 9:00 PM - 03:00 AM',
       description:
-      'Sky-high lounge on Sheikh Zayed Road featuring international DJs and themed nights.',
-      reviewSummary: '4.3 ★ (6.8k reviews)',
+          'BLU is a rooftop lounge and nightclub offering panoramic views of Sheikh Zayed Road. It hosts international artists, themed nights, and high-energy music events. Its elevated location makes it a standout late-night venue.',
+      reviewSummary: '4 (1.6k reviews)',
     ),
     DummyPlace(
       name: 'Secret Room Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Wednesday - Sunday: 11:00 PM - 03:00 AM',
+      imageUrl: '',
+      openingHours: 'Wednesday - Saturday 11:00 PM - 04:00 AM',
       description:
-      'Hip-hop focused underground club with customized supercar valet entrance.',
-      reviewSummary: '4.2 ★ (4.1k reviews)',
+          'Secret Room is an exclusive hip-hop-focused nightclub known for its luxury automotive entrance concept. The interior features graffiti-style decor and high-end bottle service. It attracts a trendy crowd and international DJs.',
+      reviewSummary: '4.4 (230 reviews)',
+    ),
+    DummyPlace(
+      name: '',
+      imageUrl: '',
+      openingHours: 'Wednesday - Saturday 11:00 PM - 04:00 AM',
+      description: 'Hip-hop focused underground club with customized supercar valet entrance.',
+      reviewSummary: '4.4 (230 reviews)',
     ),
   ],
   'beaches_pools': [
     DummyPlace(
       name: 'Kite Beach',
-      imageUrl:
-      'https://images.unsplash.com/photo-1603294242171-2d1be2fab0f2?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 07:00 AM - 10:00 PM',
+      imageUrl: '',
+      openingHours: 'Open 24 hours',
       description:
-      'Popular public beach for kite surfing, jogging, and casual seaside dining.',
-      reviewSummary: '4.6 ★ (23k reviews)',
+          'Kite Beach is a popular public beach known for kite-surfing, jogging tracks, and beachfront cafés. It offers clear views of Burj Al Arab. The area is active, family-friendly, and ideal for water sports.',
+      reviewSummary: '4.5 (1.9k reviews)',
     ),
     DummyPlace(
-      name: 'JBR Beach',
-      imageUrl:
-      'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 07:00 AM - 11:00 PM',
+      name: 'Marina Beach JBR',
+      imageUrl: '',
+      openingHours: 'Open 24 hours',
       description:
-      'Bustling beachfront with watersports, shops, and outdoor cinema experiences.',
-      reviewSummary: '4.5 ★ (31k reviews)',
+          'Marina Beach is a lively stretch of sand adjacent to The Walk at JBR. It offers swimming, watersports, restaurants, and a family-friendly vibe. The beachfront is surrounded by high-rise towers and resort facilities.',
+      reviewSummary: '4.6 (25k reviews)',
     ),
     DummyPlace(
       name: 'La Mer',
-      imageUrl:
-      'https://images.unsplash.com/photo-1520294719072-1b44f095c350?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 10:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 12:00 AM',
       description:
-      'Urban beachfront destination featuring cafes, street art, and water play areas.',
-      reviewSummary: '4.4 ★ (17k reviews)',
+          'La Mer is a modern beachfront district with boutiques, restaurants, and colorful street art. It offers water play areas, beach clubs, and relaxed urban vibes. Its design blends coastal and contemporary aesthetics.',
+      reviewSummary: '4.6 (23k reviews)',
     ),
     DummyPlace(
       name: 'Nikki Beach Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 11:00 AM - 08:00 PM',
+      imageUrl: '',
+      openingHours: 'Tuesday - Sunday 11:00 AM - 7:00 PM',
       description:
-      'Chic beach club with pool parties, cabanas, and a Mediterranean-inspired menu.',
-      reviewSummary: '4.5 ★ (9.1k reviews)',
+          'Nikki Beach is a luxury beach club with white décor, pools, cabanas, and live DJ entertainment. It blends international beach-club culture with Dubai glamour. Guests enjoy Mediterranean-style dining and upscale party atmosphere.',
+      reviewSummary: '4.4 (1.8k reviews)',
     ),
     DummyPlace(
-      name: 'Atlantis Aquaventure Beach',
-      imageUrl:
-      'https://images.unsplash.com/photo-1534449905966-27973fb2b826?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 06:00 PM',
+      name: 'Atlantis Aquaventure Waterpark',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 6:30 PM',
       description:
-      'Private beach access included with Aquaventure Waterpark tickets at Atlantis.',
-      reviewSummary: '4.7 ★ (15k reviews)',
+          'The private beach at Aquaventure offers pristine white sand and views of the Palm Jumeirah. Access is included with waterpark tickets. It provides a relaxing break between rides and attractions at the park.',
+      reviewSummary: '4.6 (37.5k reviews)',
     ),
   ],
   'culture_museums': [
     DummyPlace(
       name: 'Al Fahidi Historical Neighbourhood',
-      imageUrl:
-      'https://images.unsplash.com/photo-1578926125528-9f13d10e8f3d?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 09:00 AM - 06:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 07:00 AM - 8:00 PM',
       description:
-      'Restored heritage quarter with wind-tower houses, museums, and art galleries.',
-      reviewSummary: '4.3 ★ (8.6k reviews)',
+          'Al Fahidi preserves old Dubai architecture with wind towers, courtyard homes, and narrow pathways. It is home to museums, cultural centers, and traditional cafés. Visitors experience Dubai’s heritage before the modern skyline.',
     ),
     DummyPlace(
       name: 'Etihad Museum',
-      imageUrl:
-      'https://images.unsplash.com/photo-1616690710400-5c3e5f3cf249?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 08:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 8:00 PM',
       description:
-      'Modern museum chronicling the founding of the United Arab Emirates.',
-      reviewSummary: '4.5 ★ (5.2k reviews)',
+          'Etihad Museum chronicles the formation of the United Arab Emirates through interactive exhibits and historic documents. It sits on the site where the UAE constitution was signed in 1971. The museum features sleek modern architecture and detailed storytelling.',
+      reviewSummary: '4.6 (3k reviews)',
     ),
     DummyPlace(
       name: 'Al Shindagha Museum',
-      imageUrl:
-      'https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 08:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 8:00 PM',
       description:
-      'Interactive exhibits exploring Dubai\'s maritime history along the Creek.',
-    reviewSummary: '4.4 ★ (3.9k reviews)',
+          'Al Shindagha Museum showcases Dubai’s maritime history and cultural evolution through immersive displays. It overlooks Dubai Creek, where the city first developed. The museum is part of a restored heritage district.',
+      reviewSummary: '4.5 (4.4k reviews)',
     ),
     DummyPlace(
-      name: 'Sheikh Mohammed Centre for Cultural Understanding',
-      imageUrl:
-      'https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Sunday - Thursday: 09:00 AM - 05:00 PM',
+      name: 'Dubai Opera',
+      imageUrl: '',
+      openingHours: '',
       description:
-      'Cultural programs offering Emirati meals, tours, and Q&A sessions about local traditions.',
-      reviewSummary: '4.8 ★ (2.4k reviews)',
-    ),
-    DummyPlace(
-      name: 'Dubai Opera Tour',
-      imageUrl:
-      'https://images.unsplash.com/photo-1531928351158-2f736078e0a1?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Guided tours: 10:30 AM & 02:30 PM Daily',
-      description:
-      'Guided walk through the dhow-shaped opera house detailing its architecture and history.',
-      reviewSummary: '4.7 ★ (4.7k reviews)',
+          'Dubai Opera is the city’s premier performing arts venue hosting musicals, opera, ballet, concerts, and cultural events. Its dhow-shaped building reflects local maritime heritage. The venue is known for exceptional acoustics and high-end architectural design.',
+      reviewSummary: '4.7 (9.1k reviews)',
     ),
   ],
   'shopping': [
     DummyPlace(
       name: 'The Dubai Mall',
-      imageUrl:
-      'https://images.unsplash.com/photo-1565967511849-76a60a516170?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Sun-Thu: 10:00 AM - 11:00 PM, Fri-Sat: 10:00 AM - 12:00 AM',
+      imageUrl: '',
+      openingHours: 'Mon-Thu: 10:00 AM - 11:00 PM, Fri-Sun: 10:00 AM - 12:00 AM',
       description:
-      'World\'s largest destination for shopping, entertainment, and leisure beside Burj Khalifa.',
-    reviewSummary: '4.7 ★ (140k reviews)',
+          'The Dubai Mall is one of the largest malls in the world, offering luxury brands, dining, and entertainment attractions. It features the Dubai Aquarium, VR Park, and an indoor skating rink. The mall is a central hub for tourism connected directly to Burj Khalifa.',
+      reviewSummary: '4.7 (284k reviews)',
     ),
     DummyPlace(
       name: 'Mall of the Emirates',
-      imageUrl:
-      'https://images.unsplash.com/photo-1596237563265-82d4a7c1bb95?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 12:00 AM',
+      imageUrl: '',
+      openingHours: 'Mon-Thu: 10:00 AM - 11:00 PM, Fri-Sun: 10:00 AM - 12:00 AM',
       description:
-      'Luxury shopping mall featuring Ski Dubai indoor ski slope and extensive dining.',
-      reviewSummary: '4.7 ★ (141k reviews)',
+          'Mall of the Emirates is famous for Ski Dubai, the Middle East’s first indoor ski resort. It offers luxury shopping, gourmet dining, and diverse entertainment options. The mall blends leisure and retail in an upscale environment.',
+      reviewSummary: '4.7 (141k reviews)',
     ),
     DummyPlace(
       name: 'City Walk',
-      imageUrl:
-      'https://images.unsplash.com/photo-1543352634-873f17a7a088?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 10:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 11:00 PM',
       description:
-      'Outdoor lifestyle destination blending boutiques with cafes and street art.',
-      reviewSummary: '4.5 ★ (22k reviews)',
+          'City Walk is an outdoor urban lifestyle destination featuring boutiques, cafés, street art, and entertainment venues. It blends European-style boulevards with modern Dubai design. The area is popular for evening strolls and family outings.',
+      reviewSummary: '4.6 (36k reviews)',
     ),
     DummyPlace(
       name: 'Souk Madinat Jumeirah',
-      imageUrl:
-      'https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1200&q=80',
+      imageUrl: '',
       openingHours: 'Daily: 10:00 AM - 11:00 PM',
       description:
-      'Modern bazaar styled after a traditional souk with waterways and abra rides.',
-      reviewSummary: '4.6 ★ (18k reviews)',
+          'Souk Madinat is a modern reinterpretation of a traditional Arabian marketplace. It features boutiques, waterfront dining, and picturesque canals with abra boats. The venue offers atmospheric views of Burj Al Arab.',
+      reviewSummary: '4.5 (25k reviews)',
     ),
     DummyPlace(
       name: 'Dubai Festival City Mall',
-      imageUrl:
-      'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 10:00 PM',
+      imageUrl: '',
+      openingHours: 'Mon-Thu: 10:00 AM - 10:00 PM, Fri-Sun: 10:00 AM - 12:00 AM',
       description:
-      'Waterfront mall featuring IMAGINE laser show and a wide range of brands.',
-      reviewSummary: '4.5 ★ (21k reviews)',
-    ),
-  ],
-  'desert_adventure': [
-    DummyPlace(
-      name: 'Dubai Desert Conservation Reserve',
-      imageUrl:
-      'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Guided tours: 07:00 AM - 07:00 PM',
-      description:
-      'Protected desert habitat offering wildlife drives and eco-friendly safari experiences.',
-      reviewSummary: '4.9 ★ (3.1k reviews)',
+          'Dubai Festival City Mall is a waterfront shopping destination known for the IMAGINE laser, fountain, and fire show. It offers a wide selection of retail brands and family attractions. The location along the creek adds scenic value to the experience.',
+      reviewSummary: '4.6 (53.7k reviews)',
     ),
     DummyPlace(
-      name: 'Platinum Heritage Safari',
-      imageUrl:
-      'https://images.unsplash.com/photo-1528821154947-1aa3d1c01f6b?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily departures: 06:00 AM & 03:00 PM',
+      name: 'Platinum Heritage Desert Camp',
+      imageUrl: '',
+      openingHours: 'Daily: 07:00 AM - 12:00 AM',
       description:
-      'Luxury vintage Land Rover safaris with Bedouin-style camps and cultural shows.',
-      reviewSummary: '4.8 ★ (2.7k reviews)',
-    ),
-    DummyPlace(
-      name: 'Al Marmoom Desert Conservation Reserve',
-      imageUrl:
-      'https://images.unsplash.com/photo-1533050487297-09b450131914?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 06:00 AM - 08:00 PM',
-      description:
-      'Lakeside desert reserve ideal for cycling, stargazing, and nature trails.',
-      reviewSummary: '4.6 ★ (2.1k reviews)',
+          'Platinum Heritage offers luxury desert safaris in vintage Land Rovers and authentic Bedouin-style camps. Their experiences focus on conservation, culture, and wildlife. It is known as Dubai’s most premium desert tour operator.',
+      reviewSummary: '4.8 (1.2k reviews)',
     ),
     DummyPlace(
       name: 'Skyhub Paramotors',
-      imageUrl:
-      'https://images.unsplash.com/photo-1528821154947-1aa3d1c01f6b?auto=format&fit=crop&w=1200&q=80',
+      imageUrl: '',
       openingHours: 'Daily flights: 06:00 AM - 06:00 PM',
       description:
-      'Aerial paramotor experiences over the desert dunes for adrenaline seekers.',
-      reviewSummary: '4.7 ★ (1.4k reviews)',
+          'Skyhub Paramotors specializes in powered paragliding experiences offering aerial views of the desert and Dubai skyline. They emphasize safety, professional training, and high-quality equipment. The adventure is suitable for both beginners and thrill-seekers.',
+      reviewSummary: '4.9 (1.9k reviews)',
     ),
     DummyPlace(
       name: 'Balloon Adventures Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
+      imageUrl: '',
       openingHours: 'Daily sunrise flights: 04:00 AM - 09:00 AM',
       description:
-      'Hot air balloon rides offering sunrise views of the desert and wildlife.',
-      reviewSummary: '4.9 ★ (1.9k reviews)',
+          'Balloon Adventures provides sunrise hot air balloon flights over the Dubai desert. Guests enjoy aerial views of dunes, camels, and wildlife. The experience often includes a desert breakfast and falconry displays.',
+      reviewSummary: '4.9 (1.9k reviews)',
     ),
   ],
   'family_fun': [
     DummyPlace(
       name: 'Dubai Parks and Resorts',
-      imageUrl:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 09:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 10:00 PM',
       description:
-      'Theme park complex housing Motiongate, Bollywood Parks, and Legoland Water Park.',
-      reviewSummary: '4.5 ★ (12k reviews)',
+          'Dubai Parks and Resorts feels like a full day of excitement wrapped into one destination. Each park has its own world of characters, rides, and cinematic moments that bring families together. It’s the kind of place where both kids and adults end up smiling more than they expected.',
+      reviewSummary: '4.5 (7.3k reviews)',
     ),
     DummyPlace(
       name: 'IMG Worlds of Adventure',
-      imageUrl:
-      'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 12:00 PM - 10:00 PM',
+      imageUrl: '',
+      openingHours: 'Sun-Thu: 12:00 PM - 10:00 PM, Fri-Sat: 12:00 PM - 11:00 PM',
       description:
-      'Indoor mega theme park featuring Marvel, Cartoon Network, and dinosaur zones.',
-      reviewSummary: '4.4 ★ (16k reviews)',
+          'Stepping into IMG Worlds feels like entering a giant indoor universe built just for fun. The themed zones pull you into stories you grew up with, from Marvel heroes to cartoon classics. It’s the perfect escape when you want big thrills without the desert heat.',
+      reviewSummary: '4.3 (32.2k reviews)',
     ),
     DummyPlace(
       name: 'The Green Planet',
-      imageUrl:
-      'https://images.unsplash.com/photo-1512455102796-7719f41c24e0?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 06:00 PM',
+      imageUrl: '',
+      openingHours: 'Daily: 10:00 AM - 6:00 PM',
       description:
-      'Indoor tropical biodome with over 3,000 plants and animals for educational fun.',
-      reviewSummary: '4.6 ★ (9.4k reviews)',
+          'The Green Planet gives you the rare feeling of stepping into a calm, living rainforest in the heart of the city. Birds fly above you, waterfalls echo softly, and every corner feels alive. It’s an experience that quietly reconnects you with nature.',
+      reviewSummary: '4.4 (11.1k reviews)',
     ),
     DummyPlace(
       name: 'Dubai Aquarium & Underwater Zoo',
-      imageUrl:
-      'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Daily: 10:00 AM - 12:00 AM',
+      imageUrl: '',
+      openingHours: 'Mon-Fri: 10:00 AM - 10:15 PM, Sat-Sun: 10:00 AM - 11:15 PM',
       description:
-      'Huge aquarium inside The Dubai Mall featuring shark feeding and glass-bottom boat rides.',
-      reviewSummary: '4.5 ★ (22k reviews)',
+          'Dubai Aquarium makes you feel like you’ve slipped underwater without ever getting wet. Sharks, rays, and thousands of fish glide above and around you as you walk through the tunnel. It’s a moment of pure wonder that every visitor—kids or adults—remembers.',
+      reviewSummary: '4.5 (76k reviews)',
     ),
     DummyPlace(
       name: 'Legoland Dubai',
-      imageUrl:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-      openingHours: 'Thursday - Tuesday: 10:00 AM - 06:00 PM',
+      imageUrl: '',
+      openingHours: 'Mon-Fri: 10:00 AM - 06:00 PM, Sat-Sun: 11:00 AM - 7:00 PM',
       description:
-      'Interactive LEGO-themed rides and attractions tailored to families with young children.',
-      reviewSummary: '4.3 ★ (8.1k reviews)',
+          'Legoland Dubai feels like a world built with imagination at every turn. The rides are gentle, colorful, and designed to make younger kids feel brave and excited. It’s one of the easiest places for families to spend a full day without rushing.',
+      reviewSummary: '4.4 (19.5k reviews)',
     ),
   ],
 };

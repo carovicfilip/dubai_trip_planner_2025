@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = false,
     this.backgroundColor = Colors.transparent,
     this.titleTextStyle,
-    this.dividerColor = const Color(0xFFE0E0E0), // default siva linija
+    this.dividerColor = const Color(0xFFE0E0E0),
   }) : super(key: key);
 
   final String title;
@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: titleTextStyle ??
-                const TextStyle(
+                 TextStyle(
                   fontSize: 18,
                   color: Color(0xFF101A26),
                 ),

@@ -105,7 +105,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
               const SizedBox(height: 16),
               SizedBox(
-                height: 320,
+                height: 280,
                 child: places.isEmpty
                     ? const Center(child: Text('No places found for this category yet.'))
                     : ListView.builder(

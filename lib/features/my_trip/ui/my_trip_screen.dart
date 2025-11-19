@@ -153,10 +153,11 @@ class _MyTripScreenState extends State<MyTripScreen> {
       resizeToAvoidBottomInset: true,
 
       /// ✅ Custom AppBar
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: 'Plan Your Trip',
+        titleTextStyle: const TextStyle(color: Colors.white),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFFE8D2B8),
       ),
 
       body: Container(
@@ -266,7 +267,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "Choosedfodifdoifjadfjasdlfjldskaj fijsdifjsljissdflsjfsdjlsjfldfjskfsdlkjflsdjfljsdflsjdfdls Date",
+                        "Select when your Dubai adventure begins. Pick your arrival date and how many days you'll be staying to create a personalized itinerary.",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),
@@ -377,7 +378,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "Choosedfodifdoifjadfjasdlfjldskaj fijsdifjsljissdflsjfsdjlsjfldfjskfsdlkjflsdjfljsdflsjdfdls Date",
+                        "Tell us where you'll be staying in Dubai. This helps us optimize your itinerary based on proximity to attractions, restaurants, and activities.",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),
@@ -454,7 +455,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "Choosedfodifdoifjadfjasdlfjldskaj fijsdifjsljissdflsjfsdjlsjfldfjskfsdlkjflsdjfljsdflsjdfdls Date",
+                        "Select the types of places and experiences you're interested in. Choose multiple categories to create a diverse and exciting trip plan tailored to your preferences.",
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),

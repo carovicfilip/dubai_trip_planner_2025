@@ -2,6 +2,8 @@ import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
 import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
 import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
+import 'package:dubai_trip_planner_2025/features/profile/ui/privacy_policy_screen.dart';
+import 'package:dubai_trip_planner_2025/features/profile/ui/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -53,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
                 )
               else
                 SizedBox(
-                  height: 320,
+                  height: 280,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: favoritePlaces.length,
@@ -73,8 +75,30 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
               const SizedBox(height: 20),
-              ListTile(leading: Icon(Icons.privacy_tip), title: Text("Privacy Policy"), onTap: () {}),
-              ListTile(leading: Icon(Icons.description), title: Text("Terms of use"), onTap: () {}),
+              ListTile(
+                leading: const Icon(Icons.privacy_tip),
+                title: const Text("Privacy Policy"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const PrivacyPolicyScreen(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.description),
+                title: const Text("Terms of Use"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const TermsOfUseScreen(),
+                    ),
+                  );
+                },
+              ),
               // ListTile(leading: Icon(Icons.support_agent), title: Text("Support"), onTap: () {}),
               // ListTile(leading: Icon(Icons.star_rate), title: Text("Rate the app"), onTap: () {}),
             ],
