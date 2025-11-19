@@ -90,15 +90,15 @@ class MoreDetailsScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Wrap(
-              spacing: 10,
-              runSpacing: 10,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 if (place.reviewSummary != null)
                   _InfoChip(
                     icon: Icons.star_rounded,
                     label: place.reviewSummary!,
                   ),
+                if (place.reviewSummary != null) const SizedBox(height: 10),
                 _InfoChip(
                   icon: Icons.access_time_rounded,
                   label: place.openingHours,
@@ -106,30 +106,30 @@ class MoreDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 24),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              "Location",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-          ),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              place.locationName ?? 'Location details coming soon.',
-              style: const TextStyle(color: Colors.black54),
-            ),
-          ),
-          const SizedBox(height: 16),
+          // const SizedBox(height: 24),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 16.0),
+          //   child: Text(
+          //     "Location",
+          //     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+          //   ),
+          // ),
+          // const SizedBox(height: 8),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          //   child: Text(
+          //     place.locationName ?? 'Location details coming soon.',
+          //     style: const TextStyle(color: Colors.black54),
+          //   ),
+          // ),
+          // const SizedBox(height: 16),
           // Placeholder for future map integration
           // SizedBox(
           //   height: 200,
           //   child: GoogleMap(...)
           // ),
-          const SizedBox(height: 8),
-          const SizedBox(height: 24),
+          // const SizedBox(height: 8),
+          // const SizedBox(height: 24),
         ],
       ),
     );

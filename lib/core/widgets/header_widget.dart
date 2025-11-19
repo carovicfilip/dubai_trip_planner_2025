@@ -1,3 +1,4 @@
+import 'package:dubai_trip_planner_2025/core/constants/app_color.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -8,14 +9,32 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Welcome to", style: TextStyle(fontSize: 16, color: Colors.red)),
-            Text("Dubai, UAE", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red)),
+            Text(
+              "Welcome to",
+              style: textTheme.bodyMedium?.copyWith(
+                fontSize: 16,
+                color: AppColors.gray500,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              "Dubai Trip Planner",
+              style: textTheme.headlineSmall?.copyWith(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: AppColors.primaryBlue,
+                letterSpacing: 0.5,
+              ),
+            ),
           ],
         ),
         // Column(

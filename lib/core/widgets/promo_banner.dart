@@ -13,6 +13,7 @@ class _PromoBannerState extends State<PromoBanner> with SingleTickerProviderStat
   late Animation<Color?> _color1;
   late Animation<Color?> _color2;
   late Animation<Color?> _color3;
+  late Animation<Color?> _color4;
 
   @override
   void initState() {
@@ -23,22 +24,26 @@ class _PromoBannerState extends State<PromoBanner> with SingleTickerProviderStat
       vsync: this,
     )..repeat(reverse: true);
 
-    // Blue, Purple & Red gradient: high contrast variations
-    // Using very light and very dark shades for maximum visual impact
+    // Custom color palette: Warm browns and deep navy
+    // _color1 = ColorTween(
+    //   begin: const Color(0xFFE6BB93), // Light brown/beige
+    //   end: const Color(0xFFAC6A04),
+    // ).animate(_controller);
+
     _color1 = ColorTween(
-      begin: const Color(0xFF64B5F6), // Very light blue/cyan
-      end: const Color(0xFF0D47A1), // Very dark blue/navy
+      begin: const Color(0xFFB2FEFA),
+      end: const Color(0xFF00C9FF),
     ).animate(_controller);
 
     _color2 = ColorTween(
-      begin: const Color(0xFFBA68C8), // Light purple/lavender
-      end: const Color(0xFF4A148C), // Very dark purple
+      begin: const Color(0xFF02CAF3),
+      end: const Color(0xFF540183),
     ).animate(_controller);
 
-    _color3 = ColorTween(
-      begin: const Color(0xFFF06292), // Light pink/magenta
-      end: const Color(0xFF880E4F), // Very dark red/maroon
-    ).animate(_controller);
+    // _color4 = ColorTween(
+    //   begin: const Color(0xFF1A4678),
+    //   end: const Color(0xFF032063),
+    // ).animate(_controller);
   }
 
   @override
@@ -66,9 +71,10 @@ class _PromoBannerState extends State<PromoBanner> with SingleTickerProviderStat
               borderRadius: BorderRadius.circular(16),
               gradient: LinearGradient(
                 colors: [
-                  _color1.value ?? Colors.blue,
-                  _color2.value ?? Colors.purple,
-                  _color3.value ?? Colors.red,
+                              _color1.value ?? Colors.cyan,
+                              _color2.value ?? Colors.purple,
+                  // _color3.value ?? const Color(0xFF0E83F7),
+                  // _color4.value ?? const Color(0xFF032063),
                 ],
               ),
               boxShadow: const [
@@ -81,67 +87,67 @@ class _PromoBannerState extends State<PromoBanner> with SingleTickerProviderStat
             ),
             padding: const EdgeInsets.all(16),
             child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Discover Dubai",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 4,
-                            color: Colors.black45,
-                            offset: Offset(1, 1),
-                          ),
-                        ],
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text(
+                        "Discover Dubai",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 4,
+                              color: Colors.black45,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      "Create your perfect itinerary with AI-powered trip planning",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 4,
-                            color: Colors.black45,
-                            offset: Offset(1, 1),
-                          ),
-                        ],
+                      SizedBox(height: 4),
+                      Text(
+                        "Create your perfect itinerary with AI-powered trip planning",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 4,
+                              color: Colors.black45,
+                              offset: Offset(1, 1),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 12),
-              ElevatedButton(
-                onPressed: _navigateToMyTrip,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: const Color(0xFF101A26),
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    ],
                   ),
                 ),
-                child: const Text(
-                  "Plan a Trip",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
+                const SizedBox(width: 12),
+                ElevatedButton(
+                  onPressed: _navigateToMyTrip,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF101A26),
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    "Plan a Trip",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
+        );
       },
     );
   }
