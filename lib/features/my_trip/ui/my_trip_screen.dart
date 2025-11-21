@@ -1,4 +1,3 @@
-import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:dubai_trip_planner_2025/features/my_trip/models/trip_plan.dart';
 import 'package:dubai_trip_planner_2025/features/my_trip/services/trip_plan_storage.dart';
 import 'package:dubai_trip_planner_2025/features/my_trip/services/trip_planner_service.dart';
@@ -249,11 +248,13 @@ class _MyTripScreenState extends State<MyTripScreen> {
       resizeToAvoidBottomInset: true,
 
       /// ✅ Custom AppBar
-      appBar: CustomAppBar(
-        title: 'Plan Your Trip',
-        titleTextStyle: const TextStyle(color: Colors.white),
-        centerTitle: true,
+      appBar: AppBar(
+        title: const Text(
+          'Plan Your Trip',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
         backgroundColor: const Color(0xFFE8D2B8),
+        shadowColor: Colors.black26,
       ),
 
       body: Container(
@@ -266,7 +267,8 @@ class _MyTripScreenState extends State<MyTripScreen> {
               children: [
                 if (_latestPlan != null)
                   Dismissible(
-                    key: Key('${_latestPlan!.location}_${_latestPlan!.startDate.toIso8601String()}_${_latestPlan!.lengthInDays}'),
+                    key: Key(
+                        '${_latestPlan!.location}_${_latestPlan!.startDate.toIso8601String()}_${_latestPlan!.lengthInDays}'),
                     direction: DismissDirection.endToStart,
                     background: Container(
                       margin: const EdgeInsets.only(bottom: 20),
@@ -333,6 +335,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                       ),
                     ),
                   ),
+
                 /// 📅 Date Picker
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -346,15 +349,14 @@ class _MyTripScreenState extends State<MyTripScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children:  [
+                        children: [
                           Container(
                             width: 24,
                             height: 24,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
-                              border: Border.all(color: const Color(0xFFFF8A80)
-                                  , width: 2),
+                              border: Border.all(color: const Color(0xFFFF8A80), width: 2),
                             ),
                             child: const Center(
                               child: Text(
@@ -362,31 +364,26 @@ class _MyTripScreenState extends State<MyTripScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xFFFF8A80)
-                                  ,
+                                  color: const Color(0xFFFF8A80),
                                 ),
                               ),
                             ),
                           ),
-
                           Text(
                             " Step",
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color:const Color(0xFFFF8A80)
-                            ),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: const Color(0xFFFF8A80)),
                           ),
-
                         ],
                       ),
                       const SizedBox(height: 20),
-
                       Text(
                         "Choose Date",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color:  Color(0xFF2C3F57)),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         "Select when your Dubai adventure begins. Pick your arrival date and how many days you'll be staying to create a personalized itinerary.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),
                       GestureDetector(
@@ -445,15 +442,14 @@ class _MyTripScreenState extends State<MyTripScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children:  [
+                        children: [
                           Container(
                             width: 24,
                             height: 24,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
-                              border: Border.all(color:const Color(0xFFFF8A80)
-                                  , width: 2),
+                              border: Border.all(color: const Color(0xFFFF8A80), width: 2),
                             ),
                             child: const Center(
                               child: Text(
@@ -461,23 +457,18 @@ class _MyTripScreenState extends State<MyTripScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xFFFF8A80)
-                                  ,
+                                  color: const Color(0xFFFF8A80),
                                 ),
                               ),
                             ),
                           ),
-
                           Text(
                             " Step",
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color:const Color(0xFFFF8A80)
-                            ),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: const Color(0xFFFF8A80)),
                           ),
-
                         ],
                       ),
                       const SizedBox(height: 20),
-
                       Text(
                         "Select your accommodation location",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
@@ -485,7 +476,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
                       const SizedBox(height: 8),
                       Text(
                         "Tell us where you'll be staying in Dubai. This helps us optimize your itinerary based on proximity to attractions, restaurants, and activities.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),
                       TextField(
@@ -505,8 +496,6 @@ class _MyTripScreenState extends State<MyTripScreen> {
                   ),
                 ),
 
-
-
                 const SizedBox(height: 24),
 
                 /// 🏷️ Category Selection
@@ -522,15 +511,14 @@ class _MyTripScreenState extends State<MyTripScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children:  [
+                        children: [
                           Container(
                             width: 24,
                             height: 24,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.circle,
-                              border: Border.all(color:const Color(0xFFFF8A80)
-                                  , width: 2),
+                              border: Border.all(color: const Color(0xFFFF8A80), width: 2),
                             ),
                             child: const Center(
                               child: Text(
@@ -538,31 +526,26 @@ class _MyTripScreenState extends State<MyTripScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xFFFF8A80)
-                                  ,
+                                  color: const Color(0xFFFF8A80),
                                 ),
                               ),
                             ),
                           ),
-
                           Text(
                             " Step",
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color:const Color(0xFFFF8A80)
-                            ),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: const Color(0xFFFF8A80)),
                           ),
-
                         ],
                       ),
                       const SizedBox(height: 20),
-
                       Text(
                         "Choose Categories",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color:  Color(0xFF2C3F57)),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
                       ),
                       const SizedBox(height: 8),
                       Text(
                         "Select the types of places and experiences you're interested in. Choose multiple categories to create a diverse and exciting trip plan tailored to your preferences.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color:  Color (0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
                       ),
                       const SizedBox(height: 8),
                       const SizedBox(height: 12),

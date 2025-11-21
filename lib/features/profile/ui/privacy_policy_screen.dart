@@ -1,4 +1,3 @@
-import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
@@ -7,10 +6,13 @@ class PrivacyPolicyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Privacy Policy',
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
+      appBar:AppBar(
+        title: const Text(
+          'Privacy Policy',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+        backgroundColor:   Color(0xFF101A26),
+        shadowColor: Colors.black26,
       ),
       body: SafeArea(
         child: SingleChildScrollView(

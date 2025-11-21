@@ -1,4 +1,3 @@
-import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class TermsOfUseScreen extends StatelessWidget {
@@ -7,10 +6,13 @@ class TermsOfUseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Terms of Use',
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: const Text(
+          'Terms of Use',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+        backgroundColor: Color(0xFF101A26),
+        shadowColor: Colors.black26,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -113,8 +115,7 @@ class TermsOfUseScreen extends StatelessWidget {
               const SizedBox(height: 24),
               _buildSection(
                 title: 'Contact Information',
-                content:
-                    'If you have any questions about these Terms of Use, please contact us at:\n\n'
+                content: 'If you have any questions about these Terms of Use, please contact us at:\n\n'
                     'Email: support@dubaitripplanner.com\n\n'
                     'We will respond to your inquiry within a reasonable timeframe.',
               ),
@@ -151,4 +152,3 @@ class TermsOfUseScreen extends StatelessWidget {
     );
   }
 }
-

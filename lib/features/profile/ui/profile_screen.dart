@@ -1,7 +1,7 @@
-import 'package:dubai_trip_planner_2025/core/widgets/custom_app_bar.dart';
 import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
 import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
 import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
+import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
 import 'package:dubai_trip_planner_2025/features/profile/ui/privacy_policy_screen.dart';
 import 'package:dubai_trip_planner_2025/features/profile/ui/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +14,14 @@ class ProfileScreen extends StatelessWidget {
     final favoritePlaces = favoritesState.favoritesList;
 
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: 'Profile',
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
+
+      appBar: AppBar(
+        title: const Text(
+          'Profile',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+        backgroundColor:   Color(0xFF101A26),
+        shadowColor: Colors.black26,
       ),
       body: SafeArea(
         top: true,
@@ -63,12 +67,24 @@ class ProfileScreen extends StatelessWidget {
                       final place = favoritePlaces[index];
                       return Padding(
                         padding: const EdgeInsets.only(right: 16),
-                        child: PlacesCard(
-                          place: place,
-                          index: index,
-                          isFavorite: favoritesState.isFavorite(place.id),
-                          onFavoriteToggle: () =>
-                              context.read<FavoritesCubit>().toggleFavorite(place),
+                        child: GestureDetector(
+                          onTap:  () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => MoreDetailsScreen(
+                                  place: place,
+                                ),
+                              ),
+                            );
+                          },
+                          child: PlacesCard(
+                            place: place,
+                            index: index,
+                            isFavorite: favoritesState.isFavorite(place.id),
+                            onFavoriteToggle: () =>
+                                context.read<FavoritesCubit>().toggleFavorite(place),
+                          ),
                         ),
                       );
                     },
