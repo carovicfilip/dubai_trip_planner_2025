@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import '../../../app/router/main_scaffold.dart';
+import '../../onboarding/ui/onboarding_screen.dart';
+import '../../onboarding/services/onboarding_service.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -13,11 +15,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _redirectTimer = Timer(const Duration(seconds: 2), () {
+    _redirectTimer = Timer(const Duration(seconds: 2), () async {
       if (!mounted) return;
+      
+      final isOnboardingCompleted = await OnboardingService.isOnboardingCompleted();
+      
+      if (!mounted) return;
+      
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => MainScaffold()),
+        MaterialPageRoute(
+          builder: (_) => isOnboardingCompleted 
+              ? MainScaffold() 
+              : const OnboardingScreen(),
+        ),
       );
     });
   }
