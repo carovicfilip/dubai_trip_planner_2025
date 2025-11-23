@@ -51,14 +51,14 @@ class PopularPlaceCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          left: -25,
+          left: -35,
           bottom: 38,
           child: Stack(
             children: [
               Text(
                 '${index + 1}',
                 style: TextStyle(
-                  fontSize: 150,
+                  fontSize: 160,
                   fontWeight: FontWeight.bold,
                   foreground: Paint()
                     ..shader = const LinearGradient(
@@ -69,7 +69,7 @@ class PopularPlaceCard extends StatelessWidget {
                       ],
                     ).createShader(const Rect.fromLTWH(0, 0, 120, 120))
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2,
+                    ..strokeWidth = 6,
                 ),
               ),
             ],

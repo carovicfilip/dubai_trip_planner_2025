@@ -1,16 +1,18 @@
 class DummyPlace {
-  final String? name;
   final String? imageUrl;
-  final String? openingHours;
+  final String? name;
   final String? description;
+  final String? location;
+  final String? openingHours;
   final String? reviewSummary;
   final String? link;
 
   const DummyPlace({
-    this.name,
     this.imageUrl,
-    this.openingHours,
+    this.name,
     this.description,
+    this.location,
+    this.openingHours,
     this.reviewSummary,
     this.link,
   });
