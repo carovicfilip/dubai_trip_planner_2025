@@ -44,7 +44,6 @@ class Place {
       'openingHours': openingHours,
       'description': description,
       'locationName': locationName,
-
       'rating': rating,
       'reviewSummary': reviewSummary,
     };
