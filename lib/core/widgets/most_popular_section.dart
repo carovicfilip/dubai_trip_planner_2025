@@ -9,7 +9,7 @@ class MostPopularSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Place> popularPlaces = PlaceRepository.getFeaturedPlaces();
+    final List<Place> popularPlaces = PlaceRepository.getFeaturedPlaces().take(5).toList();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
