@@ -380,12 +380,12 @@ class _MyTripScreenState extends State<MyTripScreen> {
                         "Choose Date",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 10),
                       Text(
                         "Select when your Dubai adventure begins. Pick your arrival date and how many days you'll be staying to create a personalized itinerary.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color:Color(0xFF2C3F57)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 14),
                       GestureDetector(
                         onTap: _pickDate,
                         child: Container(
@@ -473,12 +473,12 @@ class _MyTripScreenState extends State<MyTripScreen> {
                         "Select your accommodation location",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 10),
                       Text(
                         "Tell us where you'll be staying in Dubai. This helps us optimize your itinerary based on proximity to attractions, restaurants, and activities.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color:Color(0xFF2C3F57)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 20),
                       TextField(
                         controller: _accommodationCtrl,
                         decoration: InputDecoration(
@@ -542,10 +542,10 @@ class _MyTripScreenState extends State<MyTripScreen> {
                         "Choose Categories",
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Color(0xFF2C3F57)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 10),
                       Text(
                         "Select the types of places and experiences you're interested in. Choose multiple categories to create a diverse and exciting trip plan tailored to your preferences.",
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100, color: Color(0xFFE0C4A0)),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color:Color(0xFF2C3F57)),
                       ),
                       const SizedBox(height: 8),
                       const SizedBox(height: 12),

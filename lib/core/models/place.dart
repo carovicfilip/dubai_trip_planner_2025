@@ -6,8 +6,6 @@ class Place {
   final String openingHours;
   final String description;
   final String? locationName;
-  final double? latitude;
-  final double? longitude;
   final double? rating;
   final String? reviewSummary;
 
@@ -19,8 +17,6 @@ class Place {
     required this.openingHours,
     required this.description,
     this.locationName,
-    this.latitude,
-    this.longitude,
     this.rating,
     this.reviewSummary,
   });
@@ -34,8 +30,6 @@ class Place {
       openingHours: json['openingHours'] as String,
       description: json['description'] as String,
       locationName: json['locationName'] as String?,
-      latitude: (json['latitude'] as num?)?.toDouble(),
-      longitude: (json['longitude'] as num?)?.toDouble(),
       rating: (json['rating'] as num?)?.toDouble(),
       reviewSummary: json['reviewSummary'] as String?,
     );
@@ -50,8 +44,7 @@ class Place {
       'openingHours': openingHours,
       'description': description,
       'locationName': locationName,
-      'latitude': latitude,
-      'longitude': longitude,
+
       'rating': rating,
       'reviewSummary': reviewSummary,
     };

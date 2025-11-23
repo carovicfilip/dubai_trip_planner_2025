@@ -82,14 +82,6 @@ class MoreDetailsScreen extends StatelessWidget {
           const SizedBox(height: 12),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              place.description,
-              style: const TextStyle(fontSize: 15, color: Colors.black87),
-            ),
-          ),
-          const SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -106,6 +98,16 @@ class MoreDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 16),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Text(
+              place.description,
+              style: const TextStyle(fontSize: 15, color: Colors.black87),
+            ),
+          ),
+
           // const SizedBox(height: 24),
           // const Padding(
           //   padding: EdgeInsets.symmetric(horizontal: 16.0),
