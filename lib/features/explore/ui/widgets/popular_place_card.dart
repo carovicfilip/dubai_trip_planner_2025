@@ -51,7 +51,7 @@ class PopularPlaceCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          left: -35,
+          left: -38,
           bottom: 38,
           child: Stack(
             children: [
@@ -69,7 +69,7 @@ class PopularPlaceCard extends StatelessWidget {
                       ],
                     ).createShader(const Rect.fromLTWH(0, 0, 120, 120))
                     ..style = PaintingStyle.stroke
-                    ..strokeWidth = 6,
+                    ..strokeWidth = 5,
                 ),
               ),
             ],
