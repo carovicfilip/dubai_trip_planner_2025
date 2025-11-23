@@ -18,9 +18,10 @@ class ItineraryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Your Trip Plan',
+          'Plan Your Trip',
           style: TextStyle(fontSize: 18, color: Colors.black),
         ),
+        backgroundColor:  Colors.white,
         shadowColor: Colors.black26,
       ),
       body: SafeArea(
