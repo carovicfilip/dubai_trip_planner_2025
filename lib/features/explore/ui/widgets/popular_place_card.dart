@@ -41,7 +41,7 @@ class PopularPlaceCard extends StatelessWidget {
             //   borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12)),
             // ),
             child: Text(
-              place.title,
+              place.name,
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

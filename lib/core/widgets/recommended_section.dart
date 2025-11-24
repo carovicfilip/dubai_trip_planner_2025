@@ -6,17 +6,19 @@ import 'package:dubai_trip_planner_2025/features/place_details/screens/more_deta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MustSeeSection extends StatelessWidget {
+class RecommendedSection extends StatelessWidget {
   final bool isCategoryScreen;
 
-  const MustSeeSection({
+  const RecommendedSection({
     super.key,
     this.isCategoryScreen = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final List<Place> featuredPlaces = PlaceRepository.getFeaturedPlaces();
+    // Get all places and sort by reviewSummary rating (best first)
+    final List<Place> allPlaces = PlaceRepository.getAllPlaces();
+    final List<Place> featuredPlaces = _getTopRatedPlaces(allPlaces, limit: 10);
     final favoritesState = context.watch<FavoritesCubit>().state;
 
     return Column(
@@ -57,5 +59,28 @@ class MustSeeSection extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  /// Extracts rating from reviewSummary string (e.g., "4.7 (169k reviews)" -> 4.7)
+  /// Returns 0.0 if reviewSummary is null or cannot be parsed
+  double _extractRating(String? reviewSummary) {
+    if (reviewSummary == null || reviewSummary.isEmpty) return 0.0;
+    final match = RegExp(r'^(\d+\.?\d*)').firstMatch(reviewSummary);
+    if (match != null) {
+      return double.tryParse(match.group(1) ?? '0') ?? 0.0;
+    }
+    return 0.0;
+  }
+
+  /// Returns top rated places sorted by rating extracted from reviewSummary (best first)
+  List<Place> _getTopRatedPlaces(List<Place> places, {int limit = 10}) {
+    final sorted = List<Place>.from(places)
+      ..sort((a, b) {
+        final ratingA = _extractRating(a.reviewSummary);
+        final ratingB = _extractRating(b.reviewSummary);
+        // Sort descending (highest rating first)
+        return ratingB.compareTo(ratingA);
+      });
+    return sorted.take(limit).toList();
   }
 }

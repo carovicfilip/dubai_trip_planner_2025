@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../core/widgets/category_section.dart';
 import '../../../core/widgets/header_widget.dart';
 import '../../../core/widgets/most_popular_section.dart';
-import '../../../core/widgets/must_see_section.dart';
+import '../../../core/widgets/recommended_section.dart';
 import '../../../core/widgets/promo_banner.dart';
 import '../../onboarding/ui/onboarding_screen.dart';
 import '../../onboarding/services/onboarding_service.dart';
@@ -123,7 +123,7 @@ class _HomeScreenState extends State<ExploreScreen> with SingleTickerProviderSta
             SizedBox(height: 36),
             CategorySection(),
             SizedBox(height: 30),
-            MustSeeSection(),
+            RecommendedSection(),
             SizedBox(height: 30),
             WeatherForecastSection(),
             SizedBox(height: 30),

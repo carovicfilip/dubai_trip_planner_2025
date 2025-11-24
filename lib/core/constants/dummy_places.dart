@@ -1,18 +1,18 @@
 class DummyPlace {
-  final String? imageUrl;
   final String? name;
   final String? description;
-  final String? location;
+  final String? imageUrl;
   final String? openingHours;
+  final String? location;
   final String? reviewSummary;
   final String? link;
 
   const DummyPlace({
-    this.imageUrl,
     this.name,
     this.description,
-    this.location,
+    this.imageUrl,
     this.openingHours,
+    this.location,
     this.reviewSummary,
     this.link,
   });
@@ -22,65 +22,73 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
   'must_see': [
     DummyPlace(
       name: 'Burj Khalifa',
-      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
-      openingHours: '09:00 AM–11:00 PM Last entry: 10:15 PM',
       description:
-          'The Burj Khalifa is the tallest building in the world at 828 meters, dominating the Dubai skyline. Its observation decks offer breathtaking panoramic views of the city, desert, and coastline. The tower is a global icon of engineering, innovation, and modern architecture.',
-      reviewSummary: '4.7 (169k reviews)',
+          'The Burj Khalifa is an architectural masterpiece and the tallest building in the world, rising an incredible 828 meters above the heart of Dubai. Its sleek, tapering design draws inspiration from Islamic architecture, while its engineering represents the pinnacle of modern innovation. Visitors can explore its high-speed elevators, world-famous observation decks on levels 124, 125, and 148, and enjoy sweeping views that stretch across the city, the coastline, and the vast desert beyond. Surrounded by the Dubai Fountain and luxury attractions, the Burj Khalifa stands not only as a record-breaking structure but also as a symbol of Dubai’s ambition, creativity, and futuristic vision.',
+      imageUrl:
+          'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      openingHours: 'Open 24 hours',
+      location: '1 Sheikh Mohammed bin Rashid Boulevard, Downtown',
+      reviewSummary: '4.7 (166k reviews)',
     ),
     DummyPlace(
       name: 'Palm Jumeirah',
-      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
-      openingHours: 'Open 24 hours',
       description:
-          'Palm Jumeirah is an iconic man-made island shaped like a palm tree and known for luxury hotels and beachfront residences. It features world-class resorts like Atlantis The Palm and scenic waterfront promenades. The island is one of Dubai\'s most ambitious and recognizable engineering achievements. Scenic walkway along the outer crescent of Palm Jumeirah with food trucks and sea views.',
+          'Palm Jumeirah is an iconic, man-made island shaped like a palm tree, symbolizing Dubai’s creativity and engineering ambition. Built on reclaimed land, it stretches into the Arabian Gulf and is home to luxurious resorts, waterfront villas, and upscale dining and entertainment options. The island features landmarks like Atlantis, The Palm and scenic boardwalks that offer beautiful sea views. With its mix of relaxation, adventure, and world-class hospitality, Palm Jumeirah stands as one of Dubai’s most impressive and recognizable destinations.',
+      imageUrl:
+          'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
+      location: 'Palm Jumeirah, Jumeirah',
     ),
     DummyPlace(
-      name: 'Burj Khalifa',
-      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
-      openingHours: '09:00 AM–11:00 PM\nLast entry: 10:15 PM',
-      description:
-          'The Burj Khalifa is the tallest building in the world at 828 meters, dominating the Dubai skyline. Its observation decks offer breathtaking panoramic views of the city, desert, and coastline. The tower is a global icon of engineering, innovation, and modern architecture.',
-      reviewSummary: '4.7 (169k reviews)',
-    ),
-    DummyPlace(
-      name: 'Dubai Marina Walk',
-      imageUrl: 'https://media.cntraveler.com/photos/6424bdcf94f6ca4a2362319f/4:3/w_7720,h_5790,c_limit/Atlantis%20The%20Royal%20Dubai_cloud22-poolview.jpg',
-      openingHours: 'Open 24 hours',
-      description:
-          'Dubai Marina Walk is a lively 7-km waterfront promenade lined with restaurants, cafés, and retail outlets. It offers views of luxury yachts and striking high-rise towers. At night, the entire marina transforms with vibrant lights and outdoor dining.',
-      reviewSummary: '4.7 (27k reviews)',
-    ),
-    DummyPlace(
-      name: 'Dubai Fountain',
+      name: 'The Dubai Fountain',
       imageUrl: '',
-      openingHours: 'Afternoon: 1:00 PM & 1:30 PM (Fri: 2:00 PM & 2:30 PM), Evening: 6:00 PM - 11:00 PM (every 30 min)',
       description:
-          'The Dubai Fountain is the world’s largest choreographed fountain system, located on the Burj Lake beside Dubai Mall. Its water jets shoot up to 150 meters high, synchronized with music and lights. The nightly shows attract thousands of visitors and create one of Dubai’s most memorable experiences.',
+          'The Dubai Fountain is the world’s largest choreographed fountain system, set on the Burj Khalifa Lake in Downtown Dubai. Its powerful water jets shoot up to 140 meters high, moving in harmony with music and vibrant lights to create a captivating, must-see performance. Shows take place daily, transforming the waterfront into a mesmerizing spectacle that reflects beautifully against the backdrop of the Burj Khalifa. Whether viewed from the promenade, nearby restaurants, or an abra boat on the lake, the Dubai Fountain delivers an unforgettable experience.',
       reviewSummary: '4.8 (137k reviews)',
+      location: 'Downtown Dubai',
     ),
     DummyPlace(
-      name: 'Museum of the Future',
+        name: 'Museum of the Future',
+        imageUrl: '',
+        openingHours: 'Daily: 09:00 AM - 9:00 PM',
+        description:
+            'The Museum of the Future is one of Dubai’s most striking landmarks, known for its futuristic torus-shaped design covered in flowing Arabic calligraphy. More than just a museum, it serves as an immersive exploration of future possibilities in technology, sustainability, space, and human innovation. Inside, visitors experience interactive exhibits that blend science, imagination, and cutting-edge design, offering a glimpse into what the world could look like decades from now. The Museum of the Future stands as a symbol of progress and creativity, inspiring visitors to think boldly about tomorrow.',
+        reviewSummary: '4.4 (48k reviews)',
+        location: '201 Sheikh Zayed Road, Trade Centre 2'),
+    DummyPlace(
+      name: 'The Dubai Frame',
       imageUrl: '',
       openingHours: 'Daily: 09:00 AM - 9:00 PM',
       description:
-          'The Museum of the Future is an architectural masterpiece known for its torus shape and illuminated Arabic calligraphy. Inside, immersive exhibitions explore the future of science, technology, and human innovation. It is considered one of the most advanced experiential museums in the world.',
-      reviewSummary: '4.4 (48k reviews)',
-    ),
-    DummyPlace(
-      name: 'Dubai Frame',
-      imageUrl: '',
-      openingHours: 'Daily: 09:00 AM - 9:00 PM',
-      description:
-          'Dubai Frame is a 150-meter tall landmark designed as a giant picture frame representing "old" and "new" Dubai. Visitors can walk across a glass sky bridge with panoramic city views. The lower level hosts a museum showcasing the city\'s transformation over time.',
+          'The Dubai Frame is a striking architectural landmark designed to resemble a giant picture frame, symbolically connecting Dubai’s past and future. Standing 150 meters tall in Zabeel Park, it offers two unique perspectives: one side overlooks the historic districts of Old Dubai, while the other showcases the modern skyline of Downtown. Inside, visitors walk through immersive galleries that highlight the city’s transformation, and the sky deck features a glass-floored bridge with panoramic views. The Dubai Frame beautifully captures the story of Dubai’s evolution in a single, iconic structure.',
       reviewSummary: '4.6 (70k reviews)',
+      location: 'Zabeel Park Jogging Track, Za’abeel – Al Kifaf',
     ),
     DummyPlace(
-      name: 'Dubai Creek',
+      name: 'Dubai Miracle Garden',
       imageUrl: '',
-      openingHours: 'Open 24 hours',
+      openingHours: 'Daily: 09:00 AM - 11:00 PM',
       description:
-          'Dubai Creek is a historic saltwater inlet that played a crucial role in the city\'s early trade and pearl-diving economy. Traditional wooden abras still ferry passengers across the water. The area blends old souks, cultural districts, and waterfront scenery.',
+          'Dubai Miracle Garden is the world’s largest natural flower garden, showcasing over 150 million blooming flowers arranged in breathtaking shapes and vibrant patterns. Open seasonally, it features life-size floral sculptures, heart-shaped pathways, and record-breaking displays like the Emirates A380 covered entirely in flowers. The garden combines artistic creativity with natural beauty, offering a colorful, immersive escape perfect for photos, leisurely strolls, and family visits. It stands as one of Dubai’s most enchanting outdoor attractions.',
+      location: 'Al Barsha South 3',
+      reviewSummary: '4.6 (90k reviews)',
+    ),
+    DummyPlace(
+      name: 'Dubai Aquarium & Underwater Zoo',
+      imageUrl: '',
+      openingHours: 'Mon-Fri: 10:00 AM - 10:15 PM, Sat-Sun: 10:00 AM - 11:15 PM',
+      description:
+          'Dubai Aquarium & Underwater Zoo is one of the city’s most captivating attractions, located inside The Dubai Mall. It features one of the world’s largest suspended aquariums, home to thousands of marine animals including sharks, rays, and vibrant fish species. Visitors can walk through the 48-meter tunnel for an immersive underwater experience or explore the Underwater Zoo above, which showcases unique creatures like otters, crocodiles, penguins, and jellyfish. With interactive exhibits and thrilling experiences such as cage snorkeling and shark dives, the Dubai Aquarium & Underwater Zoo offers a fascinating journey into the marine world for all ages.',
+      reviewSummary: '4.5 (76k reviews)',
+      location: '1 Mohammed Bin Rashid Boulevard, Level 2 (Dubai Mall)',
+    ),
+    DummyPlace(
+      name: 'Al Fahidi Historical Neighbourhood',
+      imageUrl: '',
+      // openingHours: 'Daily: 07:00 AM - 8:00 PM',
+      description:
+          'Al Fahidi Historical Neighbourhood, also known as Al Bastakiya, is one of Dubai’s oldest and most culturally rich districts. Its narrow alleyways, traditional wind-tower houses, and beautifully restored courtyards offer a glimpse into life in Dubai before the modern skyscrapers. The area is filled with art galleries, museums, cafés, and cultural centers like the Sheikh Mohammed Centre for Cultural Understanding, making it a peaceful and authentic place to explore. Walking through Al Fahidi feels like stepping back in time, showcasing the emirate’s heritage, craftsmanship, and enduring traditions.',
+      location: 'Al Souq Al Kabeer, Al Fahidi',
+      reviewSummary: '4.6 (16 reviews)',
     ),
     DummyPlace(
       name: 'Dubai Mall',
@@ -88,22 +96,8 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       openingHours: 'Mon-Thu 10:00 AM - 11:00 PM, Fri-Sun 10:00 AM - 12:00 AM',
       description:
           'Dubai Mall is one of the world’s largest shopping and entertainment destinations, home to more than 1,200 stores. It also houses major attractions like Dubai Aquarium, VR Park, and an Olympic-sized ice rink. Located next to Burj Khalifa, it attracts millions of visitors each year.',
-      reviewSummary: '4.7 (283.7k reviews)',
-    ),
-    DummyPlace(
-      name: 'Al Fahidi Historical Neighbourhood',
-      imageUrl: '',
-      openingHours: 'Daily: 07:00 AM - 8:00 PM',
-      description:
-          'Al Fahidi is Dubai’s preserved heritage district featuring traditional wind-tower houses and narrow lanes. It offers museums, art galleries, and cultural centers that showcase life in Dubai before modernization. The area sits along Dubai Creek and remains one of the city’s key cultural attractions.',
-    ),
-    DummyPlace(
-      name: 'La Perle',
-      imageUrl: '',
-      openingHours: 'Tuesday - Saturday 6:30 PM - 8:00 PM and 9:00 PM - 10:30 PM',
-      description:
-          'La Perle is a world-class live show combining acrobatics, aerial stunts, and high-tech visual effects. Its aqua-theater features a stage that floods and drains within seconds. Inspired by Dubai\'s culture and future, the performance delivers a breathtaking immersive experience.',
-      reviewSummary: '4.6 (5.1k reviews)',
+      reviewSummary: '4.7 (283k reviews)',
+      location: 'Downtown, Sheikh Mohammed bin Rashid Boulevard',
     ),
   ],
   'restaurants': [
@@ -387,14 +381,6 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'The Green Planet gives you the rare feeling of stepping into a calm, living rainforest in the heart of the city. Birds fly above you, waterfalls echo softly, and every corner feels alive. It’s an experience that quietly reconnects you with nature.',
       reviewSummary: '4.4 (11.1k reviews)',
-    ),
-    DummyPlace(
-      name: 'Dubai Aquarium & Underwater Zoo',
-      imageUrl: '',
-      openingHours: 'Mon-Fri: 10:00 AM - 10:15 PM, Sat-Sun: 10:00 AM - 11:15 PM',
-      description:
-          'Dubai Aquarium makes you feel like you’ve slipped underwater without ever getting wet. Sharks, rays, and thousands of fish glide above and around you as you walk through the tunnel. It’s a moment of pure wonder that every visitor—kids or adults—remembers.',
-      reviewSummary: '4.5 (76k reviews)',
     ),
     DummyPlace(
       name: 'Legoland Dubai',

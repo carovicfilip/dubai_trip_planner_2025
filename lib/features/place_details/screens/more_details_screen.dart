@@ -75,7 +75,7 @@ class MoreDetailsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text(
-              place.title,
+              place.name,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
@@ -85,16 +85,23 @@ class MoreDetailsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (place.reviewSummary != null)
+                if (place.reviewSummary != null && place.reviewSummary!.isNotEmpty)
                   _InfoChip(
                     icon: Icons.star_rounded,
                     label: place.reviewSummary!,
                   ),
-                if (place.reviewSummary != null) const SizedBox(height: 10),
-                _InfoChip(
-                  icon: Icons.access_time_rounded,
-                  label: place.openingHours,
-                ),
+                if (place.reviewSummary != null && place.reviewSummary!.isNotEmpty && place.openingHours != null && place.openingHours!.isNotEmpty) const SizedBox(height: 10),
+                if (place.openingHours != null && place.openingHours!.isNotEmpty)
+                  _InfoChip(
+                    icon: Icons.access_time_rounded,
+                    label: place.openingHours!,
+                  ),
+                if ((place.reviewSummary != null && place.reviewSummary!.isNotEmpty || place.openingHours != null && place.openingHours!.isNotEmpty) && place.location != null && place.location!.isNotEmpty) const SizedBox(height: 10),
+                if (place.location != null && place.location!.isNotEmpty)
+                  _InfoChip(
+                    icon: Icons.pin_drop,
+                    label: place.location!,
+                  ),
               ],
             ),
           ),
@@ -163,16 +170,18 @@ class _InfoChip extends StatelessWidget {
         ],
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 18, color: Colors.black87),
           const SizedBox(width: 6),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 13,
-              color: Colors.black87,
-              fontWeight: FontWeight.w500,
+          Flexible(
+            child: Text(
+              label,
+              style: const TextStyle(
+                fontSize: 13,
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+              ),
+              softWrap: true,
             ),
           ),
         ],

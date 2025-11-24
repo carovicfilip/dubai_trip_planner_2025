@@ -76,7 +76,7 @@ class PlacesCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  place.title,
+                  place.name,
                   style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,

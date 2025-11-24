@@ -257,14 +257,16 @@ class _MyTripScreenState extends State<MyTripScreen> {
         shadowColor: Colors.black26,
       ),
 
-      body: Container(
-        color: Colors.white, // 👈 umesto slike i blur-a
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 140),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+      body: AbsorbPointer(
+        absorbing: _isLoading,
+        child: Container(
+          color: Colors.white, // 👈 umesto slike i blur-a
+          child: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 140),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                 if (_latestPlan != null)
                   Dismissible(
                     key: Key(
@@ -582,6 +584,7 @@ class _MyTripScreenState extends State<MyTripScreen> {
               ],
             ),
           ),
+        ),
         ),
       ),
 

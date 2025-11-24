@@ -14,10 +14,11 @@ class PlaceRepository {
         return Place(
           id: '${categoryId}_${entry.key}',
           categoryId: categoryId,
-          title: dummy.name ?? '',
-          imageUrl: dummy.imageUrl ?? '',
-          openingHours: dummy.openingHours ?? '',
+          name: dummy.name ?? '',
           description: dummy.description ?? '',
+          imageUrl: dummy.imageUrl ?? '',
+          openingHours: dummy.openingHours,
+          location: dummy.location,
           reviewSummary: dummy.reviewSummary,
         );
       }).toList(),
