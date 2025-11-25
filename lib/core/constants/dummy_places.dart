@@ -47,13 +47,14 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       location: 'Downtown Dubai',
     ),
     DummyPlace(
-        name: 'Museum of the Future',
-        imageUrl: '',
-        openingHours: 'Daily: 09:00 AM - 9:00 PM',
-        description:
-            'The Museum of the Future is one of Dubai’s most striking landmarks, known for its futuristic torus-shaped design covered in flowing Arabic calligraphy. More than just a museum, it serves as an immersive exploration of future possibilities in technology, sustainability, space, and human innovation. Inside, visitors experience interactive exhibits that blend science, imagination, and cutting-edge design, offering a glimpse into what the world could look like decades from now. The Museum of the Future stands as a symbol of progress and creativity, inspiring visitors to think boldly about tomorrow.',
-        reviewSummary: '4.4 (48k reviews)',
-        location: '201 Sheikh Zayed Road, Trade Centre 2'),
+      name: 'Museum of the Future',
+      imageUrl: '',
+      openingHours: 'Daily: 09:00 AM - 9:00 PM',
+      description:
+          'The Museum of the Future is one of Dubai’s most striking landmarks, known for its futuristic torus-shaped design covered in flowing Arabic calligraphy. More than just a museum, it serves as an immersive exploration of future possibilities in technology, sustainability, space, and human innovation. Inside, visitors experience interactive exhibits that blend science, imagination, and cutting-edge design, offering a glimpse into what the world could look like decades from now. The Museum of the Future stands as a symbol of progress and creativity, inspiring visitors to think boldly about tomorrow.',
+      reviewSummary: '4.4 (48k reviews)',
+      location: '201 Sheikh Zayed Road, Trade Centre 2',
+    ),
     DummyPlace(
       name: 'The Dubai Frame',
       imageUrl: '',
@@ -264,51 +265,51 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       location: 'The Beach, JBR - 5101 Messer Street - Marsa Dubai - Jumeirah Beach Residence',
     ),
   ],
-
-
-
-
   'culture_museums': [
     DummyPlace(
       name: 'Al Fahidi Historical Neighbourhood',
       imageUrl: '',
-      openingHours: 'Daily: 07:00 AM - 8:00 PM',
+      reviewSummary: '4.6 (16k reviews)',
       description:
-          'Al Fahidi preserves old Dubai architecture with wind towers, courtyard homes, and narrow pathways. It is home to museums, cultural centers, and traditional cafés. Visitors experience Dubai’s heritage before the modern skyline.',
+          'Al Fahidi Historical Neighbourhood, often called Al Bastakiya, is one of Dubai’s most atmospheric and culturally significant districts. Characterized by its narrow lanes, traditional wind-tower architecture, and restored courtyard homes, it offers a rare look into Dubai’s life before the modern skyline emerged. The neighborhood is filled with museums, art galleries, cafés, and cultural centers like the Sheikh Mohammed Centre for Cultural Understanding, where visitors can learn about Emirati traditions firsthand. With its peaceful ambiance, sandy pathways, and heritage-rich buildings, Al Fahidi provides a meaningful journey into the city’s past and remains a must-visit destination for history, culture, and art enthusiasts.',
+      location: 'Al Souq Al Kabeer - Al Fahidi',
     ),
     DummyPlace(
       name: 'Etihad Museum',
       imageUrl: '',
       openingHours: 'Daily: 10:00 AM - 8:00 PM',
       description:
-          'Etihad Museum chronicles the formation of the United Arab Emirates through interactive exhibits and historic documents. It sits on the site where the UAE constitution was signed in 1971. The museum features sleek modern architecture and detailed storytelling.',
+          'The Etihad Museum is a modern, beautifully designed cultural landmark in Dubai that tells the story of the UAE’s formation and national identity. Located at the historic site where the Union Agreement was signed in 1971, the museum features interactive exhibits, archival photos, films, and artifacts that bring the country’s unification journey to life. Its sleek, contemporary architecture—shaped like a manuscript—symbolizes the signing of the constitution. With immersive galleries and thoughtfully curated displays, the Etihad Museum offers a rich and engaging look into the UAE’s political history, heritage, and visionary leadership.',
       reviewSummary: '4.6 (3k reviews)',
-    ),
-    DummyPlace(
-      name: 'Al Shindagha Museum',
-      imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 8:00 PM',
-      description:
-          'Al Shindagha Museum showcases Dubai’s maritime history and cultural evolution through immersive displays. It overlooks Dubai Creek, where the city first developed. The museum is part of a restored heritage district.',
-      reviewSummary: '4.5 (4.4k reviews)',
+      location: '1 Jumeira St - Jumeirah 1',
     ),
     DummyPlace(
       name: 'Dubai Opera',
       imageUrl: '',
-      openingHours: '',
       description:
-          'Dubai Opera is the city’s premier performing arts venue hosting musicals, opera, ballet, concerts, and cultural events. Its dhow-shaped building reflects local maritime heritage. The venue is known for exceptional acoustics and high-end architectural design.',
-      reviewSummary: '4.7 (9.1k reviews)',
+          'Dubai Opera is a world-class performing arts venue located in Downtown Dubai, known for its striking dhow-inspired architecture and dynamic cultural programming. The venue hosts a diverse lineup of performances, including opera, ballet, concerts, theater, comedy, and family shows. Inside, the flexible auditorium can transform from a traditional theater to a concert hall or flat-floor event space, offering exceptional acoustics and an intimate viewing experience. With its stunning location near the Burj Khalifa and Dubai Fountain, Dubai Opera serves as a vibrant cultural hub, bringing global artistry and entertainment to the heart of the city.',
+      reviewSummary: '4.7 (9.2k reviews)',
+      location: 'Sheikh Mohammed bin Rashid Blvd - Burj Khalifa',
+    ),
+    DummyPlace(
+      name: 'Museum of the Future',
+      imageUrl: '',
+      openingHours: 'Daily: 09:00 AM - 9:00 PM',
+      description:
+          'The Museum of the Future is one of Dubai’s most striking landmarks, known for its futuristic torus-shaped design covered in flowing Arabic calligraphy. More than just a museum, it serves as an immersive exploration of future possibilities in technology, sustainability, space, and human innovation. Inside, visitors experience interactive exhibits that blend science, imagination, and cutting-edge design, offering a glimpse into what the world could look like decades from now. The Museum of the Future stands as a symbol of progress and creativity, inspiring visitors to think boldly about tomorrow.',
+      reviewSummary: '4.4 (48k reviews)',
+      location: '201 Sheikh Zayed Road, Trade Centre 2',
     ),
   ],
   'shopping': [
     DummyPlace(
-      name: 'The Dubai Mall',
+      name: 'Dubai Mall',
       imageUrl: '',
-      openingHours: 'Mon-Thu: 10:00 AM - 11:00 PM, Fri-Sun: 10:00 AM - 12:00 AM',
+      openingHours: 'Mon-Thu 10:00 AM - 11:00 PM, Fri-Sun 10:00 AM - 12:00 AM',
       description:
-          'The Dubai Mall is one of the largest malls in the world, offering luxury brands, dining, and entertainment attractions. It features the Dubai Aquarium, VR Park, and an indoor skating rink. The mall is a central hub for tourism connected directly to Burj Khalifa.',
-      reviewSummary: '4.7 (284k reviews)',
+          'Dubai Mall is one of the world’s largest shopping and entertainment destinations, home to more than 1,200 stores. It also houses major attractions like Dubai Aquarium, VR Park, and an Olympic-sized ice rink. Located next to Burj Khalifa, it attracts millions of visitors each year.',
+      reviewSummary: '4.7 (283k reviews)',
+      location: 'Burj Khalifa - Downtown Dubai',
     ),
     DummyPlace(
       name: 'Mall of the Emirates',
@@ -317,6 +318,7 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Mall of the Emirates is famous for Ski Dubai, the Middle East’s first indoor ski resort. It offers luxury shopping, gourmet dining, and diverse entertainment options. The mall blends leisure and retail in an upscale environment.',
       reviewSummary: '4.7 (141k reviews)',
+      location: 'Sheikh Zayed Rd - Al Barsha - Al Barsha 1',
     ),
     DummyPlace(
       name: 'City Walk',
@@ -325,6 +327,7 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'City Walk is an outdoor urban lifestyle destination featuring boutiques, cafés, street art, and entertainment venues. It blends European-style boulevards with modern Dubai design. The area is popular for evening strolls and family outings.',
       reviewSummary: '4.6 (36k reviews)',
+      location: 'Al Safa St - Al Wasl',
     ),
     DummyPlace(
       name: 'Souk Madinat Jumeirah',
@@ -333,38 +336,42 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Souk Madinat is a modern reinterpretation of a traditional Arabian marketplace. It features boutiques, waterfront dining, and picturesque canals with abra boats. The venue offers atmospheric views of Burj Al Arab.',
       reviewSummary: '4.5 (25k reviews)',
+      location: 'King Salman Bin Abdulaziz Al Saud St - Al Sufouh 1',
     ),
     DummyPlace(
       name: 'Dubai Festival City Mall',
       imageUrl: '',
-      openingHours: 'Mon-Thu: 10:00 AM - 10:00 PM, Fri-Sun: 10:00 AM - 12:00 AM',
+      openingHours: 'Monday–Thursday 10:00 AM - 10:00 PM, Friday–Sunday 10:00 AM – 12:00 AM',
       description:
           'Dubai Festival City Mall is a waterfront shopping destination known for the IMAGINE laser, fountain, and fire show. It offers a wide selection of retail brands and family attractions. The location along the creek adds scenic value to the experience.',
       reviewSummary: '4.6 (53.7k reviews)',
+      location: 'Crescent Rd - Al Kheeran - Dubai Festival City',
     ),
-    DummyPlace(
-      name: 'Platinum Heritage Desert Camp',
-      imageUrl: '',
-      openingHours: 'Daily: 07:00 AM - 12:00 AM',
-      description:
-          'Platinum Heritage offers luxury desert safaris in vintage Land Rovers and authentic Bedouin-style camps. Their experiences focus on conservation, culture, and wildlife. It is known as Dubai’s most premium desert tour operator.',
-      reviewSummary: '4.8 (1.2k reviews)',
-    ),
+  ],
+  'desert_adventure': [
     DummyPlace(
       name: 'Skyhub Paramotors',
       imageUrl: '',
-      openingHours: 'Daily flights: 06:00 AM - 06:00 PM',
       description:
-          'Skyhub Paramotors specializes in powered paragliding experiences offering aerial views of the desert and Dubai skyline. They emphasize safety, professional training, and high-quality equipment. The adventure is suitable for both beginners and thrill-seekers.',
-      reviewSummary: '4.9 (1.9k reviews)',
+          'Skyhub Paramotors Dubai offers an exhilarating aerial adventure that lets you soar above the desert in a powered paraglider. Guided by certified pilots, the experience combines the thrill of flight with breathtaking views of sand dunes, wildlife, and the vast Arabian landscape at sunrise or sunset. Safe, smooth, and suitable even for first-timers, the paramotor flight provides a unique perspective of Dubai’s natural beauty away from the city skyline. It’s an unforgettable, adrenaline-filled activity for adventure seekers looking to experience the desert from the sky.',
     ),
     DummyPlace(
-      name: 'Balloon Adventures Dubai',
+      name: 'Hero Balloon Flights Dubai',
       imageUrl: '',
-      openingHours: 'Daily sunrise flights: 04:00 AM - 09:00 AM',
+      openingHours: 'Daily 09:00 AM - 08:00 PM',
       description:
-          'Balloon Adventures provides sunrise hot air balloon flights over the Dubai desert. Guests enjoy aerial views of dunes, camels, and wildlife. The experience often includes a desert breakfast and falconry displays.',
-      reviewSummary: '4.9 (1.9k reviews)',
+          'Hero Balloon Flights Dubai offers a serene and magical hot air balloon experience over the desert at sunrise. As you gently ascend, you’re treated to panoramic views of rolling sand dunes, roaming wildlife, and the soft golden glow of the early morning sky. Guided by expert pilots, the flight is smooth, safe, and suitable for all ages, making it a memorable adventure for couples, families, and photographers alike. With its combination of breathtaking scenery and peaceful airborne moments, Hero Balloon Flights delivers one of Dubai’s most unforgettable desert experiences.',
+      reviewSummary: '4.5 (271 reviews)',
+      location: 'CONTROL TOWER - 1303',
+    ),
+    DummyPlace(
+      name: 'Ski Dubai',
+      imageUrl: '',
+      openingHours: 'Daily 10:00 AM - 12:00 AM',
+      description:
+          'Ski Dubai is a unique indoor winter wonderland located inside Mall of the Emirates, offering a full snow and ski experience in the heart of the desert. The attraction features real snow, ski slopes for all skill levels, a snow park with slides and climbing areas, and even the chance to meet adorable penguins. Visitors can enjoy skiing, snowboarding, tobogganing, or simply playing in the snow—no matter the weather outside. With its immersive alpine atmosphere and fun activities for all ages, Ski Dubai delivers a refreshing escape and one of the city’s most iconic family-friendly adventures.',
+      reviewSummary: '4.5 (40k reviews)',
+      location: 'Sheikh Zayed Rd - Al Barsha - Al Barsha 1',
     ),
   ],
   'family_fun': [
