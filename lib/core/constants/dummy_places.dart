@@ -102,80 +102,86 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
   ],
   'restaurants': [
     DummyPlace(
-      name: 'Trèsind',
+      name: 'Trèsind Studio',
       imageUrl: '',
-      openingHours: 'Daily: 12:00 PM - 11:45 PM',
+      openingHours: 'Daily: 6:00 PM - 12 AM',
       description:
-          'Trèsind is a pioneer of modern Indian cuisine in Dubai, offering innovative dishes with refined presentation. The restaurant blends traditional flavors with contemporary techniques. It is known for its sophisticated tasting menus and chic, upscale atmosphere.',
-      reviewSummary: '4.5 (2.7k reviews)',
+          'Trèsind Studio is an award-winning fine-dining restaurant in Dubai, renowned for its intimate setting and innovative approach to modern Indian cuisine. Led by acclaimed chefs, it offers a multi-course tasting menu that blends traditional flavors with bold, contemporary techniques, creating a culinary journey that feels both artistic and deeply personal. With only a limited number of seats, the experience is highly immersive, allowing guests to engage with the chefs and enjoy beautifully plated dishes that highlight creativity, storytelling, and exceptional craftsmanship. Trèsind Studio stands among Dubai’s most prestigious gastronomic destinations.',
+      reviewSummary: '4.7 (2.7k reviews)',
+      location: 'St. Regis Gardens The Palm',
     ),
     DummyPlace(
       name: 'FZN by Björn Frantzén',
       imageUrl: '',
       openingHours: 'Tuesday-Saturday 7:00 PM - 01:00 AM',
       description:
-          'FZN as one of only two restaurants in the UAE awarded three Michelin stars, FZN offers an extraordinary multi-    course tasting menu that fuses refined European flavours with Japanese precision. Each dish is a masterpiece of European cuisine, served in a luxurious, Scandinavian-inspired setting. Ideal for special occasions, romantic dinners, and gourmet experiences, FZN stands as a pinnacle of modern gastronomy and fine dining in the region.',
-      reviewSummary: '',
+          'FZN by Björn Frantzén is a high-end dining experience in Dubai inspired by the culinary vision of acclaimed Swedish chef Björn Frantzén. Known for blending Nordic techniques with global influences, the restaurant offers an elegant, contemporary tasting menu that highlights precision, seasonal ingredients, and bold yet balanced flavors. The ambiance is refined and immersive, with meticulous attention to detail in both presentation and service. FZN delivers a sophisticated gastronomic journey that reflects Frantzén’s signature style—innovative, expressive, and rooted in world-class culinary craft.',
+      reviewSummary: '4.7 (50 reviews)',
+      location: 'Atlantis The Palm, Crescent Road, The Palm Jumeirah',
     ),
     DummyPlace(
-      name: 'Zuma Dubai',
+      name: 'Zuma',
       imageUrl: '',
       openingHours: 'Sun-Wed 12:00 PM - 02:00 AM, Thu-Sat 12:00 PM - 03:00 AM',
       description:
-          'Zuma is an award-winning contemporary Japanese restaurant known for its izakaya-style sharing plates. It offers sushi, robata-grilled dishes, and a stylish urban atmosphere. The venue is also popular for its high-energy lounge and nightlife.',
-      reviewSummary: '4.8 (4.1k reviews)',
+          'Zuma Dubai is a globally acclaimed contemporary Japanese restaurant offering a stylish, high-energy dining experience in the heart of DIFC. Known for its izakaya-style sharing dishes, the menu features signature items like miso-marinated black cod, premium sushi, robata-grilled meats, and inventive small plates. The atmosphere blends modern luxury with a lively social vibe, making it a favorite for both business dinners and nights out. With exceptional service, sophisticated design, and consistently high culinary standards, Zuma remains one of Dubai’s most iconic dining destinations.',
+      reviewSummary: '4.4 (4.1k reviews)',
+      location: 'Gate Village, Building 4, Dubai International Financial Centre',
     ),
     DummyPlace(
       name: 'Il Ristorante – Niko Romito',
       imageUrl: '',
       openingHours: 'Daily: 7:00 PM - 11:00 PM',
       description:
-          'Il Ristorante showcases refined Italian fine dining curated by Michelin-starred chef Niko Romito. The menu focuses on purity of ingredients, balanced flavors, and elegant simplicity. Located in the Bulgari Resort, it provides a luxurious seaside dining experience.',
-      reviewSummary: '',
+          'Il Ristorante – Niko Romito is a refined Italian dining experience located at Bulgari Resort Dubai, crafted by the celebrated Michelin-starred chef Niko Romito. The restaurant showcases a minimalist yet sophisticated approach to Italian cuisine, focusing on purity of flavor, precise techniques, and exceptional ingredients sourced from Italy. Its elegant interiors, serene marina views, and warm hospitality create a luxurious atmosphere. With beautifully balanced dishes that honor Italian tradition while embracing modern creativity, Il Ristorante offers one of Dubai’s most exquisite and memorable fine-dining journeys.',
+      reviewSummary: '4 (275 reviews)',
+      location: 'Bvlgari Resort, Jumeirah Bay Island',
     ),
     DummyPlace(
-      name: 'Pierchic',
-      imageUrl: '',
-      openingHours: 'Lunch: 1:00 PM - 2:30 PM; Dinner: Sun-Thu 6:30 PM - 10:00 PM, Fri-Sat 6:30 PM - 10:30 PM',
-      description:
-          'Pierchic is an over-water restaurant offering romantic dining with panoramic Gulf views. It specializes in premium seafood served in an elegant, serene setting. Its location at the end of a wooden pier makes it one of Dubai\'s most picturesque dining spots.',
-      reviewSummary: '4.2 (2.4k reviews)',
-    ),
+        name: 'Ossiano',
+        imageUrl: '',
+        openingHours: 'Daily: 6:00 PM - 12:00 AM',
+        description:
+            'Ossiano Dubai is an extraordinary underwater dining experience located in Atlantis, The Palm, offering a Michelin-starred journey inspired by the ocean. Set beside the magnificent Ambassador Lagoon, the restaurant surrounds guests with floor-to-ceiling views of marine life, creating a serene and immersive atmosphere. Led by acclaimed chefs, Ossiano presents an imaginative tasting menu that blends refined techniques with ocean-inspired flavors, telling a story through each beautifully crafted course. With its dramatic setting, exceptional service, and avant-garde cuisine, Ossiano stands as one of Dubai’s most unique and unforgettable fine-dining destinations.',
+        reviewSummary: '4.5 (1.3k reviews)',
+        location: 'Atlantis The Palm, Crescent Road, The Palm Jumeirah'),
     DummyPlace(
-      name: 'Ossiano',
+      name: 'Moonrise',
       imageUrl: '',
       openingHours: 'Daily: 6:00 PM - 12:00 AM',
       description:
-          'Ossiano is an underwater-themed fine-dining restaurant with floor-to-ceiling views of marine life in the Ambassador Lagoon. It features innovative seafood tasting menus crafted by world-renowned chefs. The immersive ambiance delivers a unique, luxury dining experience.',
-      reviewSummary: '4.2 (2.4k reviews)',
+          'Moonrise is an intimate, chef-driven dining experience in Dubai known for its modern, Middle Eastern–inspired tasting menu. Set on a rooftop with an open-kitchen counter, it allows guests to watch the chefs prepare each course with precision and creativity. Led by Chef Solemann Haddad, Moonrise blends local flavors with international techniques, resulting in dishes that are imaginative yet deeply rooted in regional culture. With limited seating, a minimalist setting, and a focus on storytelling through food, Moonrise offers a unique and personal gastronomic journey unlike anywhere else in the city.',
+      reviewSummary: '4.8 (300 reviews)',
+      location: 'Eden House, Al Satwa',
     ),
     DummyPlace(
-      name: 'Al Hadheerah',
+      name: 'CÉ LA VI',
       imageUrl: '',
-      openingHours: 'Daily: 7:00 PM - 12:00 AM',
+      openingHours: 'Daily: 12:00 AM - 3:00 AM',
       description:
-          'Al Hadheerah is an Arabic desert-themed restaurant at Bab Al Shams, offering traditional cuisine in an open-air setting. Guests enjoy live performances, including music, dance, and heritage shows. It recreates an authentic Bedouin atmosphere enhanced by desert scenery.',
-      reviewSummary: '4.5 (2k reviews)',
+          'CÉ LA VI Dubai is a stylish rooftop dining and entertainment destination located atop Address Sky View, offering breathtaking views of the Burj Khalifa and the city skyline. Known for its modern Asian cuisine, the restaurant serves beautifully crafted dishes that blend bold flavors with elegant presentation. The venue features a chic indoor dining area, a lively lounge, and an outdoor terrace perfect for sunset cocktails and photo-worthy moments. With its vibrant atmosphere, refined dishes, and iconic infinity-pool backdrop, CÉ LA VI delivers a memorable, upscale Dubai experience.',
+      reviewSummary: '4.5 (7.2k reviews)',
+      location: 'Address Sky View Towers, Sheikh Mohammed bin Rashid Boulevard',
     ),
     DummyPlace(
-      name: 'COYA Dubai',
+      name: 'OCCO Restaurant Dubai',
       imageUrl: '',
-      openingHours:
-          'Saturday: 12:30 PM - 4:00 PM, 7:00 PM - 12:30 AM ; Sun-Fri 12:30 PM - 3:30 PM, 6:30 PM - 12:30 AM  ',
+      openingHours: 'Daily: 10:00 AM - 4:00 AM',
       description:
-          'COYA is a vibrant Peruvian restaurant known for its ceviche bar, grills, and Latin-inspired cocktails. It mixes traditional flavors with contemporary culinary craftsmanship. The lively atmosphere and music make it a top social dining destination.',
-      reviewSummary: '4.6 (4k reviews)',
+          'OCCO Restaurant Dubai is an elegant dining destination offering a modern interpretation of classic Mediterranean and Levantine cuisine. With its chic, dimly lit interiors and stylish ambience, the restaurant blends contemporary luxury with warm, inviting character. The menu features a refined selection of mezze, grilled specialties, and fresh, flavorful dishes crafted with high-quality ingredients. Known for its smooth service, sophisticated atmosphere, and vibrant evening energy, OCCO provides a memorable dining experience perfect for both intimate dinners and lively gatherings.',
+      reviewSummary: '4.8 (1.6k reviews)',
+      location: 'Hessa St - Al Barsha',
     ),
   ],
   'nightlife': [
     DummyPlace(
-      name: 'WHITE Beach Dubai',
-      imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 6:30 PM',
-      description:
-          'WHITE Beach is a stylish beachfront club at Atlantis The Palm offering poolside lounging and DJ performances. It features Mediterranean-inspired design and iconic skyline views. At night, the venue transforms into a lively party destination.',
-      reviewSummary: '4.5 (3k reviews)',
-    ),
+        name: 'O Dubai - Lounge & Club',
+        imageUrl: '',
+        openingHours: 'Daily: 8:00 PM - 4:00 AM',
+        description:
+            'O Dubai – Lounge & Club is a stylish nightlife spot combining upscale dining with high-energy club vibes. Known for its stunning city views, vibrant music, and luxurious atmosphere, it’s a go-to destination for premium cocktails, live entertainment, and late-night parties.',
+        reviewSummary: '4.8 (5.2k reviews)',
+        location: 'Nassima Tower Hotel Apartments | Sheikh Zayed Road'),
     DummyPlace(
       name: 'Soho Garden DXB',
       imageUrl: '',
@@ -183,22 +189,16 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Soho Garden combines restaurants, lounges, clubs, and outdoor spaces into one nightlife complex. It hosts international DJs and themed parties throughout the week. The venue blends European garden aesthetics with Dubai nightlife energy.',
       reviewSummary: '4.2 (3.5k reviews)',
-    ),
-    DummyPlace(
-      name: 'Billionaire Dubai',
-      imageUrl: '',
-      openingHours: 'Tuesday - Sunday 9:00 PM - 03:00 AM',
-      description:
-          'Billionaire is a dinner-show concept that merges fine dining with high-energy performances. The venue transitions into a nightclub later in the evening. It is known for its luxurious atmosphere and theatrical entertainment.',
-      reviewSummary: '4.4 (1.7k reviews)',
+      location: 'Racecourse, Grand Stand - Al Meydan Rd - Nad Al Sheba 1',
     ),
     DummyPlace(
       name: 'BLU Dubai',
       imageUrl: '',
-      openingHours: 'Tuesday - Sunday 9:00 PM - 03:00 AM',
+      openingHours: 'Daily: 10:00 PM - 4:00 AM',
       description:
           'BLU is a rooftop lounge and nightclub offering panoramic views of Sheikh Zayed Road. It hosts international artists, themed nights, and high-energy music events. Its elevated location makes it a standout late-night venue.',
       reviewSummary: '4 (1.6k reviews)',
+      location: 'V Hotel Dubai, Al Habtoor City - 260 Sheikh Zayed Rd - Business Bay',
     ),
     DummyPlace(
       name: 'Secret Room Dubai',
@@ -207,57 +207,67 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Secret Room is an exclusive hip-hop-focused nightclub known for its luxury automotive entrance concept. The interior features graffiti-style decor and high-end bottle service. It attracts a trendy crowd and international DJs.',
       reviewSummary: '4.4 (230 reviews)',
+      location: 'Downtown Dubai',
     ),
     DummyPlace(
-      name: '',
+      name: 'The Penthouse Dubai',
       imageUrl: '',
-      openingHours: 'Wednesday - Saturday 11:00 PM - 04:00 AM',
-      description: 'Hip-hop focused underground club with customized supercar valet entrance.',
-      reviewSummary: '4.4 (230 reviews)',
+      openingHours: 'Daily: 5:00 PM - 4:00 AM',
+      description:
+          'The Penthouse Dubai – Rooftop Lounge & Nightclub at FIVE Palm Jumeirah offers a glamorous rooftop experience with panoramic skyline views. Known for its stylish décor, lively nightlife, and deep-house music, it blends upscale dining, signature cocktails, and vibrant parties in a chic, adults-only setting.',
+      reviewSummary: '4.5 (3.4k reviews)',
+      location: 'No 1 Palm Jumeirah',
     ),
   ],
   'beaches_pools': [
     DummyPlace(
-      name: 'Kite Beach',
+        name: 'Barasti Beach',
+        imageUrl: '',
+        openingHours: 'Daily: 9:00 AM - 3:00 PM',
+        description:
+            'Barasti Beach is a lively beach bar known for its relaxed tropical vibe, beachfront views, and upbeat atmosphere. Offering great music, casual dining, and day-to-night entertainment, it’s a popular spot for sunbathing, sports screenings, and energetic weekend parties right on the sand.',
+        reviewSummary: '4.3 (15k reviews)',
+        location: 'Le Meridien Mina Syahi Beach Resort & Marina'),
+    DummyPlace(
+        name: 'Nikki Beach Dubai',
+        imageUrl: '',
+        openingHours: 'Tuesday - Sunday 11:00 AM - 7:00 PM',
+        description:
+            'Nikki Beach Dubai – Beach Club & Restaurant delivers a chic, contemporary beachfront experience with signature white décor, live music, and a stylish crowd. Known for its luxury cabanas, gourmet cuisine, and upbeat poolside parties, it offers a perfect blend of relaxation and vibrant beachside entertainment.',
+        reviewSummary: '4.4 (1.8k reviews)',
+        location: 'Nikki Beach Dubai, Pearl - Jumeirah'),
+    DummyPlace(
+      name: 'Beach by FIVE | FIVE Palm Jumeirah',
       imageUrl: '',
-      openingHours: 'Open 24 hours',
+      openingHours: 'Daily 9:00 AM - 2:00 PM',
       description:
-          'Kite Beach is a popular public beach known for kite-surfing, jogging tracks, and beachfront cafés. It offers clear views of Burj Al Arab. The area is active, family-friendly, and ideal for water sports.',
-      reviewSummary: '4.5 (1.9k reviews)',
+          'Beach by FIVE – FIVE Palm Jumeirah Dubai is a vibrant beach club offering a blend of luxury lounging and energetic party vibes. With its private beach, stylish sunbeds, gourmet bites, and live DJ sets, it’s known for hosting some of the city’s most lively daytime and sunset events in a glamorous beachfront setting.',
+      reviewSummary: '4.8 (2.2k reviews)',
+      location: 'No 1 Palm Jumeirah',
     ),
     DummyPlace(
-      name: 'Marina Beach JBR',
+      name: 'February 30',
       imageUrl: '',
-      openingHours: 'Open 24 hours',
+      openingHours: 'Monday–Thursday 12:00–02:00, Friday–Saturday 10:00–03:00, Sunday 10:00–02:00',
       description:
-          'Marina Beach is a lively stretch of sand adjacent to The Walk at JBR. It offers swimming, watersports, restaurants, and a family-friendly vibe. The beachfront is surrounded by high-rise towers and resort facilities.',
-      reviewSummary: '4.6 (25k reviews)',
+          'February 30 Dubai is a trendy beach bar and restaurant on Palm West Beach, known for its vibrant red-and-black décor, upbeat music, and stylish seaside atmosphere. Offering creative cocktails, international dishes, and a lively day-to-night vibe, it’s a popular spot for beachfront dining and social lounging.',
+      reviewSummary: '4.6 (4.4k reviews)',
+      location: 'West beach Palm - Jumeirah',
     ),
     DummyPlace(
-      name: 'La Mer',
+      name: 'Bla Bla Dubai',
       imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 12:00 AM',
+      openingHours: 'Monday–Thursday 12:00–02:00, Friday–Saturday 10:00–03:00, Sunday 10:00–02:00',
       description:
-          'La Mer is a modern beachfront district with boutiques, restaurants, and colorful street art. It offers water play areas, beach clubs, and relaxed urban vibes. Its design blends coastal and contemporary aesthetics.',
-      reviewSummary: '4.6 (23k reviews)',
-    ),
-    DummyPlace(
-      name: 'Nikki Beach Dubai',
-      imageUrl: '',
-      openingHours: 'Tuesday - Sunday 11:00 AM - 7:00 PM',
-      description:
-          'Nikki Beach is a luxury beach club with white décor, pools, cabanas, and live DJ entertainment. It blends international beach-club culture with Dubai glamour. Guests enjoy Mediterranean-style dining and upscale party atmosphere.',
-      reviewSummary: '4.4 (1.8k reviews)',
-    ),
-    DummyPlace(
-      name: 'Atlantis Aquaventure Waterpark',
-      imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 6:30 PM',
-      description:
-          'The private beach at Aquaventure offers pristine white sand and views of the Palm Jumeirah. Access is included with waterpark tickets. It provides a relaxing break between rides and attractions at the park.',
-      reviewSummary: '4.6 (37.5k reviews)',
+          'Bla Bla Dubai is a dynamic beachside venue on JBR featuring multiple bars, lounges, and dining concepts all in one place. Known for its lively atmosphere, beachfront views, and diverse entertainment, it offers everything from casual daytime chilling to vibrant nightlife with DJ sets and rooftop vibes.',
+      reviewSummary: '4.3 (7.5k reviews)',
+      location: 'The Beach, JBR - 5101 Messer Street - Marsa Dubai - Jumeirah Beach Residence',
     ),
   ],
+
+
+
+
   'culture_museums': [
     DummyPlace(
       name: 'Al Fahidi Historical Neighbourhood',
