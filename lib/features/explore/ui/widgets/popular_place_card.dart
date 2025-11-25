@@ -21,7 +21,7 @@ class PopularPlaceCard extends StatelessWidget {
           height: double.infinity,
           margin: const EdgeInsets.only(right: 16),
           decoration: BoxDecoration(
-            border: Border.all( // 👈 beli border
+            border: Border.all(
               color: Colors.white,
               width: 6,
             ),
@@ -66,7 +66,7 @@ class PopularPlaceCard extends StatelessWidget {
           bottom: 4,
           child: Container(
             width: 320,
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.only(left: 22, bottom: 12),
             // decoration: BoxDecoration(
             //   color: Colors.black26,
             //   borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12)),
