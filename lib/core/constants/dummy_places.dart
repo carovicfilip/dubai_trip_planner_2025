@@ -382,6 +382,7 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Dubai Parks and Resorts feels like a full day of excitement wrapped into one destination. Each park has its own world of characters, rides, and cinematic moments that bring families together. It’s the kind of place where both kids and adults end up smiling more than they expected.',
       reviewSummary: '4.5 (7.3k reviews)',
+      location: 'Sheikh Zayed Rd - Saih Shuaib 1',
     ),
     DummyPlace(
       name: 'IMG Worlds of Adventure',
@@ -390,14 +391,7 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       description:
           'Stepping into IMG Worlds feels like entering a giant indoor universe built just for fun. The themed zones pull you into stories you grew up with, from Marvel heroes to cartoon classics. It’s the perfect escape when you want big thrills without the desert heat.',
       reviewSummary: '4.3 (32.2k reviews)',
-    ),
-    DummyPlace(
-      name: 'The Green Planet',
-      imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 6:00 PM',
-      description:
-          'The Green Planet gives you the rare feeling of stepping into a calm, living rainforest in the heart of the city. Birds fly above you, waterfalls echo softly, and every corner feels alive. It’s an experience that quietly reconnects you with nature.',
-      reviewSummary: '4.4 (11.1k reviews)',
+      location: 'Wadi Al Safa 4 - City of Arabia',
     ),
     DummyPlace(
       name: 'Legoland Dubai',
@@ -405,7 +399,8 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       openingHours: 'Mon-Fri: 10:00 AM - 06:00 PM, Sat-Sun: 11:00 AM - 7:00 PM',
       description:
           'Legoland Dubai feels like a world built with imagination at every turn. The rides are gentle, colorful, and designed to make younger kids feel brave and excited. It’s one of the easiest places for families to spend a full day without rushing.',
-      reviewSummary: '4.4 (19.5k reviews)',
+      reviewSummary: '4.4 (20k reviews)',
+      location: 'Parks & Resorts - Sheikh Zayed Rd - Saih Shuaib 1',
     ),
   ],
 };
