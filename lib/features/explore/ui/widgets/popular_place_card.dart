@@ -16,29 +16,32 @@ class PopularPlaceCard extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            width: 320,
-            margin: const EdgeInsets.only(right: 16),
-            decoration: BoxDecoration(
-              border: Border.all( // 👈 beli border
-                color: Colors.white,
-                width: 4,
-              ),
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.grey[300],
+        Container(
+          width: 320,
+          height: double.infinity,
+          margin: const EdgeInsets.only(right: 16),
+          decoration: BoxDecoration(
+            border: Border.all( // 👈 beli border
+              color: Colors.white,
+              width: 6,
             ),
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.grey[300],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(24),
             child: place.imageUrl.isNotEmpty
                 ? Image.asset(
                     place.imageUrl,
-                    width: 320,
+                    width: double.infinity,
+                    height: double.infinity,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       debugPrint('Error loading image: ${place.imageUrl}');
                       debugPrint('Error: $error');
                       return Container(
-                        width: 320,
+                        width: double.infinity,
+                        height: double.infinity,
                         color: Colors.grey[300],
                         child: const Center(
                           child: Icon(

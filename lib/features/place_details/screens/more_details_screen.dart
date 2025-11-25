@@ -96,7 +96,7 @@ class MoreDetailsScreen extends StatelessWidget {
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
@@ -122,7 +122,7 @@ class MoreDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 30),
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -174,7 +174,7 @@ class _InfoChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -188,8 +188,8 @@ class _InfoChip extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(icon, size: 18, color: Colors.black87),
-          const SizedBox(width: 6),
+          Icon(icon, size: 18, color: Colors.deepOrange),
+          const SizedBox(width: 10),
           Flexible(
             child: Text(
               label,
