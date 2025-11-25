@@ -16,19 +16,47 @@ class PopularPlaceCard extends StatelessWidget {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Container(
-          width: 320,
-          margin: const EdgeInsets.only(right: 16),
-          decoration: BoxDecoration(
-            border: Border.all( // 👈 beli border
-              color: Colors.white,
-              width: 4,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            width: 320,
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              border: Border.all( // 👈 beli border
+                color: Colors.white,
+                width: 4,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.grey[300],
             ),
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: NetworkImage(place.imageUrl),
-              fit: BoxFit.cover,
-            ),
+            child: place.imageUrl.isNotEmpty
+                ? Image.asset(
+                    place.imageUrl,
+                    width: 320,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      debugPrint('Error loading image: ${place.imageUrl}');
+                      debugPrint('Error: $error');
+                      return Container(
+                        width: 320,
+                        color: Colors.grey[300],
+                        child: const Center(
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                : const Center(
+                    child: Icon(
+                      Icons.image_not_supported,
+                      size: 50,
+                      color: Colors.grey,
+                    ),
+                  ),
           ),
         ),
         Positioned(

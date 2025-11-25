@@ -27,20 +27,49 @@ class PlacesCard extends StatelessWidget {
           // Slika + Favorite button u Stack-u
           Stack(
             children: [
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+                child: Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 1,
+                    ),
+                    color: Colors.grey[300],
                   ),
-                  border: Border.all(
-                    color: Colors.white,
-                    width: 1,
-                  ),
-                  image: DecorationImage(
-                    image: NetworkImage(place.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
+                  child: place.imageUrl.isNotEmpty
+                      ? Image.asset(
+                          place.imageUrl,
+                          width: double.infinity,
+                          height: 200,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            debugPrint('Error loading image: ${place.imageUrl}');
+                            debugPrint('Error: $error');
+                            return Container(
+                              width: double.infinity,
+                              height: 200,
+                              color: Colors.grey[300],
+                              child: const Center(
+                                child: Icon(
+                                  Icons.image_not_supported,
+                                  size: 50,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      : const Center(
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                        ),
                 ),
               ),
               // Favorite button - top right

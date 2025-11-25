@@ -162,15 +162,15 @@ const Map<String, List<DummyPlace>> dummyPlacesByCategory = {
       reviewSummary: '4.5 (7.2k reviews)',
       location: 'Address Sky View Towers, Sheikh Mohammed bin Rashid Boulevard',
     ),
-    DummyPlace(
-      name: 'OCCO Restaurant Dubai',
-      imageUrl: '',
-      openingHours: 'Daily: 10:00 AM - 4:00 AM',
-      description:
-          'OCCO Restaurant Dubai is an elegant dining destination offering a modern interpretation of classic Mediterranean and Levantine cuisine. With its chic, dimly lit interiors and stylish ambience, the restaurant blends contemporary luxury with warm, inviting character. The menu features a refined selection of mezze, grilled specialties, and fresh, flavorful dishes crafted with high-quality ingredients. Known for its smooth service, sophisticated atmosphere, and vibrant evening energy, OCCO provides a memorable dining experience perfect for both intimate dinners and lively gatherings.',
-      reviewSummary: '4.8 (1.6k reviews)',
-      location: 'Hessa St - Al Barsha',
-    ),
+    // DummyPlace(
+    //   name: 'OCCO Restaurant Dubai',
+    //   imageUrl: '',
+    //   openingHours: 'Daily: 10:00 AM - 4:00 AM',
+    //   description:
+    //       'OCCO Restaurant Dubai is an elegant dining destination offering a modern interpretation of classic Mediterranean and Levantine cuisine. With its chic, dimly lit interiors and stylish ambience, the restaurant blends contemporary luxury with warm, inviting character. The menu features a refined selection of mezze, grilled specialties, and fresh, flavorful dishes crafted with high-quality ingredients. Known for its smooth service, sophisticated atmosphere, and vibrant evening energy, OCCO provides a memorable dining experience perfect for both intimate dinners and lively gatherings.',
+    //   reviewSummary: '4.8 (1.6k reviews)',
+    //   location: 'Hessa St - Al Barsha',
+    // ),
   ],
   'nightlife': [
     DummyPlace(

@@ -26,12 +26,29 @@ class MoreDetailsScreen extends StatelessWidget {
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
                 ),
-                child: Image.network(
-                  place.imageUrl,
-                  width: double.infinity,
-                  height: 300,
-                  fit: BoxFit.cover,
-                ),
+                child: place.imageUrl.isNotEmpty
+                    ? Image.asset(
+                        place.imageUrl,
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          debugPrint('Error loading image: ${place.imageUrl}');
+                          debugPrint('Error: $error');
+                          return Container(
+                            width: double.infinity,
+                            height: 300,
+                            color: Colors.grey[300],
+                            child: const Icon(Icons.image_not_supported, size: 50),
+                          );
+                        },
+                      )
+                    : Container(
+                        width: double.infinity,
+                        height: 300,
+                        color: Colors.grey[300],
+                        child: const Icon(Icons.image_not_supported, size: 50),
+                      ),
               ),
               Positioned(
                 top: 2,
