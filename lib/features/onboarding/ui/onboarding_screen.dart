@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dubai_trip_planner_2025/features/onboarding/models/onboarding_question.dart';
-import 'package:dubai_trip_planner_2025/features/onboarding/ui/onboarding_question_screen.dart';
-import 'package:dubai_trip_planner_2025/features/onboarding/ui/onboarding_paywall_screen.dart';
+import 'package:dubai_trip_planner/features/onboarding/models/onboarding_question.dart';
+import 'package:dubai_trip_planner/features/onboarding/ui/onboarding_question_screen.dart';
+import 'package:dubai_trip_planner/features/onboarding/ui/onboarding_paywall_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

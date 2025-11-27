@@ -1,4 +1,4 @@
-package com.example.dubai_trip_planner_2025
+package com.example.dubai_trip_planner
 
 import io.flutter.embedding.android.FlutterActivity
 

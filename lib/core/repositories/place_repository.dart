@@ -1,5 +1,5 @@
-import 'package:dubai_trip_planner_2025/core/constants/dummy_places.dart';
-import 'package:dubai_trip_planner_2025/core/models/place.dart';
+import 'package:dubai_trip_planner/core/constants/dummy_places.dart';
+import 'package:dubai_trip_planner/core/models/place.dart';
 
 class PlaceRepository {
   const PlaceRepository._();

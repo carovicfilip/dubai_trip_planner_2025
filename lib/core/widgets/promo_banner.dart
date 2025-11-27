@@ -1,4 +1,4 @@
-import 'package:dubai_trip_planner_2025/features/my_trip/ui/my_trip_screen.dart';
+import 'package:dubai_trip_planner/features/my_trip/ui/my_trip_screen.dart';
 import 'package:flutter/material.dart';
 
 class PromoBanner extends StatefulWidget {

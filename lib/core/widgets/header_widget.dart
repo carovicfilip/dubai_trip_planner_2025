@@ -1,4 +1,4 @@
-import 'package:dubai_trip_planner_2025/core/constants/app_color.dart';
+import 'package:dubai_trip_planner/core/constants/app_color.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {

@@ -1,10 +1,10 @@
-import 'package:dubai_trip_planner_2025/core/models/category.dart';
-import 'package:dubai_trip_planner_2025/core/models/place.dart';
-import 'package:dubai_trip_planner_2025/core/repositories/place_repository.dart';
-import 'package:dubai_trip_planner_2025/core/widgets/custom_back_button.dart';
-import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
-import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
-import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
+import 'package:dubai_trip_planner/core/models/category.dart';
+import 'package:dubai_trip_planner/core/models/place.dart';
+import 'package:dubai_trip_planner/core/repositories/place_repository.dart';
+import 'package:dubai_trip_planner/core/widgets/custom_back_button.dart';
+import 'package:dubai_trip_planner/features/explore/ui/widgets/places_card.dart';
+import 'package:dubai_trip_planner/features/favorites/cubit/favorites_cubit.dart';
+import 'package:dubai_trip_planner/features/place_details/screens/more_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';

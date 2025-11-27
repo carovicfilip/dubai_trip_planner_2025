@@ -1,6 +1,6 @@
 {
-    "name": "dubai_trip_planner_2025",
-    "short_name": "dubai_trip_planner_2025",
+    "name": "Dubai Trip Planner",
+    "short_name": "dubai_trip_planner",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

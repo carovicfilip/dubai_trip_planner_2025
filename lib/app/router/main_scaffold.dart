@@ -1,7 +1,7 @@
-import 'package:dubai_trip_planner_2025/features/categories/ui/categories_screen.dart';
-import 'package:dubai_trip_planner_2025/features/explore/ui/explore_screen.dart';
-import 'package:dubai_trip_planner_2025/features/my_trip/ui/my_trip_screen.dart';
-import 'package:dubai_trip_planner_2025/features/profile/ui/profile_screen.dart';
+import 'package:dubai_trip_planner/features/categories/ui/categories_screen.dart';
+import 'package:dubai_trip_planner/features/explore/ui/explore_screen.dart';
+import 'package:dubai_trip_planner/features/my_trip/ui/my_trip_screen.dart';
+import 'package:dubai_trip_planner/features/profile/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -1,5 +1,5 @@
-import 'package:dubai_trip_planner_2025/core/models/category.dart';
-import 'package:dubai_trip_planner_2025/features/categories/ui/categories_screen.dart';
+import 'package:dubai_trip_planner/core/models/category.dart';
+import 'package:dubai_trip_planner/features/categories/ui/categories_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategorySection extends StatelessWidget {

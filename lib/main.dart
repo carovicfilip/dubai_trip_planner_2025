@@ -1,4 +1,4 @@
-import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
+import 'package:dubai_trip_planner/features/favorites/cubit/favorites_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => FavoritesCubit(prefs),
       child: MaterialApp(
-        title: 'Dubai Trip Planner 2025',
+        title: 'Dubai Trip Planner',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         home: SplashScreen(),

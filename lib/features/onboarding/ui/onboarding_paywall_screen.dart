@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:dubai_trip_planner_2025/core/constants/app_color.dart';
-import 'package:dubai_trip_planner_2025/features/onboarding/services/onboarding_service.dart';
-import 'package:dubai_trip_planner_2025/app/router/main_scaffold.dart';
+import 'package:dubai_trip_planner/core/constants/app_color.dart';
+import 'package:dubai_trip_planner/features/onboarding/services/onboarding_service.dart';
+import 'package:dubai_trip_planner/app/router/main_scaffold.dart';
 
 class OnboardingPaywallScreen extends StatelessWidget {
   const OnboardingPaywallScreen({super.key});

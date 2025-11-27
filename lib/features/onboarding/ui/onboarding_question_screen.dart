@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dubai_trip_planner_2025/core/constants/app_color.dart';
-import 'package:dubai_trip_planner_2025/features/onboarding/models/onboarding_question.dart';
+import 'package:dubai_trip_planner/core/constants/app_color.dart';
+import 'package:dubai_trip_planner/features/onboarding/models/onboarding_question.dart';
 
 class OnboardingQuestionScreen extends StatefulWidget {
   final OnboardingQuestion question;

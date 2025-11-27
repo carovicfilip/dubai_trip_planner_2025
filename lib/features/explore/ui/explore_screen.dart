@@ -1,5 +1,5 @@
-import 'package:dubai_trip_planner_2025/core/widgets/hack_and_tips.dart';
-import 'package:dubai_trip_planner_2025/core/widgets/weather_forecast_section.dart';
+import 'package:dubai_trip_planner/core/widgets/hack_and_tips.dart';
+import 'package:dubai_trip_planner/core/widgets/weather_forecast_section.dart';
 import 'package:flutter/material.dart';
 import '../../../core/widgets/category_section.dart';
 import '../../../core/widgets/header_widget.dart';

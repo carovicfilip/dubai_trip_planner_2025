@@ -28,7 +28,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               _buildSection(
                 title: 'Introduction',
                 content:
-                    'Welcome to Dubai Trip Planner 2025 ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.',
+                    'Welcome to Dubai Trip Planner ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application.',
               ),
               const SizedBox(height: 24),
               _buildSection(

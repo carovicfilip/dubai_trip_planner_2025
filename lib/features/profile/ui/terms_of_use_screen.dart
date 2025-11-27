@@ -28,13 +28,13 @@ class TermsOfUseScreen extends StatelessWidget {
               _buildSection(
                 title: 'Acceptance of Terms',
                 content:
-                    'By downloading, installing, accessing, or using the Dubai Trip Planner 2025 mobile application ("App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not use the App.',
+                    'By downloading, installing, accessing, or using the Dubai Trip Planner mobile application ("App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not use the App.',
               ),
               const SizedBox(height: 24),
               _buildSection(
                 title: 'Description of Service',
                 content:
-                    'Dubai Trip Planner 2025 is a mobile application that helps users plan trips to Dubai, United Arab Emirates. The App provides:\n\n'
+                    'Dubai Trip Planner is a mobile application that helps users plan trips to Dubai, United Arab Emirates. The App provides:\n\n'
                     '• Personalized itinerary generation\n'
                     '• Information about attractions, restaurants, and activities\n'
                     '• Category-based place recommendations\n'

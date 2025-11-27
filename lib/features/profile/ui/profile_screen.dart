@@ -1,9 +1,9 @@
-import 'package:dubai_trip_planner_2025/core/widgets/promo_banner.dart';
-import 'package:dubai_trip_planner_2025/features/explore/ui/widgets/places_card.dart';
-import 'package:dubai_trip_planner_2025/features/favorites/cubit/favorites_cubit.dart';
-import 'package:dubai_trip_planner_2025/features/place_details/screens/more_details_screen.dart';
-import 'package:dubai_trip_planner_2025/features/profile/ui/privacy_policy_screen.dart';
-import 'package:dubai_trip_planner_2025/features/profile/ui/terms_of_use_screen.dart';
+import 'package:dubai_trip_planner/core/widgets/promo_banner.dart';
+import 'package:dubai_trip_planner/features/explore/ui/widgets/places_card.dart';
+import 'package:dubai_trip_planner/features/favorites/cubit/favorites_cubit.dart';
+import 'package:dubai_trip_planner/features/place_details/screens/more_details_screen.dart';
+import 'package:dubai_trip_planner/features/profile/ui/privacy_policy_screen.dart';
+import 'package:dubai_trip_planner/features/profile/ui/terms_of_use_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-# dubai_trip_planner_2025
+# dubai_trip_planner
 
 A new Flutter project.
 

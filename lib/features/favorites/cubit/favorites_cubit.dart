@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:dubai_trip_planner_2025/core/models/place.dart';
+import 'package:dubai_trip_planner/core/models/place.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
